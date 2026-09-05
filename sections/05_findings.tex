@@ -318,13 +318,30 @@
   mechanically tracks low net score --- 23.9\% at score $\le 0$, 0.02\% at
   100$+$. It conflates \emph{contested} with \emph{downvoted}; show the score-bin
   gradient and avoid deliberation language. (b)~Neutral subs have a more
-  transient audience (2.73 comments/author versus 4.64 india, 5.21 pakistan) ---
-  \textbf{``audience heterogeneity'' is a live alternative to ``permeable echo
-  chamber'' and must be named, not defeated by assertion} (V6, blocker B5).
-  (c)~Alignment and subreddit are collinear; the FE test shows \emph{these three
-  specific subreddits} are high, which is descriptive. (d)~Dropping r/worldnews
-  moves the single hottest cell from Humanitarian to Historical Grievance --- the
-  block-level claim is robust, the top-cell frame is not.
+  transient audience (2.73 comments/author versus 4.64 india, 5.21 pakistan), so
+  ``audience heterogeneity'' is a live alternative to ``permeable echo chamber.''
+  \textbf{We test it rather than assert against it, and it does not hold} (V6,
+  blocker B5): adding an author-transience control (log author comment count) to
+  the controversiality logit leaves the neutral odds ratio essentially unchanged
+  ($2.71 \rightarrow 2.66$), and restricting to committed participants does
+  \emph{not} shrink the neutral/india rate ratio --- it rises, from
+  $2.47\times$ (all authors) to $2.51\times$ ($\ge 5$ comments) and $2.81\times$
+  ($\ge 20$ comments). A transient-voter artifact would move both the other way.
+  The remaining, unobservable version of the confound is voter-pool (not author)
+  heterogeneity, which we flag as a scope condition. (c)~Alignment and subreddit
+  are collinear; the FE test shows \emph{these three specific subreddits} are
+  high, which is descriptive. (d)~Dropping r/worldnews moves the single hottest
+  cell from Humanitarian to Historical Grievance --- the block-level claim is
+  robust, the top-cell frame is not.
+
+\jun{Resolved blocker B5. The audience-heterogeneity test is
+\texttt{scripts/r8\_audience\_robustness.py} in the analysis repo: (1) logit
+alignment ORs with vs.\ without a \texttt{log(author comment count)} control
+($2.71 \rightarrow 2.66$ on neutral), and (2) the neutral/india rate ratio across
+author-activity floors $\ge\{1,2,3,5,10,20\}$ ($2.47 \rightarrow 2.81$). Caveat
+kept in-sentence: this rebuts the \emph{author}-transience version §12.2 actually
+measured, not the pure voter-pool version. If we want a figure, a small
+ratio-vs-floor line plot would make (b) legible.}
 
 \item[Qualitative.] Five paraphrased, anonymized vignettes: neutral $+$
   Humanitarian controversy is driven by contested civilian-harm and rights
