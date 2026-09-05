@@ -1,0 +1,167 @@
+% =============================================================================
+% Section 3 -- Data, Preprocessing, and Annotation
+% =============================================================================
+
+\providecommand{\candidate}[1]{}
+\providecommand{\dnote}[1]{}
+\providecommand{\budget}[1]{}
+\providecommand{\src}[1]{}
+\providecommand{\authorinput}[1]{\textbf{\textless author input: #1\textgreater}}
+
+\section{Data and Methods}
+
+\yash{this section is WIP}
+
+\label{sec:data}
+
+\candidate{S3-lede}
+Labelled data carry a reporting standard in social computing: an account of how
+the dataset was built~\cite{gebru2021datasheets}, a codebook whose paradigm is
+declared rather than left implicit~\cite{rottger2022paradigms}, annotators
+described rather than assumed interchangeable~\cite{sap2022annotators}, and
+machine labels checked against human ones before they carry
+weight~\cite{pangakis2023validation}. We report against that standard and add
+two practices to it. First, we chose a labeller by measurement rather than by
+reputation. Four families of system, namely lexicon and encoder baselines,
+open-weight language models with and without fine-tuning, a deployed commercial
+classifier, and frontier commercial models, were scored against human gold
+standards before any was adopted, and Table~\ref{tab:benchmark} reports that
+comparison including the systems that failed outright. Second, every machine
+agreement figure appears beside the human figure for the same construct.
+Reporting a human baseline alongside machine labels is a minority practice at
+this venue, and a machine figure cannot be read without knowing the precision of
+the ruler it was scored against.
+
+% -----------------------------------------------------------------------------
+\subsection{Corpus and site}
+\label{sec:data-site}
+% -----------------------------------------------------------------------------
+
+\subsubsection{Reddit as a site for interstate conflict discourse}
+\label{sec:data-site-reddit}
+
+\candidate{S3.1.1}
+Reddit suits this question for reasons specific to the analyses that follow.
+Pseudonymity lowers the cost of posting a nationalist sentiment under one's own
+handle, and that register is what name-bound platforms suppress. Subreddits give
+a boundary we can observe, because norms on Reddit are enforced at community
+level and differ sharply between communities on the same
+site~\cite{chandrasekharan2018hiddenrules}. That boundary is what turns a
+comment left in one community by a participant from another into a measurable
+event~\cite{datta2019interconflict}. Threading preserves who replied to whom.
+Votes give a reception measure the communities produce themselves, and Reddit's
+\texttt{controversiality} flag, which marks comments drawing roughly balanced
+approval and disapproval, is what turns that reception into something we can
+model. The rule behind the flag is Reddit's own and is unpublished, so our
+outcome variable is a platform artefact as much as a record of
+contestation~\cite{crawford2016flag}.
+
+\subsubsection{Communities, alignment, and coverage}
+\label{sec:data-communities}
+
+% \begin{figure*}[t]
+%   \centering
+%   \includegraphics[width=\linewidth]{figures/s3_f1_corpus_composition}
+%   \caption{Corpus composition and coverage, over the annotated corpus of
+%   309,204 comments (2 January 2019 to 25 January 2026). Panel A gives comments
+%   per community on a logarithmic axis, coloured by the alignment group each
+%   community was assigned to. The India-aligned group spans six communities, from
+%   a general-interest subreddit to a defence forum to a satire community; the
+%   Pakistan-aligned group is one community, \texttt{r/pakistan}. A national
+%   contrast drawn across them is therefore also a contrast between many
+%   communities and one, which is why \S\ref{sec:results} reports every
+%   community-level quantity within its group as well as across groups. Panel B
+%   gives monthly comment volume on the same axis with the six crisis windows
+%   shaded and labelled with their counts. Volume differs by more than three
+%   orders of magnitude between the largest window and the quietest month.}
+%   \label{fig:composition}
+% \end{figure*}
+
+\candidate{S3.1.2}
+We selected communities by running the collection keywords as web queries and
+taking the subreddits whose posts ranked highest, then checked that ranking
+against the platform itself. On the Pakistan side we compared subscriber counts
+and keyword-matching post volume across \texttt{r/pakistani},
+\texttt{r/karachi}, \texttt{r/Lahore}, \texttt{r/pkmigrate},
+\texttt{r/PakistaniMilitary} and \texttt{r/PakistanDiscussions}. None cleared a
+volume threshold worth adding, which is itself a finding about the setting
+rather than only about our procedure: \texttt{r/pakistan} appears to be the one
+active Pakistan-aligned community for this discourse. We ran that check on the
+Pakistan side alone, because the asymmetry it addresses runs in one direction,
+and we did not run the equivalent check on the India side. The India-aligned
+group is therefore plural by observation and the Pakistan-aligned group singular
+by observation, and neither is plural or singular by design.
+
+\candidate{S3.1.3}
+Figure~\ref{fig:composition}A gives the result. Fourteen communities were
+collected: India-aligned holds 185,177 comments across six communities, neutral
+66,732 across three, Pakistan-aligned 53,308 in one, and a residual four
+communities hold 3,987 between them. Those four, \texttt{r/abcdesis},
+\texttt{r/askreddit}, \texttt{r/kashmir} and \texttt{r/southasia}, were not
+assigned to an alignment group, because a diaspora community, a general question
+forum and two low-volume regional communities do not sit on the axis the
+comparison runs along. Excluding them leaves the 305,217 comments across ten
+communities in three alignment groups that \S\ref{sec:introduction} reports and
+that every alignment-group result in this paper uses. Both figures describe the
+same collection. Assigning communities is not assigning people, and no
+community-level result here licenses a claim about an individual commenter.
+
+\subsubsection{Collection and preprocessing}
+\label{sec:data-collection}
+
+% \begin{figure*}[t]
+%   \centering
+%   \includegraphics[width=\linewidth]{figures/s3_c1_collection_instrument}
+%   \caption{The collection instrument, over the 49,494 collected submissions
+%   (1 January 2019 to 10 May 2025). Panel A gives retrieval yield for the top
+%   fourteen of thirty-nine queries. One query, \texttt{India Pakistan}, returned
+%   21,655 submissions, or 44\% of the collection. Yields overlap, since 8,228
+%   submissions (16.6\%) matched more than one query, so the bars do not sum to
+%   the total. Panel B gives the three collection passes at the granularity each
+%   was run at: a historical sweep at monthly resolution (36,767 submissions),
+%   flashpoint windows at daily resolution (9,145), and the most recent crisis
+%   window at hourly resolution (3,582). Each submission belongs to exactly one
+%   pass. Collection stopped on 10 May 2025; the annotated corpus runs eight
+%   months further, to 25 January 2026.}
+%   \label{fig:collection}
+% \end{figure*}
+
+\candidate{S3.1.4}
+The corpus holds 309,204 comments posted between January 2019 and January 2026,
+a window spanning all six crisis events with margin on either side for the
+temporal analyses. We retrieved them from the Arctic Shift
+archive~\cite{arcticshift2026software} through the BAScraper
+client~\cite{bascraper2026software}. Since the 2023 platform policy change
+closed Pushshift to general use, working from a third-party archive is a
+standing condition of this method rather than a footnote about
+tooling~\cite{proferes2021studyingreddit}. Collection was query-based, and
+Figure~\ref{fig:collection} makes the instrument itself visible rather than
+asserted. Two properties of it bound what follows. The corpus is what a query
+list found, and one query supplies close to half of it, so coverage is
+concentrated in the vocabulary that query matches. And the three passes were run
+at different temporal resolutions, so density in Panel B partly reflects
+collection design rather than discourse volume alone. Panel B also marks a gap
+we cannot close: collection stopped eight months before the corpus ends, so the
+most recent months entered through a different path and the funnel rates below
+do not describe them.
+
+\candidate{S3.1.5}
+Figure~\ref{fig:composition}B gives the six crisis windows, from Operation
+Sindoor's 69,011 comments to the 2021 ceasefire's 3,923. Of the corpus, 161,446
+comments fall inside those windows and 147,758 outside; no result in this paper
+uses the outside portion. Because volume across events is uneven by more than an
+order of magnitude, every event-level comparison we report is proportional and
+made within a community, following the comparison rule established for
+cross-crisis work~\cite{olteanu2015crisis}, and every headline result is
+reported again with Operation Sindoor excluded. Preprocessing removed
+duplicates, then any record whose body carried a removal or deletion marker, then
+bot accounts, before a relevance gate that decided corpus membership and removed
+59\% of what reached it. We did not remove records whose author field is
+deleted, since deleting an account does not delete text already posted. Those
+rates are reconstructed over the 219,056 comments with a raw record on disk, a
+portion that excludes almost all of the two 2025 events. Dropping the marked
+bodies, about a seventh of what survived deduplication, makes this a moderated
+survivor set: what we analyse is what community moderation already let
+stand~\cite{jhaver2019automoderator}. The reply analyses rebuild comment depth
+from parent identifier chains rather than from the shipped column, and each
+reply result names the denominator it used.

@@ -1,0 +1,394 @@
+%% ===========================================================================
+\section{Findings}
+\budget{3,000}
+
+\subsection{Crisis type, not era, fixes the compositional signature (R1)}
+\budget{425}
+
+\begin{description}
+\item[Claim.] The Frame $\times$ Sentiment signature is a property of crisis
+  \emph{type}; six years of platform change do not move it.
+
+\item[Primary evidence.] Pairwise cosine between 18-dim event signatures,
+  thread-clustered bootstrap. Pulwama $\leftrightarrow$ Sindoor \textbf{0.0074}
+  [0.0022, 0.0313]; Article 370 $\leftrightarrow$ Sindoor 0.2749 [0.2332,
+  0.3114]. \textbf{Separation is CI-based and contrast-specific}: across the 6
+  military--military pairs, max CI hi $=\textbf{0.0768}$; across the 4
+  military--constitutional pairs, min CI lo $=\textbf{0.1359}$; gap 0.0591.
+  State the contrast explicitly --- the diplomatic event (Ceasefire 2021) is
+  \emph{not} part of this separation and does not separate cleanly.
+
+\item[What changed from v1.] The v1 permutation null \textbf{tested the opposite
+  of the claim} --- it permuted frame and sentiment independently, destroying the
+  association under test --- and its printed conclusion inverted the comparison.
+  The corrected event-label null says signatures differ for \emph{every} pair
+  including the military ones (all $p_\mathrm{perm} = 0.001$). The
+  military-cluster claim now rests on interval separation alone, at roughly half
+  the v1 margin. Say so.
+
+\item[Divergence geometry.] Per-frame cross-community JSD, Miller--Madow
+  corrected, exact multivariate-hypergeometric null, BH-FDR over 36 cells:
+  \textbf{8/36 significant}. Top: Sindoor $\times$ Religious/Cultural 0.0266
+  (BH $p$ 0.006); Balakot $\times$ Economic 0.0128; Balakot $\times$
+  Security/Military 0.0082. \textbf{Plug-in versus MM changes point values by a
+  median 96.6\% but zero verdicts} --- this closes blocker B2.
+
+\item[Trigger versus retaliation.] Trigger $\times$ Humanitarian JSD
+  \textbf{0.0413} ($p_\mathrm{adj}$ 0.018) versus retaliation $\times$
+  Humanitarian 0.0016 ($p_\mathrm{adj}$ 0.036) --- a \textbf{26$\times$}
+  difference, the sharpest trigger-specific effect.
+
+\item[Composition.] Frame $\times$ crisis\_type $\chi^2(10) = 17{,}743.3$,
+  $V = 0.235$, $N = 160{,}050$; adjusted residuals isolate Security/Military
+  $\times$ military\_kinetic $z = +129.2$ and Political $\times$
+  political\_constitutional $z = +101.2$. Nested LR test of the crisis\_type
+  $\times$ community interaction: \textbf{$\chi^2(20) = 834.4$,
+  $p = 6.92 \times 10^{-164}$}, McFadden $0.0523 \rightarrow 0.0544$, 37{,}762
+  author clusters, SE inflation 1.27$\times$.
+
+\item[Temporal.] Volume and sentiment volatility inversely associated: Spearman
+  $\rho = -0.771$, $p = 0.072$, $n = 6$, stable across 3/5/7-day windows. Report
+  as an observation \textbf{with its $n$ in the sentence}, not the footnote.
+
+\item[Change points.] \textbf{PELT~\cite{killick2012pelt} returned zero change
+  points for every event.} Binseg's change points were produced by a
+  \emph{forced} \texttt{n\_bkps} and are reported as such --- tried-and-failed,
+  not omitted~\cite{truong2020changepoint}.
+
+\item[Counter-intuitive detail worth keeping.] Article 370, the most politically
+  contentious event, is the most affectively \emph{convergent} across
+  communities.
+
+\item[Figures.] \texttt{r1r2\_cosine\_forest.png},
+  \texttt{r1r2\_jsd\_heatmap.png}, \texttt{r1r2\_residuals.png},
+  \texttt{r1r2\_temporal.png}.
+
+\item[Status.] Exploratory-descriptive with bootstrap support.
+\end{description}
+
+\subsection{Threads integrate, replies persist, and crossing carries hostility (R2)}
+\budget{475}
+
+\begin{description}
+\item[Claim 1.] Frame echo chambers do not exist at the thread level.
+  Co-occurrence density \textbf{1.0} (15/15 edges) in all six events; Louvain
+  $Q = 0.000$ (sd 0, 20 seeds) against a weight-preserving null of mean 0.045,
+  $p = 1.000$~\cite{traag2019leiden}. Frames are not merely unclustered --- they
+  are \textbf{less separable than a randomly reweighted complete graph}. This
+  contradicts the fragmentation hypothesis the study started with; say so.
+
+\item[Claim 2.] Replies persist in-frame. Assortativity $r = 0.28$--$0.39$;
+  pooled parent-to-child $\chi^2 = 56{,}004.5$, $V = 0.343$ over
+  \textbf{95,301} dyads; within-thread permutation (1{,}000 reps/event) puts
+  observed $\chi^2$ at \textbf{3.18--4.92$\times$} the null mean at every event
+  including the smallest.
+
+\item[Claim 3.] Minority frames persist most strongly relative to base rate.
+  Author-clustered one-versus-rest odds (24{,}059 clusters, BH over 6):
+  \textbf{Economic 26.0, Historical Grievance 20.2, Religious/Cultural 18.3,
+  Humanitarian 7.3, Security/Military 6.4, Political 5.3}, all $p < .001$.
+  Author clustering inflates SEs by only 1.007$\times$, which is what pushes
+  this past latent homophily.
+
+\item[Claim 4.] Frame-crossing brings hostility without persuasion. Cross-frame
+  replies more toxic in all six events: pooled \textbf{$+0.0284$} [0.0251,
+  0.0317], rank-biserial \textbf{$r = +0.102$}, Mann--Whitney
+  $p = 3.44 \times 10^{-155}$, $N = 93{,}368$ --- \textbf{the sign was inverted
+  in all seven v1 rows and is corrected here}. Replicated on the second labeller
+  (Claude L6a): offensive \textbf{$+1.30$ pp} ($z = 6.78$), targeted
+  \textbf{$+1.56$ pp} ($z = 8.59$) --- this answers V9. Sentiment-shift rate is
+  \emph{lower} for cross-frame replies ($-1.75$ pp, $z = -5.39$).
+
+\item[Claim 5.] Frames diversify with depth --- but in \textbf{4 of 6 events},
+  not 6/6. $\Delta H$ ranges $+0.046$ to $+0.228$; clustered CIs include zero for
+  Ceasefire and Pahalgam. Economic and Historical Grievance grow in 6/6;
+  Political shrinks in 5/6.
+
+\item[Claim 6 (reframed).] The apparent community effect on Humanitarian
+  persistence is a \textbf{venue} effect. Across alignments the spread is 0.088;
+  \emph{within} india\_aligned alone it is \textbf{0.160} --- larger.
+  r/indianews 0.056 to r/india 0.216, with r/indiandefense militarizing 57.3\% of
+  Humanitarian parents. pakistan\_aligned is one subreddit, so no such
+  replication is possible on that side. This is vulnerability V3 handled in the
+  Findings rather than deferred.
+
+\item[Robustness.] \textbf{36-cell specification curve} (Sindoor in/out $\times$
+  confidence none/0.6/0.7 $\times$ genre all-L1/Opinion-only $\times$ labeller
+  Perspective/L6a): hostility premium median 0.0241 [0.0130, 0.0429], Historical
+  Grievance multiplier median 9.25 [8.17, 10.15] --- \textbf{100\% of CIs exclude
+  the null in both}. The largest single source of variation is \textbf{which
+  model produced the label}, not any sampling choice. This is the empirical form
+  of V1 and it sets up \S6.4.
+
+\item[Caveats to keep in-sentence.] ``Persistence'', never ``contagion''
+  \cite{versteeg2013influence} --- the permutation test controls topic coherence,
+  not user selection. Cross-frame toxicity is a \emph{small} effect
+  ($r \approx 0.10$); state $r$ in the sentence.
+
+\item[Qualitative.] Six persistence mechanisms with $n$: adversarial in-frame
+  argument, argumentative loops, ideological escalation, collaborative
+  information exchange, collaborative history construction, self-contained
+  technical discourse. Humanitarian $\rightarrow$ Security/Military is the most
+  toxic transition sampled (0.961--0.975).
+
+\item[Figures.] \texttt{r1r2\_transition\_heatmaps.png},
+  \texttt{r1r2\_persistence\_ci.png}, \texttt{r1r2\_toxicity\_forest.png},
+  \texttt{r1r2\_depth\_deltaH.png}, \texttt{r1r2\_spec\_curve.png}.
+
+\item[Status.] Descriptive and permutation-supported; persistence confirmatory
+  under author clustering.
+\end{description}
+
+\subsection{In-group affective privileging (R5, the strongest confirmatory result)}
+\budget{565}
+
+\begin{description}
+\item[Hypothesis.] Reframed after the naive directional guess failed. The
+  asymmetry is in \emph{positivity}, not negativity: the identity-congruent
+  community renders a frame as heroic-patriotic. \textbf{Report the reframing
+  openly} --- it is the honest version and reviewers reward it.
+
+\item[Confirmatory test.] Multinomial logit, sentiment $\sim$ Frame $\times$
+  Community $+$ crisis\_type $+$ L1, author-clustered SEs, base $=$ Neutral.
+  \textbf{LR $\chi^2(20) = 179.8$, $p = 1.05 \times 10^{-27}$,
+  $N = 160{,}050$}; McFadden $0.0513 \rightarrow 0.0520$. Brant test rejects
+  proportional odds, justifying multinomial over ordinal.
+
+\item[Key AMEs, $P$(Positive).] Security/Military: india 0.094, pakistan 0.082,
+  neutral 0.050. Humanitarian: india 0.143 versus neutral 0.051.
+  \textbf{neutral $-$ india is negative and significant on all six frames}
+  ($-0.021$ to $-0.092$).
+
+\item[Key AMEs, $P$(Negative).] Security/Military neutral $-$ india
+  \textbf{$+0.052$} (sig); Humanitarian pakistan $-$ india $+0.038$ and neutral
+  $-$ india $+0.070$; Religious/Cultural pakistan $-$ india \textbf{$-0.069$};
+  Economic pakistan $-$ india \textbf{$-0.063$}. The Security/Military negativity
+  gap is carried by \emph{neutral being detached-critical}, not by pakistan.
+
+\item[Discriminant validity.] Adding both L4 stance axes \textbf{strengthens}
+  the interaction: $\chi^2(20) = 287.6$, $p = 2.75 \times 10^{-49}$. Several
+  contrasts go from n.s.\ to significant. Two attenuate --- Economic $+38\%$, and
+  \textbf{the Humanitarian pakistan$-$india gap flips sign and is reported as not
+  robust. Report the one that fails.}
+
+\item[Geometry.] Miller--Madow per-frame JSD with permutation BH-FDR: 8/36 cells
+  survive, concentrated in Security/Military and Political.
+
+\item[Mechanism (corroboration, not estimand).] In-group-pride lexical markers
+  in the Security/Military $\times$ Positive cell: any marker 0.522 india, 0.476
+  pakistan, 0.338 neutral; first-person plural 0.405, 0.368, 0.224;
+  nation-forces 0.225, 0.172, 0.123. Coarse high-precision heuristic --- flag it
+  as such.
+
+\item[Robustness.] Five arms, all strengthening or holding: Sindoor-excluded
+  $\chi^2 = \textbf{231.0}$; high-confidence-only 176.1; Opinion-only 161.6;
+  full corpus $+$ phase \textbf{533.6}.
+
+\item[Measurement defence.] Machine error is not associated with community
+  alignment (L5 $\chi^2$ $p = 0.492$; L2 $p = 0.820$) --- see \\S3.9. This is the
+  answer to the obvious differential-measurement-error attack and should be
+  cited here, not left in Methods.
+
+\item[Figures.] \texttt{r5\_predicted\_prob\_heatmap.png},
+  \texttt{r5\_ame\_plot.png} (\textbf{the single most important figure}),
+  \texttt{r5\_stance\_attenuation.png}, \texttt{r5\_perframe\_jsd.png}.
+
+\item[Status.] \textbf{Confirmatory.}
+\end{description}
+
+\subsection{Communities reward the same affect differently (R5.5)}
+\budget{240}
+
+\begin{itemize}
+\item Predicted \texttt{score\_log} for Security/Military $\times$ Negative:
+  india 1.418, pakistan 1.239 (\textbf{$-0.179$}, sig), neutral 1.566
+  (\textbf{$+0.148$}, sig). The Neutral-sentiment row shows the same ordering
+  ($-0.066$ / $+0.215$, both sig); the Positive row is not significant.
+\item Production asymmetry is compounded by \textbf{reception} asymmetry.
+\item Note the modelling choice and why: \texttt{score\_log} is a
+  sign-preserving log because 9\% of scores are negative, which rules out a count
+  model.
+\item Connect to Brady et al.~\cite{brady2017emotion} on moral-emotional
+  diffusion within group boundaries.
+\item \textit{Caveat:} \texttt{score} is a noisy endorsement proxy; triangulate
+  with controversiality and percentile. This is one of the three findings riding
+  the same platform vote signal (V2) --- acknowledge that here, not only in \S7.
+\item \textbf{Figure} \texttt{r5\_reward\_asymmetry.png}.
+\end{itemize}
+
+\subsection{Crossing is incursion, and the price of it is general (R6)}
+\budget{515}
+
+\begin{description}
+\item[Honest negative first.] HDBSCAN~\cite{campello2013hdbscan} returns
+  \textbf{100\% noise} at every parameter setting; $k$-means silhouette
+  $\approx 0.1$--$0.2$. \textbf{Boundary-crossing behaviour is a continuum, not a
+  set of discrete types.} Forcing clusters through aggressive UMAP would
+  manufacture unstable artifacts, and the paper says so rather than doing it.
+  This refutes the ``typology'' the recipe was named for.
+
+\item[What replaces it.] A bootstrap-stable Gaussian mixture, $K = 3$, bootstrap
+  ARI \textbf{0.87}, characterizing \emph{archetypal regions} rather than
+  discovered clusters: Pakistan-sympathetic (2{,}084), India-partisan hawkish
+  (2{,}061), India-leaning civil (1{,}779). Be explicit that $K$ was chosen on
+  bootstrap stability, \textbf{not} BIC --- BIC keeps falling through $K = 8$.
+
+\item[Concentration.] Archetype $\times$ is\_cross\_community:
+  \textbf{$\chi^2 = 301.9$, Cram\'er's $V = 0.226$,
+  $p = 2.72 \times 10^{-66}$}. Adjusted residuals: India-partisan hawkish
+  \textbf{$+17.1$} toward crossing; Pakistan-sympathetic $-11.6$. And the
+  continuous index refutes the naive equivalence directly:
+  \texttt{bridge\_index} is \textbf{$+0.051$ for single-community users versus
+  $-0.026$ for cross-community users}. Crossers are not higher-bridge.
+
+\item[Price of crossing.] Cluster-robust logit on out-group comments
+  ($n = 16{,}266$, punished rate 0.494; punished $=$ score below the subreddit
+  $\times$ crisis\_phase median), controlling length, phase, toxicity, frame,
+  top-level, time, venue alignment. Pakistan-sympathetic archetype
+  \textbf{OR $= 2.014$} [1.673, 2.425], $p < .001$; provocateur\_index
+  \textbf{OR $= 1.549$} [1.058, 2.266], $p = 0.024$; question\_rate
+  \textbf{OR $= 2.146$} [1.062, 4.334], $p = 0.033$. \textbf{bridge\_index
+  OR $= 1.464$ [0.997, 2.148], $p = 0.052$ --- report as not significant.}
+  Balanced, hostile, and merely inquisitive outsiders are all down-weighted: the
+  venue penalizes non-congruence itself.
+
+\item[Raiding signature.] Within-author paired design, $n = 1{,}606$ authors
+  with $\ge$3 comments in both venue types. Anti-out-group stance $0.339
+  \rightarrow \textbf{0.376}$ ($+0.037$, paired Wilcoxon $p < 0.001$) while
+  targeted toxicity slightly \emph{drops} ($0.088 \rightarrow 0.079$,
+  $p < 0.001$) and negativity is unchanged ($p = 0.852$). Sophisticated
+  incursion: push the opposition harder, moderate the slurs.
+
+\item[Robustness.] Threshold sweep $\{5, 10, 20\}$ --- $V$ 0.181 / 0.226 /
+  0.228, provocateur OR 1.52 / 1.55 / 1.77. Sindoor-excluded: provocateur
+  \textbf{1.632} [1.059, 2.516], $p = 0.027$. Claude L6a versus Perspective
+  $\kappa = 0.852$. UMAP used for visualization only.
+
+\item[L1 arm.] The 16-dim fingerprint adding the L1 sub-simplex is
+  bootstrap-stable (ARI 0.84) and ARI 0.32 against the 13-dim --- content style
+  is a distinct behavioural axis. \textbf{Report 13-dim as primary}; the 16-dim
+  variant is exploratory given L1's reliability.
+
+\item[Vocabulary.] Use \textbf{``boundary-crossers''} throughout. Never ``bridge
+  users'' --- R6 refutes the bridge framing and the vocabulary should follow.
+
+\item[Figures.] \texttt{r6\_stability\_panel.png},
+  \texttt{r6\_crosscommunity\_mosaic.png}, \texttt{r6\_punishment\_forest.png}
+  and \texttt{r6\_raiding\_signature.png} (combine into one 2-panel).
+  \textbf{\texttt{r6\_trace\_timelines.png} cannot be published.}
+
+\item[Status.] Clustering exploratory; concentration, punishment, and raiding
+  tests confirmatory.
+\end{description}
+
+\subsection{Contested discourse tracks frame and community, not toxicity (R8)}
+\budget{515}
+
+\begin{description}
+\item[Headline.] Controversiality is driven by frame--community mismatch.
+  Neutral $\times$ Humanitarian $= \textbf{17.4\%}$ ($n = 4{,}110$, Wilson 95\%
+  CI [16.4\%, 18.7\%]), rising to \textbf{18.5\%} inside crisis windows, against
+  a corpus rate of 6.91\% over 300{,}908 complete rows.
+
+\item[The negative that carries the paper.] Offensive-Targeted \textbf{7.67\%}
+  versus Not Offensive \textbf{6.83\%} --- OR $\approx 1.13$ (M3) / 1.17
+  (subreddit FE). \textbf{Toxicity, the layer moderation acts on, barely moves
+  the outcome.} Alignment separates rates 2.5$\times$ and frame 1.8$\times$;
+  offensiveness 1.12$\times$.
+
+\item[Alignment gradient.] neutral 11.74\% $>$ pakistan\_aligned 8.24\% $>$
+  india\_aligned 4.75\% (regional 16.15\% and diaspora 11.03\% on small $n$).
+
+\item[Frame gradient.] Humanitarian 10.44\% $>$ Historical Grievance 7.58\% $>$
+  Political 7.35\% $>$ Religious/Cultural 6.98\% $>$ Security/Military 5.97\%
+  $>$ Economic 5.89\%. The two largest frames sit at opposite ends.
+
+\item[Tone-independence.] Within Humanitarian: offensive 10.56\% versus
+  non-offensive 10.47\%. Humanitarian framing splits an audience \textbf{even
+  when politely worded}. This is \emph{why} the toxicity axis collapses.
+
+\item[``Is it just r/worldnews?''] No. All three neutral subs lead ---
+  geopolitics 12.57\%, worldnews 11.69\%, lesscredibledefence 8.59\% --- and
+  lesscredibledefence ($n = 803$) alone beats every india\_aligned sub except
+  r/india (7.21\%). Subreddit-FE logit fits better than M3 (\textbf{AIC
+  142{,}208.9 versus 144{,}180.0}), so the frame gradient survives absorbing
+  subreddit composition.
+
+\item[Required honesty (referee-anticipating).] (a)~\texttt{controversiality}
+  mechanically tracks low net score --- 23.9\% at score $\le 0$, 0.02\% at
+  100$+$. It conflates \emph{contested} with \emph{downvoted}; show the score-bin
+  gradient and avoid deliberation language. (b)~Neutral subs have a more
+  transient audience (2.73 comments/author versus 4.64 india, 5.21 pakistan) ---
+  \textbf{``audience heterogeneity'' is a live alternative to ``permeable echo
+  chamber'' and must be named, not defeated by assertion} (V6, blocker B5).
+  (c)~Alignment and subreddit are collinear; the FE test shows \emph{these three
+  specific subreddits} are high, which is descriptive. (d)~Dropping r/worldnews
+  moves the single hottest cell from Humanitarian to Historical Grievance --- the
+  block-level claim is robust, the top-cell frame is not.
+
+\item[Qualitative.] Five paraphrased, anonymized vignettes: neutral $+$
+  Humanitarian controversy is driven by contested civilian-harm and rights
+  claims, not insults.
+
+\item[Figures.] \texttt{r8\_heatmap\_observed.png},
+  \texttt{r8\_subreddit\_rates.png}, \texttt{r8\_crisis\_vs\_base.png}.
+  \textbf{\texttt{r8\_frame\_effect.png} does not exist and must be generated.}
+
+\item[Status.] Descriptive; regressions used for ranking and predicted surfaces
+  only.
+\end{description}
+
+
+\subsection{What this corpus cannot support (R4 and R7, the negative result)}
+\budget{350}
+
+\begin{description}
+\item[Setup.] Two independent causal designs were run: R4 (crisis-driven
+  differential polarization; community-intensity DiD $+$ crisis-type DDD) and R7
+  (spiral of silence; minority $\times$ acute DiD with subreddit and author FE).
+
+\item[R4 result.] CRV1 flags 9 of 18 per-event $\beta_3$ and 3 of 6 DDD
+  $\beta_7$; the wild cluster bootstrap erases \textbf{all of them} (0/18, 0/6,
+  and 0/8 on continuous Perspective toxicity). The most eye-catching candidate
+  --- military crises shifting stake-holding communities toward Security/Military
+  framing by $\beta_7 \approx +25$ pp --- moves from $p = 0.002$ to
+  WCB $p = 0.255$.
+
+\item[R7 result.] Pooled $\beta_3$ on log length \textbf{$-0.029$}
+  (CRV1 $p = 0.403$, WCB $p = 0.342$), in the silencing direction and nowhere
+  near significant. The one CRV1-significant outcome (neutral sentiment,
+  $p = 0.023$) flips to WCB $p = 0.151$. \textbf{0 of 18} per-event effects
+  survive.
+
+\item[The stronger point.] Parallel trends \textbf{fail} --- for R4 on all
+  military events (only Article 370 passes); for R7 on all three outcomes (Wald
+  $\chi^2$ 48.8, 31.3, 21.7, all $p = 0.0$). Where the identifying assumption
+  fails, the design is \textbf{uninformative}, not merely underpowered. Say
+  ``uninformative''; ``null'' overclaims.
+
+\item[Why they fail, structurally --- the transferable claim.] Crises cluster in
+  time. Balakot follows Pulwama by 12 days; Sindoor follows Pahalgam by roughly
+  2 weeks. \textbf{Each military event's pre-period is the aftermath of the
+  previous crisis.} Event clustering is a structural confounder for
+  crisis-response DiD --- a different failure mode from the staggered-timing
+  problem~\cite{goodmanbacon2021did}.
+
+\item[Power.] R4 median MDE $\approx 18$ pp; observed effects run roughly
+  one-third of the floor; 0 of 18 cells detectable. R7: \textbf{0 of 7} cells,
+  $|\hat\beta_3| / \mathrm{MDE}$ 0.09--0.35.
+
+\item[The additional honesty.] WCB is itself near its validity floor at 7--9
+  clusters and can be over-conservative. A WCB null means ``this design cannot
+  detect anything credible,'' not ``the bootstrap proved absence.''
+
+\item[Descriptive residue.] R7: minority commenters in acute phases are
+  \textbf{terser but less neutral} --- more pointedly opinionated, not silenced.
+  That runs against the spiral-of-silence prediction and is worth one sentence.
+
+\item[Figures.] \texttt{r7\_eventstudy\_logwords.png}, \texttt{r7\_mde.png},
+  plus \texttt{r4\_binned\_es\_secmil.png} and \texttt{r4\_mde.png} once merged.
+  \textbf{Figure~8} (CRV1 versus WCB $p$-value scatter over all 42 estimates)
+  makes C3 legible in one image and must be built.
+
+\item[Status.] Negative / methodological.
+\end{description}

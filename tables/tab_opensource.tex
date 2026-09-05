@@ -1,0 +1,16 @@
+\begin{table}[h]
+  \caption{Best open-source system and best encoder per layer, against the human
+    ceiling.}
+  \label{tab:opensource}
+  \small
+  \begin{tabular}{@{}lllll@{}}
+    \toprule
+    Layer & Best open-source & $\kappa$ & Best encoder ($\kappa$) & Human $\kappa$ \\
+    \midrule
+    L2 sentiment       & mistral-7b, self-consistency & 0.526 & bertweet (0.375) & 0.549 \\
+    L3 emotion         & qwen2.5-7b, double-prompt & 0.486 & bertweet-emotion (0.326) & 0.447 \\
+    L4 stance India    & llama3.1-8b, self-consistency & 0.407 & \textbf{all 3 NLI models 0.000} & 0.521 \\
+    L4 stance Pakistan & llama3.1-8b, zero-shot & 0.455 & (degenerate) & 0.557 \\
+    \bottomrule
+  \end{tabular}
+\end{table}

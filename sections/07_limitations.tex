@@ -1,0 +1,58 @@
+%% ===========================================================================
+\section{Limitations}
+\budget{550}
+
+\dnote{Ordered by severity, not by convenience. One or two sentences each, no
+hedging padding.}
+
+\begin{enumerate}
+\item \textbf{No layer reaches Krippendorff $\alpha \ge 0.800$}, and only L6b
+  (0.682) clears 0.667. L1's 4-class layer is unusable for claims (machine
+  $\kappa$ 0.368, Factual Claim recall 4.8\%). All findings inherit this
+  measurement error; \\S3.9 states the budget per recipe.
+
+\item \textbf{Associational throughout.} No causal identification survives;
+  \S5.7 documents why.
+
+\item \textbf{\texttt{community\_alignment} is a venue property read as a person
+  property} (V3). \S5.2's own within-alignment test shows the venue spread
+  (0.160) exceeds the across-alignment gap (0.088). R1, R2, R5, and R8 all make
+  this move; only R6 handles it correctly.
+
+\item \textbf{Alignment is perfectly collinear with subreddit} (V7). ``Neutral''
+  means r/worldnews $+$ r/geopolitics $+$ r/lesscredibledefence;
+  \textbf{pakistan\_aligned is a single subreddit}, so every Pakistan-aligned
+  claim is a claim about r/pakistan.
+
+\item \textbf{Three headline findings ride the same platform vote signal} ---
+  \texttt{score\_log}, median-split \texttt{score}, \texttt{controversiality}
+  (V2): one dependent variable wearing three costumes.
+
+\item \textbf{\texttt{controversiality} conflates contested with downvoted} ---
+  23.9\% at score $\le 0$ versus 0.02\% at 100$+$ --- and is platform metadata,
+  not observed deliberation.
+
+\item \textbf{Collection asymmetry.} Sindoor is 43\% of the crisis corpus and
+  12$\times$ Pulwama; genuine engagement growth cannot be separated from
+  retrieval completeness. Robustness is by exclusion, not correction --- and
+  \textbf{R8 currently has no exclusion arm} (B9).
+
+\item \textbf{Depth loss is systematic on frame.} 15.8\% unresolved, Historical
+  Grievance 73.9\% versus Security/Military 87.3\% --- and Historical Grievance
+  carries the largest depth-growth claim.
+
+\item \textbf{Language coverage.} Roughly 3.1\% of the corpus is code-mixed
+  Hindi/Urdu or transliterated; the gold samples contain only 8, 8, and 13 such
+  items, so a separate $\kappa$ cannot be estimated, and Perspective was run
+  English-only.
+
+\item \textbf{The qualitative arm is single-analyst} until the two-coder pass
+  (B8) is completed; \S4.4 says ``analyst close reading'' accordingly.
+
+\item \textbf{R7's lean rule discards 50.6\% of aligned-community comments} and
+  conflates anti-Pakistan with pro-India without validation.
+
+\item \textbf{Diaspora ($N = 2{,}280$) is exploratory only} --- one sentence, no
+  results. Reliability is also worst there (L1 $\kappa$ 0.273, L5 $\kappa$
+  0.404).
+\end{enumerate}

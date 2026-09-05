@@ -1,0 +1,247 @@
+\providecommand{\candidate}[1]{}
+
+\section{Introduction}
+% \mohit{Okay, this does not read well. I am unsure what the first paragraph even mean. You should talk about the conflict, talk about its impact in the first paragraph, use some of the prior works.
+% The in the second paragraph talk about works that have examined discourse of conflicts and then there discuss what has not been explored. The third paragraph should bind the second one and say in this work we examine this etc, talk about the data we collected and then the research questions. The last paragraph should highlight the results, contributions and how it is imporatant to cscw community. Use Jun's paper as a template https://arxiv.org/pdf/2601.09942 and also cite the paper. You can use some of the things you have in the paragraph, but not all of it as spmeone reading it might not see the relationship with the title. I see there are some things that are important and you can use them}
+
+% \sout{A cross-border strike is one event, and the communities that discuss it
+% produce more than one narrative~\cite{entman1991kal,tyagi2020ipconflict}. In
+% one it arrives as a question of security and necessity; in another, as a
+% question of who was harmed~\cite{makhortykh2017visual}. Both tellings are
+% argued over~\cite{stewart2017lines}, and a moderation system that reads
+% comments singly sees
+% neither~\cite{gorwa2020algorithmic,jhaver2019automoderator}. Context can
+% inform an enforcement decision (account history, prior violations, thread
+% position), but the harm signal itself is computed over one item's text, and
+% the narrative frame that item advances is not among its
+% inputs~\cite{gillespie2018custodians,grimmelmann2015moderation}. That unit
+% also fixes what can register as harm at
+% all~\cite{blackwell2017classification}. Community-aware moderation is not
+% hypothetical: Crossmod conditions its judgements on the norms of the
+% moderating community~\cite{chandrasekharan2019crossmod}. What no publicly
+% documented system conditions on is the \emph{story} a comment
+% tells~\cite{entman1993framing}, which in discourse around armed conflict may
+% be what separates a comment a community absorbs from one it fights
+% over~\cite{olteanu2015crisis,starbird2019disinfo}. If contestation belongs
+% to frame and venue jointly, the single comment is the wrong unit for measuring it.
+
+% Harm is measured one layer at a time, because that is what annotation
+% budgets and pretrained classifiers afford. Offensive-language
+% benchmarks~\cite{zampieri2019olid,davidson2017hatespeech}, social-bias
+% frames~\cite{sap2020socialbias}, and framing
+% resources~\cite{mendelsohn2021framing} are each built and validated as
+% separate constructs, so labels from different layers enter a model as
+% independent features. Compositional work exists: severity emerges from
+% combinations of attributes and not from any one of them~\cite{zhou2025harm},
+% and CSCW carries a multi-dimensional framework of
+% severity~\cite{scheuerman2021severity}. Both compose inside the content
+% layer, and the first is on intra-societal hate, where membership is
+% elective. The venue is a covariate in this work, never part of the object
+% measured. Reddit norms operate at the level of the community, not the
+% platform~\cite{chandrasekharan2018hiddenrules}, and communities differ
+% systematically in the affect they express and the affect they
+% reward~\cite{waller2021quantifying,rathje2021outgroup,brady2017emotion}, so
+% a frame is unlikely to be the same object in two venues. Studies of
+% cross-community participation report friction, not
+% contact~\cite{kumar2018conflict,garimella2018echo,bail2018exposure}, though
+% what follows cross-party interaction is less
+% settled~\cite{xia2025integrated}; whether crossers are penalised for who
+% they are or for how they write is what community-blind measurement cannot
+% separate. Crisis discourse is likewise studied one event at a
+% time~\cite{palen2016crisis}, which leaves a signature ambiguous between the
+% period it was recorded in and the kind of crisis that produced
+% it~\cite{stewart2017lines,dechoudhury2014narco}. We compose across layers
+% and across venues, treating three differences from intra-societal hate as
+% operating assumptions, not results: alignment follows territory rather than
+% choice; participants are audiences to one shared event; and the clock runs
+% outside the platform.}
+
+% \yash{removed content moderation problem frame, new paras added below:}
+
+On 14 February 2019, a car bomb struck a paramilitary convoy at Pulwama, in
+Kashmir, killing more than forty Indian
+personnel\footnote{\url{https://www.aljazeera.com/news/2019/2/14/kashmir-suicide-attack-kills-dozens-of-indian-security-forces}}.
+Twelve days later, the Indian Air Force (IAF) struck Balakot, inside Pakistan\footnote{\url{https://www.aljazeera.com/news/2019/2/26/indian-jets-strike-inside-pakistan-after-kashmir-attack}}. 
+On 22 April 2025, three gunmen killed
+twenty-six civilians at
+Pahalgam\footnote{\url{https://www.aljazeera.com/news/2025/4/22/gunmen-open-fire-on-tourists-in-indian-administered-kashmir}};
+Just over two weeks later, IAF launched Operation
+Sindoor\footnote{\url{https://www.aljazeera.com/news/2025/5/6/india-launches-attacks-on-several-sites-in-pakistan}}.
+Pakistan answered with Operation Bunyan
+al-Marsoos\footnote{\url{https://www.aljazeera.com/news/2025/5/10/pakistan-launches-operation-bunyan-marsoos-what-we-know-so-far}},
+and four days of missile, drone and artillery exchanges between two
+nuclear-armed states ended in a ceasefire on 10
+May\footnote{\url{https://www.aljazeera.com/news/2025/5/10/india-and-pakistan-agree-ceasefire-what-does-it-mean}}. Each of these crises was argued out in public, at the same moment, in
+communities belonging to neither government.  
+Reddit hosts a national community
+for each side. \texttt{r/india} and \texttt{r/pakistan} are the largest
+general-purpose forums for their respective countries on the platform, each with
+its own moderators, its own rules and its own voting public. Alongside them sits
+\texttt{r/worldnews}, one of the platform's largest international news communities, and one aligned
+with neither state. A crisis on this dyad arrives in all three at once, and the argument that follows is never one argument.
+
+A cross-border strike is one event, and the communities that discuss it produce more than one narrative~\cite{entman1991kal,tyagi2020ipconflict}. In
+one, it arrives as a question of security and necessity; in another, as a question of who was harmed~\cite{makhortykh2017visual}. As the strikes began on 6 May 2025, a comment in \texttt{r/pakistan} drew 153
+upvotes for asking readers to ``look after each other and your own families...some of us have never seen war in our
+lifetimes.''
+% \footnote{\url{reddit.com/comments/1kghif0/\_/mqysggb/}}
+Two days later, with the exchanges under way, a comment in \texttt{r/india} drew 182 for putting the question to its own government: ``...Why were the villagers not
+evacuated then? Why allow the loss of
+life?''
+% \footnote{\url{reddit.com/comments/1khoj9j/\_/mr8jwr3/}}
+When the ceasefire held on 12 May, a thread in \texttt{r/worldnews} gave 1,151 upvotes to ``[n]o more civilian casualties. There can be no greater
+victory than this.''
+% \footnote{\url{reddit.com/comments/1kknm0z/\_/mrvszsy/}}
+All three carry the same narrative frame, because each makes civilian harm the thing at stake. What each does with it is different, and so is the community it was
+posted in. Community alignment in this paper is therefore a property of the subreddit and not of any speaker's nationality, and the second comment shows why:
+an India-aligned forum turning on its own government. Two features separate this setting from the intra-societal hostility most harm research is built
+on~\cite{zampieri2019olid,davidson2017hatespeech,salehabadi2022user,aleksandric2025power}. Alignment tracks a territorial dispute instead of elective membership~\cite{sambasivan2021india}, and the clock that drives the discourse runs outside the platform.
+
+% \footnote{r/india (3.5M+ followers): \url{https://www.reddit.com/r/india/}, r/pakistan (0.69M+ followers): \url{https://www.reddit.com/r/pakistan/}}
+% \footnote{r/worldnews (47.5M+ followers): \url{https://www.reddit.com/r/worldnews/}
+
+Conflict discourse has been studied closely in CSCW and HCI, and mostly one event at a time. Crisis informatics established what platform traces reveal while a
+disaster unfolds~\cite{vieweg2010microblogging} and built a discipline for comparing communications across crises~\cite{olteanu2015crisis}, while remaining
+reflexive about how its own instruments bound what it can see~\cite{soden2018informating}. \citet{stewart2017lines} traced networked frame
+contests inside a single protest movement, where rival framings compete within one discourse instead of across two, and \citet{zhou2025harm} composed misinformation,
+narrative and target annotations over anti-Asian speech, then measured how those content factors and the judge's own background bear on how harmful the speech is
+perceived to be. The construct those studies turn on was given its standard definition by \citet{entman1993framing}, who describes framing as selecting ``some aspects of a perceived reality'' and making them ``more salient in a communicating text, in
+such a way as to promote a particular problem definition, causal interpretation, moral evaluation, and/or treatment recommendation''. A narrative frame here is that selection. It is the explanation a comment advances for the conflict, not the subject it mentions: a comment about an airstrike that turns on who was
+killed is humanitarian, while the same strike discussed as capability and deterrence is security and military. We use six such frames. Computational work
+has carried frame inventories onto social
+platforms~\cite{card2015mediaframes,mendelsohn2021framing} and modelled how frames and events move together over time~\cite{hopp2020markov}. On interstate
+dyads, \citet{shin2026diplomacy} separate framing from affect around a diplomatic shock, finding that Reddit sentiment toward North Korea reverted once the Hanoi
+summit failed, while the shift away from threat-oriented framing did not.
+
+The three comments above are one frame in three audiences. Whether that difference is systematic is not a question this literature asks, and the reason
+is structural. Harm and stance are labelled one construct at a time because separate benchmarks are what annotation budgets and pretrained classifiers
+afford~\cite{zampieri2019olid,sap2020socialbias}, and the compositional work that exists composes inside the content layer~\cite{zhou2025harm,scheuerman2021severity}. Where context has been admitted, it has been the wrong context. \citet{pavlopoulos2020context} ask whether the surrounding conversation bears on a comment's toxicity label, leaving the community itself fixed. Yet norms on Reddit are stratified rather than
+platform-wide~\cite{chandrasekharan2018hiddenrules,singhal2023sok}, and communities differ
+systematically in the affect they express and
+reward~\cite{waller2021quantifying,rathje2021outgroup}. The same gap runs through work on boundary-crossing, reported as friction in some
+accounts~\cite{kumar2018conflict,garimella2018echo,bail2018exposure} and as workable under the right design in
+others~\cite{rajadesingan2021crosspartisan,xia2025integrated}. On this dyad, the evidence is thinner yet. \mohit{Here say that the prior works on the Indo-Pak conflict}Prior computational work covers one 2019 crisis, on
+Twitter or YouTube, labelled on one or two
+layers~\cite{tyagi2020ipconflict,palakodety2020hope}, and the nearest Reddit study of an adjacent conflict annotates a single stance layer over a corpus roughly thirty times smaller than
+ours~\cite{ali2025stance}.
+
+
+% \mohit{Rather than this, use what i mentioned and say In particular, we investigate the following research questions:}
+
+% \sout{\textbf{RQ1:} which compositions of
+% narrative frame, community context, and crisis type structure contestation
+% in inter-state crisis discourse, and how do those compositions compare with
+% the content layer that moderation acts on? \textbf{RQ2:} what do automated
+% labellers recover of those compositions, relative to the agreement trained
+% human coders reach on the same constructs? \textbf{RQ3:} can event-study
+% designs identify effects on crisis-discourse panels of this shape? We answer
+% them on 309,204 Reddit comments from 14 subreddits spanning six
+% India--Pakistan crisis events between 2019 and 2025: four kinetic military events forming two attack-and-retaliation
+% pairs, one constitutional change, and one diplomatic agreement. The pairing
+% clusters events in time, and the two non-military events partially separate
+% crisis type from calendar time. Every comment carries a five-layer
+% annotation over content type, sentiment, stance toward each state,
+% offensiveness, and narrative frame. We operationalise
+% contestation as Reddit's \texttt{controversiality} flag, which marks
+% comments drawing substantial opposing votes and so registers what a
+% community argues over, not the quality of that argument. Because the
+% annotation is the measurement instrument, labeller choice is a design
+% variable here, benchmarked against double-coded gold standards.}
+
+% \yash{Rewritten the RQs para for more clarity and clear RQs}
+\mohit{We should mention in small how we collected the data, say using Arcticshift API, we analyse ... }
+To examine how narrative frame, community, and crisis type combine, we analyse 305,217 comments posted to ten subreddits across six India--Pakistan crises between January 2019 and January 2026: six India-aligned communities, a Pakistan-aligned community, and the three general-audience communities in which this conflict is argued at scale. \mohit{Provide the names of them in bracket so after you finish six India alligned put the names}
+Four of the six events are kinetic military events forming two attack-and-retaliation pairs. The other two are the 2019 constitutional change in Kashmir and a 2021 ceasefire agreement, so the design separates the kind of crisis from the year it happened. \mohit{Say which one and start with to investigate this multiyear something like that we used a...}A large language model labels each comment for sentiment, stance toward each
+state and narrative frame, and a toxicity classifier supplies the offensiveness label, so a comment can be read as a composition instead of a single score. \mohit{You should give more details about the methods}
+% Section~3 reports agreement against double-coded human gold standards for every layer. 
+We measure contestation with Reddit's \texttt{controversiality} flag, which marks
+comments drawing substantial votes both ways. \mohit{You need some kind of bridge sentence here, not the one that you had. Also, there needs to be a sentence maybe earlier somewhere where we say, to the best of our knowledge this is the first longitudinal study .....}
+% The analysis is primarily quantitative, with qualitative close
+% reading used to interpret the patterns it surfaces. 
+In particular, we investigate the following research questions:
+
+\begin{itemize}
+\item \textbf{RQ1:} Which combinations of narrative frame and community make crisis discourse contested, and how do those combinations compare with the content-layer toxicity signal that harm research typically measures?
+\item \textbf{RQ2:} Why do those combinations differ, and is an event's frame--affect signature fixed by the kind of crisis or by the year it occurred?
+\item \textbf{RQ3:} What happens at the community boundary, where participants cross between opposed communities?
+\end{itemize}
+
+
+% \candidate{P6}
+% \mohit{You need to rephrase it and show how it is the case. Like show examples of how farme affect signature etc. This paragraph reads like it was written by claude. Especually how the paragraph is and the ending is very weirdly written. }
+
+% \sout{Four results follow. Crisis type tracks the frame--affect signature more
+% closely than elapsed time: the two military pairs, six years apart, resemble
+% each other more than either resembles the constitutional crisis between
+% them. Community conditions affect where content does not, since the same
+% frame is rendered in systematically different sentiment depending on where
+% it appears, and rewarded at different rates. Cross-community participation
+% turns out antagonistic instead of integrative, which extends prior work on
+% intercommunity conflict~\cite{kumar2018conflict}: bridge-users are
+% disproportionately hawkish, they sharpen their opposition when they cross,
+% and the venue penalty falls on inquisitive outsiders as well as hostile
+% ones. And contestation tracks frame and community more than offensiveness.
+% Across the three substantive alignment categories, covering 98.7\% of the
+% corpus, community separates controversiality rates by a factor of 2.47 and
+% narrative frame by 1.77, against 1.11 for the offensive-versus-not contrast
+% moderation acts on. Machine labellers are comparable to trained coders on
+% the items coders agree about, and both work on constructs where human
+% agreement itself runs $\kappa$ 0.477--0.682. On the design, cluster-robust
+% difference-in-differences and the wild-cluster bootstrap disagree on this
+% panel, and parallel trends fails where the events cluster in time: the
+% limitation is identification, not power.}
+
+% \yash{rewritten the results para such that it answers all 3 RQs concisely}
+
+Our results show that what a community argues over turns on the frame a comment advances and the community it appears in, and hardly at all on how offensively it is worded. Humanitarian framing is the most contested category at 10.4\% and economic framing the least at 5.9\%. Across the three alignment groups, the range
+is wider, from 11.7\% in the general-audience communities to 4.8\% in the India-aligned ones. Measured against a toxicity threshold, offensive and
+inoffensive comments differ by 0.8 points, and inside humanitarian framing they barely differ at all, 10.2\% against 10.5\%. What divides a community is the
+claim, not the tone in which it arrives. The same frame is also not the same object in two communities. Security and military framing is rendered positively
+about twice as often in India-aligned communities as in general-audience ones, an interaction that holds once stance toward both states is controlled, and the
+communities reward it at different rates. An event's signature, meaning the mix of frames used and the sentiment attached to them, tracks the kind of crisis more closely than the year: \textit{Pulwama} and \textit{Operation Sindoor} lie six years apart and are
+close in composition, while Pulwama and the constitutional change six months later are far apart. That separation rests on interval estimates. At the
+community boundary, crossing intensifies opposition instead of softening it. No discrete bridge-user type appears in these data, those who cross are drawn
+disproportionately from the more hawkish participants, and tracking 1,606 authors against themselves shows the same people expressing more anti-out-group stance
+when they post across the line. \mohit{Provide more stastical answers here, use p values etc. This is a good start. Also dont use \sout{} no ned for it, just comment the old things and put new stuff and then your name comment}
+
+% \candidate{P7}
+% \sout{We make three contributions to social computing research on conflict discourse and platform moderation. The first is empirical: a compositional analysis of an annotated six-crisis corpus, which supplies the community-and frame-level signal a community-aware moderation system would need and a content-layer score cannot provide. \mohit{Talk about how our work is novel as to the best of our knowledge no other work has done it before for the indo pak conflict. I am unsure why you are talking about moderation here, There is no moderation that we are wanting to check}
+% The second is a framework and a
+% measurement result, for researchers who compose annotation layers or
+% validate LLM annotators against human baselines: composition operators that
+% recover patterns no single layer exposes, and a labeller-comparison protocol
+% that reports every machine estimate beside the human agreement rate for the
+% same construct. \mohit{That is not a contribution, it is well known thing, remove it}
+% The third is methodological and negative \mohit{what is negative?}, aimed at
+% computational social scientists reaching for event-study designs on crisis
+% panels: where events cluster in time and clusters are few, those designs
+% cannot identify the effects they are asked about, so a compositional account
+% is the strongest claim these data support and not a weaker substitute for a
+% causal one. For anyone operationalising crisis discourse through a
+% content-layer score, including designers of community-aware moderation, the
+% unit worth measuring is the frame--community composition.}
+
+% \mohit{The starting is good, but then it makes no sense at the end, why are we talking about moderation? Again the language is very claude like. }
+
+% \yash{rewritten contributions section which extends to the results in the previous para and talks about novelty in CSCW}
+
+In each of these results, the community is doing work that a comment-level measure cannot see. Composing a frame with a community across a panel in which the same kind of crisis recurs six years apart has not, to the best of our knowledge, been done for this conflict. This paper makes three contributions to CSCW, HCI and social computing research on conflict discourse and online communities: (1) We show that what a
+community contests is a property of the frame and the community together, and hardly at all of a comment's tone. Humanitarian framing splits a community even when politely worded. Security and military framing draws it together. How offensive a comment is barely predicts whether a community will fight about it. (2) We show that a frame is not one object across communities. The same frame is produced and rewarded differently depending on where it appears, and an event's
+signature tracks the kind of crisis rather than the year. A frame label read without the community it appeared in loses what separates one community from
+another. (3) We show that crossing a community boundary here is incursion rather than contact. No bridge-user type appears in the data. Those who cross skew
+hawkish, and the receiving community penalises civil and hostile outsiders alike. Because we follow the same authors across the boundary, this is a change in how
+people write and not in who shows up. These findings bear on how harm is measured in conflict discourse, and on any design that routes people across community lines.
+\mohit{Here you need a paragraph that closes it. Say in small what we did and in like 3 lines gives the results and then close with how this work is important in one line }
+
+
+\mohit{I am unsure why this is coming here? This should come in the para where we have how much data we collected in the intro, but in short way. This can go in the methods when you are explaining things}We had intended to establish these patterns causally and could not. The crises recur inside each other's recovery windows, so the calm period before one event
+is the aftermath of the one before it, and parallel trends fails on both military events whose pre-period is long enough to test.
+Inference is a second problem. We cluster standard errors by community, which leaves seven to nine clusters
+depending on the event, and at that few the usual cluster-robust estimator
+over-rejects. It marked nine of eighteen per-event estimates as significant and a
+wild cluster bootstrap left
+none~\cite{cameron2008bootstrap,mackinnon2017wildbootstrap}. The design was also
+underpowered: no cell reached its minimum detectable effect, so the bootstrap
+null means this panel cannot detect an effect, not that none exists. On a panel of this
+shape the design does not identify the effects asked of it, so we report a
+compositional account instead.

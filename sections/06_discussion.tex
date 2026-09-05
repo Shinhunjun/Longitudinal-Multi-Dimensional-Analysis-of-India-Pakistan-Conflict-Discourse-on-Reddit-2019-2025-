@@ -1,0 +1,110 @@
+%% ===========================================================================
+\section{Discussion}
+\budget{1,300}
+
+\subsection{Composition is the unit of analysis}
+\budget{250}
+
+\begin{itemize}
+\item Pull the thread across \S5: no headline finding is visible in one layer.
+  R5 needs L2 $\times$ L5 $\times$ L4 $\times$ community; R6 needs a
+  13-dimensional fingerprint; R8's result \emph{is} the failure of the
+  single-layer account.
+\item \textbf{Reconcile the internal tension explicitly, in one paragraph.} R8
+  says toxicity barely moves contestation; R2 says frame-crossing carries
+  toxicity. Both hold: toxicity travels \emph{with} crossing but does not
+  \emph{drive} contestation. A reviewer will find this if the paper does not.
+\item State the generalization carefully --- a demonstration on one corpus and
+  one conflict, not a proof that composition always beats layer.
+\end{itemize}
+
+\subsection{Humanitarian framing as the permeable seam}
+\budget{250}
+
+\begin{itemize}
+\item The one frame that both diverges affectively across communities (\S5.1,
+  \S5.3) and cracks consensus within them (\S5.6).
+\item Proposed mechanism, offered as mechanism and not test: Security/Military
+  framing triggers rally-round-the-flag consensus inside an aligned community;
+  Humanitarian framing forces a moral judgment that co-partisans answer
+  differently.
+\item Name the competing explanation the data cannot rule out --- audience
+  heterogeneity in neutral venues (2.73 comments/author versus 4.64 india, 5.21
+  pakistan) --- and say what would distinguish them.
+\end{itemize}
+
+\subsection{``Bridge user'' is the wrong abstraction}
+\budget{220}
+
+\begin{itemize}
+\item The clustering failure and the raiding signature together argue that
+  crossing is a behaviour with a distribution, not a user type, and that its
+  modal form is antagonistic.
+\item Any system that treats cross-community participation as a proxy for
+  constructive participation will systematically boost incursions.
+\item Extends Garimella et al.~\cite{garimella2018echo} beyond network position;
+  instantiates Kumar et al.~\cite{kumar2018conflict} at the individual level;
+  sits against Xia et al.~\cite{xia2025integrated}, who find at best conditional
+  depolarization from cross-party contact.
+\end{itemize}
+
+\subsection{Measurement as a first-class finding}
+\budget{150}
+
+\dnote{New in v2.}
+
+\begin{itemize}
+\item The specification curve's largest variance source is \textbf{the
+  labeller}, not any sampling or modelling choice.
+\item Perspective --- the classifier platforms actually deploy --- is the
+  \textbf{weakest instrument measured} ($\kappa$ 0.228--0.249) against a human
+  ceiling of 0.682 on the same construct, and was run English-only on a 3.1\%
+  code-mixed corpus.
+\item No automated labeller reached the human ceiling on any layer, and that
+  ceiling is itself only 0.45--0.68.
+\item Consequence for CSCW practice: LLM-annotated corpora need a
+  \textbf{labeller-comparison arm}, not a single validation number --- and
+  reliability reporting has to acknowledge that the human ruler is noisy too.
+\end{itemize}
+
+\subsection{Design implications}
+\budget{280}
+
+Four, each traced to a specific finding, each with its own failure mode named.
+
+\begin{description}
+\item[Composition-aware moderation triage.] Surface high-harm cells
+  (Humanitarian $\rightarrow$ Security/Military transitions; Religious/Cultural
+  $\times$ Offensive-Targeted in acute phases) rather than ranking by toxicity
+  score. \emph{Failure mode:} composition cells are community-specific and will
+  not transfer across conflicts without re-estimation.
+
+\item[Narrative-transparency affordance.] Show per-community frame--affect
+  composition on a thread. \emph{Failure mode:} making affective asymmetry
+  legible may harden identity rather than soften it
+  (cf.~\cite{bail2018exposure}).
+
+\item[Crossing-aware visibility floors.] A minimum-visibility guarantee for
+  out-group comments, since the penalty falls on inquisitive and balanced voices
+  alike (question\_rate OR 2.15). \emph{Failure mode:} the same floor protects
+  provocateurs, who are most of the crossers.
+
+\item[Crisis-phase-adaptive policy.] Moderation thresholds as a function of
+  \texttt{crisis\_phase} $\times$ \texttt{crisis\_type}, justified by \S5.1's
+  finding that crisis type --- not era --- determines the discourse regime.
+  \emph{Failure mode:} \S5.7 shows the corpus cannot causally identify phase
+  effects, so this is a hypothesis for a platform-side experiment, not a
+  validated recommendation.
+\end{description}
+
+\subsection{Few clusters and the limits of crisis-response causal inference}
+\budget{150}
+
+\begin{itemize}
+\item Generalize C3: any study with roughly 6 events $\times$ 10 communities
+  sits in the regime where CRV1 lies and the wild cluster bootstrap is barely
+  valid.
+\item Two routes out --- many-cluster redesigns (thread-level opinion climates,
+  author panels) or explicit descriptive framing. This paper takes the second,
+  and says so.
+\end{itemize}

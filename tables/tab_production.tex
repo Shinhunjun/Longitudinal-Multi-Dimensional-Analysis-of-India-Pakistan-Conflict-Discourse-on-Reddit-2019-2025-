@@ -1,0 +1,20 @@
+\begin{table}[h]
+  \caption{What actually shipped, per layer, with provenance.}
+  \label{tab:production}
+  \footnotesize
+  \begin{tabular}{@{}llp{4.5cm}llr@{}}
+    \toprule
+    Layer & Producer & Configuration & Coverage & Mean conf. & Cost \\
+    \midrule
+    L1, L5 & \textbf{gpt-5.2} zero-shot & temp 0, seed 2026,
+      \texttt{reasoning\_effort="none"}, Batch API,
+      \texttt{json\_schema strict:true}, system prompt $>$1{,}024 tokens for
+      automatic caching & 309{,}202 / 309{,}193 & 0.875 / \textbf{0.686} & \$534.10 \\
+    L2, L4 & \textbf{gpt-5.2} & as above plus wave-based
+      \texttt{MAX\_CONCURRENT=3}, after a Tier-1 queue overflow on the L1/L5 run;
+      both stance targets in one call & 309{,}160 / 309{,}203 & 0.781 / 0.645 \& 0.701 & \$491.63 \\
+    L6a & \textbf{Claude} & --- & 300{,}919 & 0.988 & --- \\
+    Perspective & Google API & 6 attributes, \texttt{languages:['en']} & 333{,}091 & --- & --- \\
+    \bottomrule
+  \end{tabular}
+\end{table}

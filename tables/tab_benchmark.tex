@@ -1,0 +1,58 @@
+\begin{table*}[t]
+\centering
+\caption{Labellers compared against each construct's gold standard before any
+was adopted. Each figure is Cohen's $\kappa$ against that construct's human
+reference, at the $n$ given in the same row. Denominators differ by construct,
+so figures compare down a construct block and not across them. The trained
+coder pair is listed as a labeller because it is the standard the others are
+measured against, not because it competes with them. The two encoder
+fine-tuning rows and the sentiment tuning row are stratified five-fold
+cross-validation over the construct's full gold set; the target-type
+parameter-efficient row is a single 80/20 split, so its $n$ is the held-out 100
+and its figure is not comparable with the five-fold rows above it. Systems that
+failed rather than underperformed are excluded and named in
+\S\ref{sec:data-labeller}. The grid behind each block: content type and
+narrative frame swept three commercial model sizes by two prompting strategies
+by two API endpoints, twelve conditions per construct; sentiment, emotion and
+stance swept twenty-one open-weight systems by five prompting strategies at
+4-bit precision, eighty evaluations, over a lexicon baseline; target type swept
+thirteen zero-shot systems, six fine-tuned encoders and two parameter-efficient
+fine-tunes.}
+\label{tab:benchmark}
+\begin{tabular}{llrr}
+\toprule
+Construct & Labeller & $\kappa$ & $n$ \\
+\midrule
+\multirow{2}{*}{content type}
+  & trained coder pair                         & 0.612 & 250 \\
+  & commercial LLM, zero-shot                  & 0.599 & 250 \\
+\midrule
+\multirow{2}{*}{narrative frame}
+  & trained coder pair                         & 0.665 & 250 \\
+  & commercial LLM, zero-shot                  & 0.688 & 250 \\
+\midrule
+\multirow{5}{*}{sentiment}
+  & trained coder pair                         & 0.549 & 249 \\
+  & lexicon and rules                          & 0.157 & 250 \\
+  & encoder, pre-trained                       & 0.374 & 250 \\
+  & open-weight LLM, self-consistency          & 0.526 & 250 \\
+  & open-weight LLM, parameter-efficient tuning & 0.566 & 250 \\
+\midrule
+\multirow{2}{*}{stance toward India}
+  & trained coder pair                         & 0.521 & 249 \\
+  & open-weight LLM, self-consistency          & 0.407 & 250 \\
+\midrule
+\multirow{2}{*}{stance toward Pakistan}
+  & trained coder pair                         & 0.557 & 249 \\
+  & open-weight LLM, zero-shot                 & 0.455 & 250 \\
+\midrule
+\multirow{6}{*}{target type}
+  & trained coder pair                         & 0.682 & 500 \\
+  & deployed commercial classifier             & 0.228 & 500 \\
+  & encoder, pre-trained                       & 0.377 & 500 \\
+  & open-weight LLM, zero-shot                 & 0.416 & 500 \\
+  & open-weight LLM, parameter-efficient tuning & 0.480 & 100 \\
+  & encoder, fine-tuned                        & 0.487 & 500 \\
+\bottomrule
+\end{tabular}
+\end{table*}

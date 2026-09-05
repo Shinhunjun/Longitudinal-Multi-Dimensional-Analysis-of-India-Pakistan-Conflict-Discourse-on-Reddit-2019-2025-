@@ -1,0 +1,25 @@
+%% ---------------------------------------------------------------------------
+%% Outline-annotation macros. Delete these once the skeleton is fully drafted.
+%% ---------------------------------------------------------------------------
+\definecolor{onote}{RGB}{0,80,150}
+\definecolor{owarn}{RGB}{165,35,20}
+\definecolor{ogray}{RGB}{105,105,105}
+
+%% Word budget marker, placed immediately under a heading.
+\newcommand{\budget}[1]{%
+  \par\noindent{\color{ogray}\small\textit{Target: #1 words.}}\par\smallskip}
+
+%% Drafting note -- guidance about how to write the surrounding material.
+\newcommand{\dnote}[1]{%
+  \par\smallskip\noindent{\color{onote}\small\textsf{\textbf{Note.}\ #1}}\par\smallskip}
+
+%% Blocker -- an item that must be resolved before this text can be written.
+\newcommand{\blocker}[2]{%
+  \par\smallskip\noindent{\color{owarn}\small\textsf{\textbf{#1.}\ #2}}\par\smallskip}
+
+%% Author-side input still required.
+\newcommand{\authorinput}[1]{%
+  \par\smallskip\noindent{\color{owarn}\small\textsf{\textbf{Author input required.}\ #1}}\par\smallskip}
+
+%% Provenance pointer to a file in the repository.
+\newcommand{\src}[1]{{\color{ogray}\footnotesize\texttt{#1}}}

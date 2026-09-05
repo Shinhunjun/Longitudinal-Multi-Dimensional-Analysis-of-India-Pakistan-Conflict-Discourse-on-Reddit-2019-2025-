@@ -1,0 +1,22 @@
+\begin{table}
+\caption{Defects corrected against the earlier R1/R2 pass}
+\label{tab:r1r2_defect_register}
+\begin{tabular}{llll}
+\toprule
+tag & defect in the original pass & what this notebook does & function \\
+\midrule
+FIX-1 & Bootstrap mean reported as the point estimate for cosine distances (0.027 vs observed 0.0260) & Report the observed distance; bootstrap supplies the CI only & cosine\_distance\_table \\
+FIX-2 & Rank-biserial sign inverted: 1 - 2U/(n1*n2) printed -0.102 for a +0.0284 mean difference & Use 2U/(n1*n2) - 1; effect size now agrees in sign with the mean difference & rank\_biserial / cross\_frame\_toxicity \\
+FIX-3 & Persistence multipliers (10.1x, 10.0x, 7.9x) reported with no uncertainty & Thread-clustered bootstrap CI on every multiplier & persistence\_multipliers \\
+FIX-4 & Cosine permutation null shuffled frame and sentiment independently, destroying the association; printed conclusion inverted the comparison & Permute the event label instead, holding each comment's (frame, sentiment) pair intact; the cluster claim now rests on CI separation, which is sound & cosine\_event\_permutation\_null / cosine\_cluster\_separation \\
+FIX-5 & Permutation p-values reported as 0.0000 with no add-one correction & Use S.permutation\_pvalue with the (k+1)/(B+1) correction & all permutation tests \\
+FIX-6 & R1xR2 coupling: pre-specified test null (rho=0.2775), 11 operationalizations searched, the 2 that cleared p<0.05 published uncorrected & Report all 11 with BH-FDR and flag which one was pre-specified & coupling\_all \\
+FIX-7 & Adjusted residuals read at raw |z| thresholds across 18 cells & BH-FDR across the residual family, with the family size stated & frame\_by\_crisis\_type \\
+FIX-8 & Plug-in JSD in nats while entropy was in bits; R1 (8/36) and R5 (7/36) disagree on which cells survive FDR (blocker B2) & Miller-Madow-corrected JSD in bits throughout, plus a plug-in-vs-MM comparison table & per\_frame\_jsd / jsd\_plugin\_vs\_mm \\
+FIX-9 & Modularity stored as Q\_mean, read as Q, failure swallowed by except NameError, so published Q cells are all NaN; rolling-SD sweep compared a number with itself & Return Q against a weight-preserving null; report mean/max of the rolling SD series & modularity\_with\_null / temporal\_profiles \\
+FIX-10 & Depth read from the corpus column \_depth, which is 0.0 or NaN only, so the depth robustness arm silently produced nothing; bands sorted alphabetically & Reconstruct depth from parent\_id chains and order the bands explicitly & reconstruct\_depth / depth\_bands \\
+FIX-11 & PELT returned no change points; every published change point comes from Binseg with a forced n\_bkps, which always returns that many & Report the PELT negative result and label the Binseg sweep as stability, not evidence & changepoints \\
+FIX-12 & Two robustness checks could not fail: Sindoor exclusion on the cosine matrix is a no-op, and the min\_thread\_size sweep is saturated at density 1.000 & Replace with a specification curve over choices that can actually move the estimate & specification\_curve \\
+\bottomrule
+\end{tabular}
+\end{table}

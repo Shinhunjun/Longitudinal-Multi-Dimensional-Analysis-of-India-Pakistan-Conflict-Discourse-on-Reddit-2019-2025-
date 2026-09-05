@@ -1,0 +1,58 @@
+%% ===========================================================================
+\section{Analytic Approach}
+\budget{800}
+
+\subsection{The composition operators}
+\budget{250}
+
+Name them once as a small vocabulary the rest of the paper uses. All implemented
+in \src{notebooks/lib/cscw\_stats.py} --- reuse, do not re-derive.
+
+\begin{description}
+\item[Signature.] A $6 \times 3$ (Frame $\times$ Sentiment) joint-proportion
+  matrix per (event $\times$ community), flattened to an 18-dim vector, compared
+  by cosine distance.
+\item[Per-frame divergence.] Jensen--Shannon divergence of the 3-bin sentiment
+  distribution \emph{within} a frame, Miller--Madow bias-corrected
+  \cite{miller1955note,paninski2003entropy}, between two communities, with
+  jackknife SEs.
+\item[Transition matrix.] A $6 \times 6$ parent-to-child frame Markov matrix
+  over reply dyads.
+\item[Author fingerprint.] Thirteen free ILR dimensions
+  \cite{aitchison1982compositional,egozcue2003ilr} over five sub-simplices (L2,
+  L4-India, L4-Pakistan, L5, L6a), with engagement variables held out to prevent
+  leakage into the outcome tests.
+\end{description}
+
+\subsection{Statistical discipline}
+\budget{250}
+
+State the rules once and apply them everywhere: average marginal effects and
+predicted probabilities via King--Tomz--Wittenberg
+simulation~\cite{king2000interpretation} rather than raw logit
+coefficients~\cite{mood2010logistic}; author- and thread-clustered standard
+errors; bootstrap CIs on every point estimate; permutation nulls with
+Benjamini--Hochberg FDR~\cite{benjamini1995fdr} over a \emph{declared} family;
+explicit confirmatory-versus-exploratory labelling on every claim; effect sizes
+reported with exact $p$ and $N$ in the same sentence.
+
+\subsection{Inference strategy and its boundary}
+\budget{200}
+
+The corpus has 14 subreddits and 6 events. Treatment in any crisis design varies
+at community level, giving 7--10 clusters --- below the regime where
+cluster-robust variance estimation behaves~\cite{cameron2008bootstrap}. All
+causal designs therefore report a wild cluster bootstrap (9{,}999 reps, Webb
+6-point weights~\cite{mackinnon2017wildbootstrap}) alongside CRV1, and where the
+two disagree \textbf{the bootstrap governs}. \S5.7 reports what that discipline
+cost. The consequence for the rest of the paper is stated here, once:
+\textbf{findings are associational}.
+
+\subsection{Qualitative integration}
+\budget{100}
+
+Computational Grounded Theory~\cite{nelson2020cgt}: quantitative patterns select
+the cells, stratified purposive sampling draws from them, deductive codes come
+from the existing layers, inductive codes from close reading, and every
+qualitative claim carries an $n$. The sample is 389 comments across 25 cells
+(0.32\% of the crisis corpus), 12 subreddits, 367 unique authors.

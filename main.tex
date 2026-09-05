@@ -1,0 +1,84 @@
+\documentclass[acmsmall]{acmart}
+
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    Bib\TeX}}}
+
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{booktabs}   % Required for \toprule, \midrule, \bottomrule
+\usepackage{amsmath}    % Required for math formatting
+\usepackage[htt]{hyphenat}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{subfig}
+\usepackage{subcaption} 
+\usepackage{listings}
+\usepackage{multirow}
+\usepackage{fancybox}
+\usepackage{hyperref}
+\usepackage{algorithmic}
+\usepackage{tcolorbox}
+\usepackage{textcomp}
+\usepackage{float}
+\usepackage{mdframed}
+\usepackage{soul} 
+\usepackage{makecell}
+\usepackage[normalem]{ulem}
+\newif\ifcomment
+\commenttrue
+% \commentfalse
+\ifcomment
+\newcommand{\yash}[1]{{\bf \textcolor{blue}{Yash: #1}}}
+\newcommand{\jun}[1]{{\bf \textcolor{violet}{Jun: #1}}}
+\newcommand{\mohit}[1]{{\bf \textcolor{red}{Mohit: #1}}}
+\else
+\newcommand{\yash}[1]{}
+\newcommand{\jun}[1]{}
+\newcommand{\mohit}[1]{}
+\fi
+\setlength{\emergencystretch}{2em}
+\graphicspath{{figures/}}
+
+% \input{preamble/00_documentclass}
+
+\input{preamble/01_macros}
+
+\input{preamble/02_rights}
+
+\begin{document}
+
+\input{preamble/03_metadata}
+
+\input{preamble/04_abstract}
+
+\input{preamble/05_ccs_keywords}
+
+\maketitle
+
+
+\input{sections/01_introduction}
+
+\input{sections/02_related_work}
+
+\input{sections/03_data_annotation}
+
+\input{sections/04_analytic_approach}
+
+\input{sections/05_findings}
+
+\input{sections/06_discussion}
+
+\input{sections/07_limitations}
+
+\input{sections/08_conclusion}
+
+\input{backmatter/statements}
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{paper_cscw}
+
+\input{appendix/appendix}
+
+\end{document}

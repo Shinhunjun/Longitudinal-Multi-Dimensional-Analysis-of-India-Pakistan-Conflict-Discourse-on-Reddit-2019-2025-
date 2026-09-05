@@ -1,0 +1,396 @@
+% =============================================================================
+% Section 2 -- Background and Related Work
+% =============================================================================
+
+\section{Background and Related Work}
+\mohit{I would add more in the related work. It looks small. Also fix Table 1} 
+
+\yash{this section is ready for review}
+
+
+\candidate{S2.0}
+When two states go to war, both publics argue about it online at the same time,
+in communities aligned with one side, communities aligned with the other, and
+general-audience communities where the conflict is argued at scale. One event
+reaches all of them at once, and what each community makes of it is not the
+same. That difference is what we measure.
+
+Most of what such a measurement needs already exists, in pieces. Differently
+aligned audiences are known to narrate the same conflict
+differently~\cite{entman1991kal,makhortykh2017visual}. Harm is now treated as a
+composite, with several labelled attributes of a comment modelled together
+rather than one at a time~\cite{scheuerman2021severity,zhou2025harm}, and a
+parallel line of research composes attributes of the person doing the
+labelling~\cite{rottger2022paradigms,davani2024d3code}. Crossing between opposed
+communities has been examined directly, and has generally been found to produce
+friction~\cite{kumar2018conflict,bail2018exposure}. Norms themselves are
+stratified rather than site-wide~\cite{chandrasekharan2018hiddenrules}, so the
+same sentence is not the same object in two communities. What none of this
+composes is the community a comment appeared in.
+
+This section takes those three literatures in turn, on narrating conflict, on
+measuring framing and harm, and on crossing between communities, and says where
+each stops and why. Each stopping point is a property of an
+instrument, by which we mean what a study measures with: what it labels, on what
+unit, and from which recorded signal. An instrument bounds a study's findings,
+because a quantity it never records cannot be recovered afterwards from the ones
+it does.
+
+
+% -----------------------------------------------------------------------------
+\subsection{Narrating interstate conflict}
+\label{sec:rw-conflict}
+% -----------------------------------------------------------------------------
+
+\subsubsection{Frames, and the inventories used to measure them}
+
+\candidate{S2.1.1}
+A frame, in the definition we adopt throughout, selects ``some aspects
+of a perceived reality'' and makes them ``more salient in a communicating text,
+in such a way as to promote a particular problem definition, causal
+interpretation, moral evaluation, and/or treatment
+recommendation''~\cite{entman1993framing}. The founding demonstration of that idea compared United States coverage of two
+civilian airliner shootdowns~\cite{entman1991kal}. One was covered as moral
+outrage, the other as technical accident, and the difference tracked whose side
+had fired. Frame effects are not fixed, however. They depend on which competing
+frames are available and on what the audience already
+believes~\cite{chongdruckman2007framing}. That conditionality is the theoretical
+reason to expect a frame to behave differently in two communities, and we test
+it rather than assume it. Computational work measures frames
+against inventories, and the established practice for a new domain is to take a
+general-purpose inventory~\cite{card2015mediaframes} and add the frames the
+domain requires~\cite{mendelsohn2021framing}. Our six frames follow that practice; Section~\ref{sec:data} gives their derivation.
+
+\subsubsection{The same war, told by differently aligned audiences}
+
+\candidate{S2.1.2}
+The split Entman found recurs wherever a conflict has two audiences. Work on the war in eastern Ukraine found pro-Ukrainian communities framing it as
+a limited action against insurgents, and pro-Russian communities framing the same fighting
+as a war on civilians~\cite{makhortykh2017visual}. The pattern also appears
+within one platform and one country. How \#MeToo was discussed depended on the
+political orientation of the community discussing it~\cite{rho2018metoo}. Those
+results establish that the pattern exists. The open question is what governs it.
+
+One quantitative comparison bears directly on that question.
+\citet{hanley2023specialoperation} compared three media ecosystems covering the
+Russian invasion of Ukraine, and found Western outlets concentrating on its
+military and humanitarian aspects, and Chinese outlets on its diplomatic and
+economic consequences. Two things follow.
+Aligned audiences covering one event divide along emphasis rather than accuracy,
+which is the interaction we measure at comment level rather than outlet
+level. And four of our six frames appear there as recurring emphases in an
+independent corpus, which is evidence that our inventory was not built to fit
+these data. The two it does not reach, historical grievance and religious or
+cultural framing, are specific to this dyad, and
+Section~\ref{sec:data} warrants them instead.
+
+Other studies extend the observation in different directions.
+\citet{mejova2025narratives} modelled Ukrainian wartime tweets as narratives with
+assigned roles, and found that a victim narrative roughly doubled a tweet's
+reach. On
+a different dyad, \citet{shin2026diplomacy} separated framing from affect across a diplomatic
+summit: sentiment reverted once talks failed, and the shift away
+from threat-oriented framing did not. Work on the Rohingya crisis inverted the usual target and sampled supportive
+speech rather than hostility~\cite{palakodety2020rohingya}. Within
+CSCW, frame contests have been shown to be networked and observable in the
+structure of interaction itself~\cite{stewart2017lines}, which established that a frame can be read off a community's structure rather
+than only off its text. That work did not compare the structure across several
+communities holding one event fixed, which is what we do instead. Affect under sustained armed
+conflict has likewise been tracked over time~\cite{dechoudhury2014narco}.
+
+\subsubsection{What these designs measure, and what they hold fixed}
+
+\candidate{S2.1.3}
+These studies share an instrument, and the instrument is what bounds them. Each
+labels the speaker: the frame a post advances, the stance it takes, the
+hostility it expresses. None labels what the receiving audience does with it.
+That is not an oversight, since a corpus of posts supports audience-side
+measures only where the platform records a reaction. But the quantity reported
+here, whether a community divides over a comment, is outside the reach of these
+designs rather than merely missing from them.
+
+A second bound is narrower, and we only partly escape it. Each study
+takes one conflict and usually one window of time. A pattern recovered from a
+single window cannot afterwards be separated into the period it was recorded in
+and the kind of event that produced it. We observe six crises across seven years, two of them military events six years
+apart. That supports a
+comparison between events of the same kind, which a single-window design cannot
+run. It is a robustness check rather than a separate claim. Two of the three
+crisis types here are single events, so nothing about crisis type can be
+estimated at those levels, and Section~\ref{sec:data} states the
+coding and its limits. The comparison rule is inherited:
+\citet{olteanu2015crisis} compared discourse across crises by proportion within a
+community rather than by raw volume.
+
+\subsubsection{The India--Pakistan dyad, and what it supplies}
+
+\candidate{S2.1.4}
+Computational work on this conflict has been consistent in shape. Prior studies
+have taken a single event, usually one crisis in 2019, labelled one or two
+attributes per post, and worked on Twitter or YouTube~\cite{tyagi2020ipconflict,hussain2021pulwama}. A second programme has approached the dyad from the opposite direction,
+detecting hope and peace-oriented speech rather than hostility, in the
+code-mixed form the discourse is actually conducted in~\cite{palakodety2020hope,khudabukhsh2020codeswitch}. On Reddit, an adjacent
+conflict has been labelled on one attribute, stance~\cite{ali2025stance}. \citet{chen2024isamasred} released a public dataset of roughly eight million
+comments from Israel--Hamas discussion, carrying measures of controversy and
+moral language, which is the outcome we also measure. They released those
+measures as a dataset rather than composing them with frame or community, which
+is the step we take next.
+
+The setting supplies three things to the design rather than merely hosting it.
+A community's alignment here follows the territorial dispute rather than any
+elective affiliation, so the position belongs to the community itself rather
+than to whichever speaker happens to post in it.
+Participants are audiences to one shared event on a clock set outside the
+platform, so comparing communities compares readings of one occurrence. And the
+discourse already has a scholarly literature that a new measurement has to
+answer to. Research in the
+region has shown how gendered digital abuse is
+organised~\cite{sambasivan2019alone}, and how religious minority communities in
+Bangladesh experience political fear online~\cite{rifat2024politicsoffear}. Both bear
+on the results rather than sitting beside them. Our six-frame inventory has no gendered axis, which bounds what it can see in a discourse partly organised
+along one. The fear mechanism is one reading of the non-crossing reported in
+Section~\ref{sec:data}. The gap this subsection leaves open is therefore a
+divided one. Social computing has studied how harm is organised in this region,
+and has studied how aligned audiences frame a shared conflict elsewhere, but has
+not brought the two together. We are aware of no CSCW or HCI study that measures
+frame-level discourse on this dyad, and the computational work that does measure
+it has appeared largely outside those venues. We measure it inside them.
+
+% -----------------------------------------------------------------------------
+\subsection{Composing harm: what gets measured together, and what does not}
+\label{sec:rw-measurement}
+% -----------------------------------------------------------------------------
+
+\subsubsection{One construct at a time, and the instrument that labels it}
+
+\candidate{S2.2.1}
+Harm is measured one construct at a time, because that is what annotation
+budgets and pretrained classifiers afford. Offensive-language
+benchmarks~\cite{zampieri2019olid} and resources for implicit
+hate~\cite{elsherief2021latenthatred} are each built and validated alone. Where
+their labels meet in a model, they meet as independent features. The training data underneath them are unevenly documented~\cite{vidgen2020garbage}, and
+labeller error within it is distributed unevenly across
+dialect~\cite{sap2019racialbias}. Fairness assumptions carried into a new locale
+do not transfer intact~\cite{sambasivan2021india}. We measure our own comparison outcome against a score built this way, so we
+report our offensiveness finding as a result about that particular instrument,
+not about offensiveness in general.
+Section~\ref{sec:data} names the instrument and its threshold.
+
+The instrument that does the labelling has also changed. Prompting a
+general-purpose language model against a written codebook is now ordinary
+practice for social-scientific
+constructs~\cite{gilardi2023chatgpt,ziems2024llmcss}, with performance
+contingent on the dataset and the task~\cite{pangakis2023validation}, and a
+standards literature specifies what such a pipeline must
+report~\cite{tornberg2024standards}. That literature assumes a reliable human
+reference. For contested political constructs the human labels themselves agree
+only moderately, and across thousands of annotation tasks the best models sit
+close to human--human agreement rather than far below
+it~\cite{kunilovskaya2026annotators}, so that level of agreement is the field's
+normal condition rather than a local failure. The design this affords is
+established in social computing: hand-code a sample, train or prompt a labeller
+to reproduce that code on the rest of the corpus, then compare rates across
+communities, as in a comparison of muting across seven
+subreddits~\cite{foriest2024muting} and of frames across an aligned
+public~\cite{panda2026framing}. Both used supervised classifiers rather than prompted language models, so what
+we inherit is the design and not the instrument; Section~\ref{sec:data} reports what its labels agree with.
+
+\subsubsection{Composition, and what it composes}
+
+\candidate{S2.2.2}
+Composition already exists, and it is CSCW's own work. \citet{scheuerman2021severity} developed a severity framework from interviews and
+card-sorting, setting out four types of harm and eight dimensions, and argued
+that the dimensions may compound on one another. \citet{zhou2025harm} composed
+three attributes over a corpus of anti-Asian hate speech: the presence of
+misinformation, the collective narrative, and the targeted entity. We extend both rather than correct either, and saying where they stop requires
+precision. Only one of the severity framework's eight dimensions is contextual
+in the sense needed here: sphere, which separates public posts from private
+messages, a coarser distinction than the one between one community and another.
+\citet{zhou2025harm} composed attributes of the utterance, and their second
+research question added factors belonging to the person judging. That varies who is doing the judging, the
+perspectivist axis, rather than where the comment was posted. Their corpus is
+Twitter, and the subreddit does not appear in
+it. Their outcome also differs in kind: they measured harmfulness as judged by a
+reader, where we measure whether a community divided.
+
+A second line composes the coder rather than the content. It treats
+disagreement between annotators as signal rather than noise, modelling who
+labels instead of averaging over
+them~\cite{rottger2022paradigms,sap2022annotators,davani2024d3code}, and systems
+work has begun to make that disagreement something to deliberate over rather
+than resolve, including by placing models inside the deliberation
+itself~\cite{khadar2025socratic}. That programme varies the coder. It does not
+ask whether the same comment is a different object in a different community,
+which is an adjacent question rather than a criticism of it. Between the two
+lines, the attributes of a comment and the attributes of the person coding it
+have both been composed. Where the comment was posted has not.
+
+\subsubsection{The community as a measured object}
+
+\candidate{S2.2.3}
+Norms on Reddit are stratified. \citet{chandrasekharan2018hiddenrules} studied moderator removals across a
+hundred of the site's largest communities and found three levels. Some norms are enforced across
+most of the platform, some hold across groups of communities, and some are
+specific to one. What became of that finding is instructive. Crossmod, built in
+the same programme, scores a comment with an ensemble of one hundred and eight
+classifiers~\cite{chandrasekharan2019crossmod}: one hundred predict whether one
+subreddit's moderators would remove it, and eight cover site-wide norms. The
+tool operationalises the site-wide and single-community layers and has no
+counterpart for the intermediate one. A stratification discovered in the data
+was only partly carried into the instrument built from it. Our alignment groups are an attempt at that intermediate layer, assigned rather
+than learned.
+
+% -----------------------------------------------------------------------------
+\subsection{What communities reward, and what happens at their boundary}
+\label{sec:rw-crossing}
+% -----------------------------------------------------------------------------
+
+\subsubsection{Contestation, and how it differs from hostility}
+
+\candidate{S2.3.1}
+We compose narrative frame with community to explain what makes crisis discourse
+contested, and that composition tells us something new only if contestation is
+not just another name for hostility. If a community divides over
+a comment exactly when the comment is hostile, then a toxicity score, which harm
+research already measures, would answer the same question, and community would
+add nothing beyond a variable to control for. So the outcome we measure is contestation: whether a community divided over a comment, not whether the
+comment was hostile. The two come apart in principle, and Section~\ref{sec:data}
+reports that they come apart in these data, which is what licenses treating
+contestation, rather than the toxicity score, as the outcome composed with frame
+and community below.
+
+Measuring contestation this way has two precedents. Controversy has been
+treated as a structural property of interaction, readable from how a discussion
+network splits~\cite{garimella2016controversy,garimella2018controversy}. It has
+also been predicted from the early shape of a discussion, using the signal
+Reddit itself records~\cite{hessel2019controversy}. That signal, whether a comment drew votes both ways, is the one we use.
+Section~\ref{sec:data} states its limits: it registers votes falling
+both ways rather than the quality of the exchange, and requires a comment to
+attract enough votes to be assessed at all.
+
+Reading a vote this way, as a community dividing rather than merely reacting,
+requires a further warrant: that what a community rewards is a property of the
+community and not an artefact of whoever happened to comment that day.
+Communities differ systematically in what they reward as well as in what they
+say~\cite{waller2021quantifying}, and can state what they value in terms
+recognisable to themselves~\cite{weld2024values}. Affective polarisation and
+partisan sorting are the broader conditions these communities sit
+inside~\cite{iyengar2019affpol}. Newcomers acquire
+the community-specific norm layer quickly~\cite{rajadesingan2020norms}, so a
+reward pattern can be read as a property of the community rather than an
+aggregate of whoever arrived. That is the premise we need to compose contestation with community in the first
+place, rather than treating the
+community a comment appeared in as background.
+
+\begin{table*}[t]
+\footnotesize
+\caption{Computational work on this dyad and on the nearest adjacent cases.}
+\label{tab:positioning}
+\newcolumntype{Y}[1]{>{\hsize=#1\hsize\raggedright\arraybackslash}X}
+\begin{tabularx}{\linewidth}{@{}Y{1.15}Y{0.70}Y{1.05}Y{1.30}Y{1.05}Y{1.03}Y{0.72}@{}}
+\toprule
+\textbf{Study} & \textbf{Platform} & \textbf{Events} & \textbf{Labels and instrument} & \textbf{Communities} & \textbf{Community in the measurement} & \textbf{Language} \\
+\midrule
+Tyagi et al.~\cite{tyagi2020ipconflict} & Twitter & Pulwama, Balakot & Hashtag labels & Politicians & Not modelled & English \\
+Hussain~\cite{hussain2021pulwama} & Twitter & Pulwama & Manual, four codes & Two national sides & Not modelled & English \\
+KhudaBukhsh et al.~\cite{khudabukhsh2020codeswitch} & YouTube & 2019 crises & Code-switching, classifier & Not modelled & Not modelled & Code-mixed \\
+Palakodety et al.~\cite{palakodety2020hope} & YouTube & Pulwama, Balakot & Hope speech, classifier & Not modelled & Not modelled & Code-mixed \\
+Ali et al.~\cite{ali2025stance} & Reddit & Israel--Hamas & Stance, one layer & Two & Grouping variable & English \\
+Chen et al.~\cite{chen2024isamasred} & Reddit & Israel--Hamas, one window & Controversy, moral language & Not modelled & Not modelled & English \\
+Rao et al.~\cite{rao2025abortion} & Twitter & Abortion, one year & Five frames, hostility; transformers & Liberal, conservative (per user) & Speaker attribute & English \\
+Panda et al.~\cite{panda2026framing} & Twitter & One campaign & Grounded-theory frames; RoBERTa & One aligned public & Grouping variable & English \\
+Murad Ahmed et al.~\cite{muradahmed2026ukraine} & Twitter & Ukraine 2014 & Themes, hashtag projection & Three blocs incl. neutral & Grouping variable & English \\
+Zhou et al.~\cite{zhou2025harm} & Twitter & COVID-19 period & Misinformation, narrative, target & Anti-Asian hate & Not modelled & English \\
+\midrule
+\textbf{Our study} & \textbf{Reddit} & \textbf{Six, 2019--2025} & \textbf{Six labelled constructs, LLM against a codebook, human-validated} & \textbf{Ten, in three alignment groups} & \textbf{Measured: composed with frame, and the boundary crossed} & \textbf{Hindi, Urdu, English} \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+
+
+\subsubsection{Crossing, and the instrument that identifies a bridge-user}
+
+\candidate{S2.3.2}
+What happens at the boundary a participant crosses, from a community aligned
+with one side of the conflict into one aligned with the other, is the third question our design has to answer, and the existing literature answers
+it only provisionally. Where cross-community participation has been examined
+directly, exposure to the
+other side has generally produced friction rather than
+accommodation~\cite{kumar2018conflict,bail2018exposure,datta2019interconflict}. That
+result is usually reported against intergroup contact theory, whose
+meta-analytic statement makes reduced prejudice conditional on facilitating
+conditions~\cite{pettigrew2006contact}: equal status, common goals and
+institutional support. None of these conditions typically holds when a participant posts into a
+community aligned with the other side of a shooting war. Read that way, friction is the
+predicted case rather than a surprising one.
+
+The picture is not unanimous, and the disagreement matters for our argument
+rather than against it. Behaviour after cross-community contact depends on
+conditions~\cite{xia2025integrated}, cross-partisan discussion can be better sustained under particular
+designs~\cite{rajadesingan2021crosspartisan}, and
+antisocial behaviour is at least partly situational rather than
+dispositional~\cite{cheng2017troll}. Silence is itself a mechanism rather than
+an absence of speech~\cite{noelleneumann1974spiral}, which is one reading of
+the non-crossing figures in Section~\ref{sec:data}.
+
+Two measured precedents share our subject but not our instrument.
+\citet{wu2021crosspartisan} showed on YouTube that crossing is asymmetric,
+conservatives being far more likely to comment on left-leaning videos than the
+reverse, and that cross-partisan replies are more toxic than co-partisan ones.
+\citet{almerekhi2022toxicity} showed at very large scale that most users who
+comment in more than one community changed their toxicity across them. Both
+measure the crosser's own hostility; neither measures what the receiving
+community does, which is the quantity separating a penalty on an outsider from a
+change in an outsider's writing. Community-level estimates are also a poor guide
+to particular participants: \citet{trujillo2022reddit} found a moderation
+intervention falling differently on core and peripheral users of the same
+community, which warrants following individuals rather than aggregates.
+
+That instrument bounds what this literature can say in two ways. The first is
+how a crosser is identified. Social computing has located them in the
+structure around the person: in network position, where inter-community conflict
+is measured as mobilisation between groups rather than as the movement of any
+one participant~\cite{kumar2018conflict,datta2019interconflict}; in how a user's
+activity distributes across communities~\cite{waller2019generalists}; or in the
+hostility their comments carry in
+aggregate~\cite{wu2021crosspartisan,almerekhi2022toxicity}. Each of these
+conflates two things that move together: being legible as an outsider there, and
+writing differently there, so a penalty measured this way cannot be assigned to
+either cause. The second bound is that a crosser is treated as a kind of person
+rather than as a matter of
+degree. Activity diversity is continuous, and generalist and specialist are ends
+of one spectrum rather than two populations~\cite{waller2019generalists}, so any threshold sorting users into bridges and non-bridges imposes a division
+the data do not contain.
+
+Together, these bound what CSCW can do with the result, because the field's
+interest in cross-community contact is finally a design interest: the question is what platform designers or a community's own moderators could
+change~\cite{rajadesingan2021crosspartisan}. That
+question has different answers depending on which penalty operates. A community
+penalising an outsider's alignment would not respond to an intervention aimed at
+how people write, and one penalising their register, the tone and vocabulary a
+comment is written in rather than who wrote it, might. Deciding between them
+needs an instrument that holds the person fixed, which is what our within-author comparison does: it compares the comments an author posts inside their
+own community against the ones the same author posts across the boundary, so
+identity is constant and register is free to vary.
+
+
+% -----------------------------------------------------------------------------
+\subsection{Positioning}
+\label{sec:rw-positioning}
+% -----------------------------------------------------------------------------
+
+\candidate{S2.4}
+We extend each of these literatures. From work on how aligned audiences narrate
+a shared conflict we take the frame-by-audience interaction, moving it from
+outlets to communities and from one event to a panel, several occurrences of the
+same kind of crisis observed over time. From the harm-measurement literature we
+take composition, which CSCW has already established, and add the community to
+what is composed. The community becomes
+part of what is measured rather than a variable held constant. From the boundary-crossing literature we take the friction
+finding, and supply the within-author comparison separating a penalty on a
+crosser's alignment from a penalty on their register.
+
+\yash{add about author's background here? or in the data annotation section?}
+
+

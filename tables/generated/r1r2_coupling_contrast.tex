@@ -1,0 +1,20 @@
+\begin{table}
+\caption{R1xR2 coupling: every searched operationalization, both estimators}
+\label{tab:r1r2_coupling_contrast}
+\begin{tabular}{lrrrrrrrr}
+\toprule
+operationalization & n & spearman\_rho\_plugin & p\_raw\_plugin & p\_adj\_plugin & spearman\_rho\_mm & p\_raw\_mm & p\_adj\_mm & sign\_flips \\
+\midrule
+A · per-frame JSD vs persistence gap (PRE-SPECIFIED) & 32 & 0.2775 & 0.1241 & 0.2500 & 0.1041 & 0.5707 & 0.9572 & False \\
+B · per-frame JSD vs transition-row JSD & 32 & 0.4172 & 0.0175 & 0.1753 & -0.0462 & 0.8018 & 0.9572 & True \\
+C · per-frame JSD vs Security/Military redirect gap & 36 & 0.2411 & 0.1566 & 0.2500 & -0.1096 & 0.5246 & 0.9572 & True \\
+D · within-frame across events — Political & 6 & -0.1429 & 0.7872 & 0.8717 & -0.1429 & 0.7872 & 0.9572 & False \\
+D · within-frame across events — Security/Military & 6 & 0.0857 & 0.8717 & 0.8717 & 0.0857 & 0.8717 & 0.9572 & False \\
+D · within-frame across events — Religious/Cultural & 5 & 0.7000 & 0.1881 & 0.2500 & 0.7000 & 0.1881 & 0.9572 & False \\
+D · within-frame across events — Historical Grievance & 4 & 0.8000 & 0.2000 & 0.2500 & 0.4000 & 0.6000 & 0.9572 & False \\
+D · within-frame across events — Humanitarian & 5 & -0.7000 & 0.1881 & 0.2500 & -0.3000 & 0.6238 & 0.9572 & False \\
+D · within-frame across events — Economic & 6 & 0.7143 & 0.1108 & 0.2500 & -0.0286 & 0.9572 & 0.9572 & True \\
+E · event-level aggregate (n = 6) & 6 & 0.7143 & 0.1108 & 0.2500 & -0.5429 & 0.2657 & 0.9572 & True \\
+\bottomrule
+\end{tabular}
+\end{table}
