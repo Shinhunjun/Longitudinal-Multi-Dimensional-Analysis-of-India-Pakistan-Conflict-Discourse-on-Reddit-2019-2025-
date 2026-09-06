@@ -284,64 +284,100 @@
 \subsection{Contested discourse tracks frame and community, not toxicity (R8)}
 \budget{515}
 
-\begin{description}
-\item[Headline.] Controversiality is driven by frame--community mismatch.
-  Neutral $\times$ Humanitarian $= \textbf{17.4\%}$ ($n = 4{,}110$, Wilson 95\%
-  CI [16.4\%, 18.7\%]), rising to \textbf{18.5\%} inside crisis windows, against
-  a corpus rate of 6.91\% over 300{,}908 complete rows.
+\jun{Prose draft below replaces the bullet specification (commented out at the
+end of this subsection). All numbers re-verified against
+\texttt{scripts/r8\_analysis.py}; four values in the old spec came from an
+earlier corpus cut and are corrected here (within-Humanitarian offensive
+$10.56 \rightarrow 10.18$, comments/author $2.73/4.64/5.21 \rightarrow
+2.69/4.50/5.04$, headline $n=4{,}110 \rightarrow 4{,}005$, score-$\le 0$
+$23.9 \rightarrow 23.8$). Figures/vignette references still to be wired in.}
 
-\item[The negative that carries the paper.] Offensive-Targeted \textbf{7.67\%}
-  versus Not Offensive \textbf{6.83\%} --- OR $\approx 1.13$ (M3) / 1.17
-  (subreddit FE). \textbf{Toxicity, the layer moderation acts on, barely moves
-  the outcome.} Alignment separates rates 2.5$\times$ and frame 1.8$\times$;
-  offensiveness 1.12$\times$.
+What a community argues over is set by the frame a comment advances and the
+community it appears in, and hardly at all by how offensively it is worded.
+Controversiality --- Reddit's flag for comments that draw substantial votes both
+ways --- peaks where a contested frame meets a general-audience community: in
+neutral communities, humanitarian-framed comments are controversial \textbf{17.4\%}
+of the time ($n = 4{,}005$; Wilson 95\% CI [16.3\%, 18.6\%]), rising to 18.5\%
+inside crisis windows, against a corpus-wide rate of 6.91\% over 300{,}908
+complete rows.
 
-\item[Alignment gradient.] neutral 11.74\% $>$ pakistan\_aligned 8.24\% $>$
-  india\_aligned 4.75\% (regional 16.15\% and diaspora 11.03\% on small $n$).
+The contrast that carries the paper is with toxicity. Offensive-targeted comments
+are controversial \textbf{7.67\%} of the time and non-offensive comments
+\textbf{6.83\%} --- a gap of less than one point. Community alignment separates
+controversiality rates \textbf{2.5-fold} (neutral 11.74\% $>$ pakistan-aligned
+8.24\% $>$ india-aligned 4.75\%) and narrative frame \textbf{1.8-fold}
+(humanitarian 10.44\% down to economic 5.89\%), against \textbf{1.12-fold} for the
+offensive-versus-not contrast. The layer that content moderation acts on is the
+one that moves the outcome least.
 
-\item[Frame gradient.] Humanitarian 10.44\% $>$ Historical Grievance 7.58\% $>$
-  Political 7.35\% $>$ Religious/Cultural 6.98\% $>$ Security/Military 5.97\%
-  $>$ Economic 5.89\%. The two largest frames sit at opposite ends.
+The clearest form of this is within a single frame. Among humanitarian-framed
+comments, the controversiality rate is \textbf{10.18\%} for offensive comments and
+\textbf{10.47\%} for non-offensive ones --- essentially identical, and if anything
+lower for the offensive ones. A humanitarian frame splits an audience whether or
+not it is politely worded, which is why the toxicity axis collapses once frame is
+known.
 
-\item[Tone-independence.] Within Humanitarian: offensive 10.56\% versus
-  non-offensive 10.47\%. Humanitarian framing splits an audience \textbf{even
-  when politely worded}. This is \emph{why} the toxicity axis collapses.
+The community effect is not a single-subreddit artifact. All three neutral
+subreddits lead the ranking --- r/geopolitics 12.57\%, r/worldnews 11.69\%,
+r/lesscredibledefence 8.59\% --- and r/lesscredibledefence ($n = 803$) alone
+exceeds every india-aligned subreddit except r/india (7.21\%). A subreddit
+fixed-effects logit, which estimates the frame gradient net of whichever subreddit
+a comment sits in, fits better than the alignment model (AIC \textbf{142{,}208.9}
+versus \textbf{144{,}180.0}); the frame gradient persists, with the
+humanitarian-to-economic odds ratio compressing only from $1.67\times$ to
+$1.57\times$ once subreddit composition is absorbed.
 
-\item[``Is it just r/worldnews?''] No. All three neutral subs lead ---
-  geopolitics 12.57\%, worldnews 11.69\%, lesscredibledefence 8.59\% --- and
-  lesscredibledefence ($n = 803$) alone beats every india\_aligned sub except
-  r/india (7.21\%). Subreddit-FE logit fits better than M3 (\textbf{AIC
-  142{,}208.9 versus 144{,}180.0}), so the frame gradient survives absorbing
-  subreddit composition.
+Three qualifications discipline these claims. First, \texttt{controversiality}
+mechanically tracks low net score --- 23.8\% of comments at net score $\le 0$ are
+flagged, against 0.02\% of those above 100 --- so it registers \emph{contested}
+reception rather than observed deliberation, and we avoid deliberation language
+throughout. Second, neutral communities have a more transient audience (2.69
+comments per author, versus 4.50 in india-aligned and 5.04 in pakistan-aligned
+communities), which raises ``audience heterogeneity'' as an alternative to
+``permeable echo chamber.'' We test this rather than assert against it, and it
+does not hold: adding an author-activity control to the controversiality logit
+leaves the neutral odds ratio essentially unchanged ($2.73 \rightarrow 2.66$), and
+restricting to committed participants does not shrink the neutral/india rate ratio
+--- it rises, from $2.47\times$ across all authors to $2.81\times$ among authors
+with at least twenty comments. A transient-voter artifact would move both the
+other way; the version that remains, voter-pool rather than author heterogeneity,
+is unobservable here and we flag it as a scope condition. Third, alignment and
+subreddit are collinear, so the fixed-effects result establishes that these three
+specific neutral subreddits are high, a descriptive rather than a construct-level
+claim. Finally, dropping r/worldnews moves the single hottest cell from
+humanitarian to historical-grievance framing: the block-level result is robust,
+but the identity of the top cell is not.
 
-\item[Required honesty (referee-anticipating).] (a)~\texttt{controversiality}
-  mechanically tracks low net score --- 23.9\% at score $\le 0$, 0.02\% at
-  100$+$. It conflates \emph{contested} with \emph{downvoted}; show the score-bin
-  gradient and avoid deliberation language. (b)~Neutral subs have a more
-  transient audience (2.73 comments/author versus 4.64 india, 5.21 pakistan), so
-  ``audience heterogeneity'' is a live alternative to ``permeable echo chamber.''
-  \textbf{We test it rather than assert against it, and it does not hold} (V6,
-  blocker B5): adding an author-transience control (log author comment count) to
-  the controversiality logit leaves the neutral odds ratio essentially unchanged
-  ($2.71 \rightarrow 2.66$), and restricting to committed participants does
-  \emph{not} shrink the neutral/india rate ratio --- it rises, from
-  $2.47\times$ (all authors) to $2.51\times$ ($\ge 5$ comments) and $2.81\times$
-  ($\ge 20$ comments). A transient-voter artifact would move both the other way.
-  The remaining, unobservable version of the confound is voter-pool (not author)
-  heterogeneity, which we flag as a scope condition. (c)~Alignment and subreddit
-  are collinear; the FE test shows \emph{these three specific subreddits} are
-  high, which is descriptive. (d)~Dropping r/worldnews moves the single hottest
-  cell from Humanitarian to Historical Grievance --- the block-level claim is
-  robust, the top-cell frame is not.
-
-\jun{Resolved blocker B5. The audience-heterogeneity test is
-\texttt{scripts/r8\_audience\_robustness.py} in the analysis repo: (1) logit
-alignment ORs with vs.\ without a \texttt{log(author comment count)} control
-($2.71 \rightarrow 2.66$ on neutral), and (2) the neutral/india rate ratio across
-author-activity floors $\ge\{1,2,3,5,10,20\}$ ($2.47 \rightarrow 2.81$). Caveat
-kept in-sentence: this rebuts the \emph{author}-transience version §12.2 actually
-measured, not the pure voter-pool version. If we want a figure, a small
-ratio-vs-floor line plot would make (b) legible.}
+% =========================================================================
+% OLD BULLET SPECIFICATION (commented out per Mohit: comment old, add new).
+% Superseded by the prose above. Kept for traceability of the source numbers.
+% =========================================================================
+% \begin{description}
+% \item[Headline.] Controversiality is driven by frame--community mismatch.
+%   Neutral $\times$ Humanitarian $= 17.4\%$ ($n = 4{,}110$, Wilson 95\%
+%   CI [16.4\%, 18.7\%]), rising to 18.5\% inside crisis windows, against
+%   a corpus rate of 6.91\% over 300{,}908 complete rows.
+% \item[The negative that carries the paper.] Offensive-Targeted 7.67\%
+%   versus Not Offensive 6.83\% --- OR $\approx 1.13$ (M3) / 1.17 (subreddit FE).
+%   Alignment separates rates 2.5$\times$ and frame 1.8$\times$; offensiveness 1.12$\times$.
+% \item[Alignment gradient.] neutral 11.74\% $>$ pakistan\_aligned 8.24\% $>$
+%   india\_aligned 4.75\% (regional 16.15\% and diaspora 11.03\% on small $n$).
+% \item[Frame gradient.] Humanitarian 10.44\% $>$ Historical Grievance 7.58\% $>$
+%   Political 7.35\% $>$ Religious/Cultural 6.98\% $>$ Security/Military 5.97\%
+%   $>$ Economic 5.89\%.
+% \item[Tone-independence.] Within Humanitarian: offensive 10.56\% versus
+%   non-offensive 10.47\%. [corrected to 10.18 vs 10.47 in prose]
+% \item[``Is it just r/worldnews?''] geopolitics 12.57\%, worldnews 11.69\%,
+%   lesscredibledefence 8.59\%; FE AIC 142,208.9 versus 144,180.0.
+% \item[Required honesty.] (a) score-bin gradient 23.9\% at $\le 0$, 0.02\% at 100+.
+%   (b) transient audience 2.73/4.64/5.21 comments/author [corrected to
+%   2.69/4.50/5.04]; audience-heterogeneity tested and rejected (B5).
+%   (c) alignment/subreddit collinear. (d) dropping r/worldnews shifts top cell.
+% \item[Qualitative.] Five paraphrased, anonymized vignettes.
+% \item[Figures.] r8\_heatmap\_observed.png, r8\_subreddit\_rates.png,
+%   r8\_crisis\_vs\_base.png.
+% \item[Status.] Descriptive; regressions used for ranking and predicted surfaces only.
+% \end{description}
 
 \item[Qualitative.] Five paraphrased, anonymized vignettes: neutral $+$
   Humanitarian controversy is driven by contested civilian-harm and rights
