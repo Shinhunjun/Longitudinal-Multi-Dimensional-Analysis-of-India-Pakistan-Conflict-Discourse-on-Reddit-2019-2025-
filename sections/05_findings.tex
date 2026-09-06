@@ -376,72 +376,101 @@ but the identity of the top cell is not.
 % \item[Qualitative.] Five paraphrased, anonymized vignettes.
 % \item[Figures.] r8\_heatmap\_observed.png, r8\_subreddit\_rates.png,
 %   r8\_crisis\_vs\_base.png.
+% \item[Qualitative.] Five paraphrased, anonymized vignettes: neutral +
+%   Humanitarian controversy is driven by contested civilian-harm and rights
+%   claims, not insults.
+% \item[Figures.] r8\_heatmap\_observed.png, r8\_subreddit\_rates.png,
+%   r8\_crisis\_vs\_base.png.
 % \item[Status.] Descriptive; regressions used for ranking and predicted surfaces only.
 % \end{description}
-
-\item[Qualitative.] Five paraphrased, anonymized vignettes: neutral $+$
-  Humanitarian controversy is driven by contested civilian-harm and rights
-  claims, not insults.
-
-\item[Figures.] \texttt{r8\_heatmap\_observed.png},
-  \texttt{r8\_subreddit\_rates.png}, \texttt{r8\_crisis\_vs\_base.png}.
-  \textbf{\texttt{r8\_frame\_effect.png} does not exist and must be generated.}
-
-\item[Status.] Descriptive; regressions used for ranking and predicted surfaces
-  only.
-\end{description}
 
 
 \subsection{What this corpus cannot support (R4 and R7, the negative result)}
 \budget{350}
 
-\begin{description}
-\item[Setup.] Two independent causal designs were run: R4 (crisis-driven
-  differential polarization; community-intensity DiD $+$ crisis-type DDD) and R7
-  (spiral of silence; minority $\times$ acute DiD with subreddit and author FE).
+\jun{Prose draft below replaces the bullet specification (commented out at the
+end of this subsection). Numbers re-verified against the R4/R7 analysis logs and
+\texttt{scripts/r7\_analysis.py}; the R7 MDE cell count is corrected from the old
+spec (0 of 7 $\rightarrow$ 0 of 21, ratios 0.04--0.47). Framed as a
+transferable methodological caution, not a failure, per the discussion on how C3
+should read.}
 
-\item[R4 result.] CRV1 flags 9 of 18 per-event $\beta_3$ and 3 of 6 DDD
-  $\beta_7$; the wild cluster bootstrap erases \textbf{all of them} (0/18, 0/6,
-  and 0/8 on continuous Perspective toxicity). The most eye-catching candidate
-  --- military crises shifting stake-holding communities toward Security/Military
-  framing by $\beta_7 \approx +25$ pp --- moves from $p = 0.002$ to
-  WCB $p = 0.255$.
+We had intended to establish two of these patterns causally, and the data will
+not support it. Two independent difference-in-differences designs were run: R4
+asked whether crises drive stake-holding communities to polarize differentially
+(a community-intensity DiD plus a crisis-type triple-difference), and R7 asked
+whether minority-alignment commenters withdraw during a crisis's acute phase (a
+minority-by-acute DiD with subreddit and author fixed effects). Both use
+cluster-robust (CRV1) inference and, because the number of clusters is small, a
+wild cluster bootstrap (WCB) as the honest correction.
 
-\item[R7 result.] Pooled $\beta_3$ on log length \textbf{$-0.029$}
-  (CRV1 $p = 0.403$, WCB $p = 0.342$), in the silencing direction and nowhere
-  near significant. The one CRV1-significant outcome (neutral sentiment,
-  $p = 0.023$) flips to WCB $p = 0.151$. \textbf{0 of 18} per-event effects
-  survive.
+Under CRV1 both designs look alive; under the bootstrap neither does. In R4, CRV1
+flags 9 of 18 per-event interaction coefficients and 3 of 6 triple-difference
+terms, and the wild cluster bootstrap erases all of them (0 of 18, 0 of 6, and 0
+of 8 on continuous Perspective toxicity). The most eye-catching candidate ---
+military crises shifting stake-holding communities toward security-and-military
+framing by roughly 25 percentage points --- moves from $p = 0.002$ to a bootstrap
+$p = 0.255$. R7 tells the same story on a different design: the pooled interaction
+on comment length is $-0.029$ log-points (CRV1 $p = 0.40$, WCB $p = 0.34$), in the
+silencing direction but far from significant, and the single CRV1-significant
+outcome (neutral sentiment) flips from $p = 0.023$ to a bootstrap $p = 0.15$. Not
+one of the 18 per-event effects survives. That two independent designs show the
+identical CRV1-to-bootstrap collapse is itself the finding: cluster-robust
+inference over-rejects on panels of this shape.
 
-\item[The stronger point.] Parallel trends \textbf{fail} --- for R4 on all
-  military events (only Article 370 passes); for R7 on all three outcomes (Wald
-  $\chi^2$ 48.8, 31.3, 21.7, all $p = 0.0$). Where the identifying assumption
-  fails, the design is \textbf{uninformative}, not merely underpowered. Say
-  ``uninformative''; ``null'' overclaims.
+The deeper problem is identification, not power. The parallel-trends assumption
+that both designs rest on is rejected --- for R4 on every military event except
+Article 370, and for R7 on all three outcomes (Wald $\chi^2$ 48.8, 31.3, 21.7,
+all $p < 0.001$). Where the identifying assumption fails, the design is
+\emph{uninformative} about the hypothesis rather than merely underpowered, so we
+make no significance claim in either direction. Underpowered it also is --- R4's
+median minimum detectable effect is about 18 points against observed effects
+roughly a third of that, and none of R7's 21 cells could have detected its own
+observed effect ($|\hat\beta_3| / \mathrm{MDE}$ between 0.04 and 0.47) --- but
+that is secondary to the identification failure.
 
-\item[Why they fail, structurally --- the transferable claim.] Crises cluster in
-  time. Balakot follows Pulwama by 12 days; Sindoor follows Pahalgam by roughly
-  2 weeks. \textbf{Each military event's pre-period is the aftermath of the
-  previous crisis.} Event clustering is a structural confounder for
-  crisis-response DiD --- a different failure mode from the staggered-timing
-  problem~\cite{goodmanbacon2021did}.
+Why parallel trends fail here is structural, and it is the transferable point.
+The crises cluster in time: Balakot follows Pulwama by twelve days, and Operation
+Sindoor follows the Pahalgam attack by about two weeks, so each military event's
+pre-period is the aftermath of the one before it. Event clustering is a structural
+confounder for crisis-response difference-in-differences, distinct from the
+staggered-adoption problem that the recent literature
+addresses~\cite{goodmanbacon2021did}. Where crisis events recur inside each
+other's recovery windows and the communities under study are few, event-study
+designs do not identify the effects asked of them, and a compositional account is
+the strongest claim such data support. This is why the rest of this paper is
+compositional rather than causal. One honest qualification: the wild cluster
+bootstrap is itself near its validity floor at seven to nine clusters and can be
+over-conservative, so a bootstrap null means this design cannot credibly detect an
+effect, not that none exists.
 
-\item[Power.] R4 median MDE $\approx 18$ pp; observed effects run roughly
-  one-third of the floor; 0 of 18 cells detectable. R7: \textbf{0 of 7} cells,
-  $|\hat\beta_3| / \mathrm{MDE}$ 0.09--0.35.
+A descriptive residue survives the null. In the acute phase, minority-alignment
+commenters are terser but \emph{less} neutral --- more pointedly opinionated, and
+asking more questions, not fewer --- which runs against the spiral-of-silence
+prediction rather than confirming a muted version of it.
 
-\item[The additional honesty.] WCB is itself near its validity floor at 7--9
-  clusters and can be over-conservative. A WCB null means ``this design cannot
-  detect anything credible,'' not ``the bootstrap proved absence.''
-
-\item[Descriptive residue.] R7: minority commenters in acute phases are
-  \textbf{terser but less neutral} --- more pointedly opinionated, not silenced.
-  That runs against the spiral-of-silence prediction and is worth one sentence.
-
-\item[Figures.] \texttt{r7\_eventstudy\_logwords.png}, \texttt{r7\_mde.png},
-  plus \texttt{r4\_binned\_es\_secmil.png} and \texttt{r4\_mde.png} once merged.
-  \textbf{Figure~8} (CRV1 versus WCB $p$-value scatter over all 42 estimates)
-  makes C3 legible in one image and must be built.
-
-\item[Status.] Negative / methodological.
-\end{description}
+% =========================================================================
+% OLD BULLET SPECIFICATION (commented out per Mohit: comment old, add new).
+% Superseded by the prose above. Kept for traceability of the source numbers.
+% Note: old spec said "R7: 0 of 7 cells" for the MDE; the analysis log gives
+% 0 of 21 (ratios 0.04-0.47), corrected in the prose.
+% =========================================================================
+% \begin{description}
+% \item[Setup.] Two independent causal designs: R4 (community-intensity DiD + crisis-type DDD)
+%   and R7 (minority x acute DiD with subreddit and author FE).
+% \item[R4 result.] CRV1 flags 9/18 per-event beta3 and 3/6 DDD beta7; WCB erases all
+%   (0/18, 0/6, 0/8 on continuous Perspective toxicity). beta7 ~ +25pp moves p=0.002 -> WCB 0.255.
+% \item[R7 result.] Pooled beta3 on log length -0.029 (CRV1 p=0.403, WCB p=0.342);
+%   neutral sentiment p=0.023 -> WCB 0.151; 0 of 18 per-event survive.
+% \item[The stronger point.] Parallel trends fail (R4: only Article 370 passes;
+%   R7: all three, Wald chi2 48.8/31.3/21.7). Uninformative, not underpowered.
+% \item[Why, structurally.] Crises cluster in time; each military pre-period is the
+%   prior crisis aftermath. Structural confounder for crisis-response DiD.
+% \item[Power.] R4 median MDE ~18pp, 0/18 detectable. R7: 0 of 7 [corrected: 0 of 21],
+%   |beta3|/MDE 0.09-0.35 [corrected: 0.04-0.47].
+% \item[Additional honesty.] WCB near validity floor at 7-9 clusters; over-conservative.
+% \item[Descriptive residue.] R7: minority acute-phase commenters terser but less neutral.
+% \item[Figures.] r7\_eventstudy\_logwords.png, r7\_mde.png, r4\_binned\_es\_secmil.png,
+%   r4\_mde.png; Figure 8 = CRV1 vs WCB p-value scatter over 42 estimates.
+% \item[Status.] Negative / methodological.
+% \end{description}
