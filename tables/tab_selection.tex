@@ -1,0 +1,47 @@
+% tab_selection.tex 
+
+\begin{table}[t]
+\footnotesize
+\caption{Candidate communities examined during selection. We ranked candidates
+by keyword-matching submission volume and checked that ranking against
+subscriber count. The threshold for inclusion was
+\authorinput{state the volume threshold and how it was chosen}. Comment counts
+are the totals each included community contributes to the annotated corpus.
+Excluded candidates are shown with the volume that decided them, so the
+asymmetry between the alignment groups can be read off the same evidence we
+used.}
+\label{tab:selection}
+\newcolumntype{Z}[1]{>{\hsize=#1\hsize\raggedright\arraybackslash}X}
+\begin{tabularx}{\linewidth}{@{}Z{1.30}Z{1.05}Z{0.80}Z{0.95}Z{0.90}@{}}
+\toprule
+\textbf{Community} & \textbf{Alignment} & \textbf{Subscribers} & \textbf{Matching submissions} & \textbf{Comments in corpus} \\
+\midrule
+\multicolumn{5}{@{}l}{\emph{Included}} \\
+\texttt{r/india}                & India-aligned  & \authorinput{n} & \authorinput{n} & 78,615 \\
+\texttt{r/indiaspeaks}          & India-aligned  & \authorinput{n} & \authorinput{n} & 68,324 \\
+\texttt{r/indiandefense}        & India-aligned  & \authorinput{n} & \authorinput{n} & 21,311 \\
+\texttt{r/indiadiscussion}      & India-aligned  & \authorinput{n} & \authorinput{n} & 7,213 \\
+\texttt{r/indianews}            & India-aligned  & \authorinput{n} & \authorinput{n} & 5,862 \\
+\texttt{r/bakchodi}             & India-aligned  & \authorinput{n} & \authorinput{n} & 3,852 \\
+\texttt{r/worldnews}            & Neutral        & \authorinput{n} & \authorinput{n} & 59,078 \\
+\texttt{r/geopolitics}          & Neutral        & \authorinput{n} & \authorinput{n} & 6,844 \\
+\texttt{r/lesscredibledefence}  & Neutral        & \authorinput{n} & \authorinput{n} & 810 \\
+\texttt{r/pakistan}             & Pakistan-aligned & \authorinput{n} & \authorinput{n} & 53,308 \\
+\midrule
+\multicolumn{5}{@{}l}{\emph{Collected but not assigned to an alignment group}} \\
+\texttt{r/abcdesis}             & Unassigned     & \authorinput{n} & \authorinput{n} & 2,280 \\
+\texttt{r/askreddit}            & Unassigned     & \authorinput{n} & \authorinput{n} & 1,574 \\
+\texttt{r/kashmir}              & Unassigned     & \authorinput{n} & \authorinput{n} & 126 \\
+\texttt{r/southasia}            & Unassigned     & \authorinput{n} & \authorinput{n} & 7 \\
+\midrule
+\multicolumn{5}{@{}l}{\emph{Examined and excluded, below the volume threshold}} \\
+\texttt{r/pakistani}            & Pakistan-aligned & \authorinput{n} & \authorinput{n} & --- \\
+\texttt{r/karachi}              & Pakistan-aligned & \authorinput{n} & \authorinput{n} & --- \\
+\texttt{r/Lahore}               & Pakistan-aligned & \authorinput{n} & \authorinput{n} & --- \\
+\texttt{r/pkmigrate}            & Pakistan-aligned & \authorinput{n} & \authorinput{n} & --- \\
+\texttt{r/PakistaniMilitary}    & Pakistan-aligned & \authorinput{n} & \authorinput{n} & --- \\
+\texttt{r/PakistanDiscussions}  & Pakistan-aligned & \authorinput{n} & \authorinput{n} & --- \\
+\authorinput{add the India-side and general-audience candidates examined and excluded} & & & & \\
+\bottomrule
+\end{tabularx}
+\end{table}
