@@ -5,33 +5,83 @@
 \subsection{Composition is the unit of analysis}
 \budget{250}
 
-\begin{itemize}
-\item Pull the thread across \S5: no headline finding is visible in one layer.
-  R5 needs L2 $\times$ L5 $\times$ L4 $\times$ community; R6 needs a
-  13-dimensional fingerprint; R8's result \emph{is} the failure of the
-  single-layer account.
-\item \textbf{Reconcile the internal tension explicitly, in one paragraph.} R8
-  says toxicity barely moves contestation; R2 says frame-crossing carries
-  toxicity. Both hold: toxicity travels \emph{with} crossing but does not
-  \emph{drive} contestation. A reviewer will find this if the paper does not.
-\item State the generalization carefully --- a demonstration on one corpus and
-  one conflict, not a proof that composition always beats layer.
-\end{itemize}
+\jun{Prose draft (my part; old bullet spec commented below). Covers the R8-vs-R2
+reconciliation the spec flagged.}
+
+The findings converge on a single methodological point: none of them is visible
+in one annotation layer. The affective-privileging result needs sentiment,
+frame, stance, and community together; the boundary-crossing result needs a
+thirteen-dimensional author fingerprint; and the contestation result \emph{is},
+in effect, the failure of the single-layer account, since the offensiveness layer
+that a content score would read barely moves the outcome. The object that carries
+the signal is the composition of layers with community context, not any layer on
+its own.
+
+This raises an apparent tension worth resolving directly, because a reader will
+otherwise find it. Our contestation result says toxicity scarcely drives what a
+community argues over, while the reply-tree analysis says frame-crossing
+\emph{carries} more toxicity. Both hold, and they are not in conflict: toxicity
+travels \emph{with} the act of crossing a frame boundary without \emph{driving}
+whether a community contests a comment. The variable that predicts contestation
+is the frame--community pairing; toxicity is a correlate of one particular move
+within the discourse, not the quantity that decides its reception.
+
+We state the scope of the claim carefully. This is a demonstration on one corpus
+and one conflict that compositional structure recovers what a single layer hides;
+it is not a proof that composition always dominates, and the mechanism behind each
+composition remains to be tested on other conflicts and platforms.
+
+% OLD SPEC (superseded by prose above):
+% \begin{itemize}
+% \item No headline finding is visible in one layer. R5 needs L2xL5xL4xcommunity;
+%   R6 needs a 13-dim fingerprint; R8's result IS the single-layer failure.
+% \item Reconcile: R8 says toxicity barely moves contestation; R2 says
+%   frame-crossing carries toxicity. Both hold: toxicity travels WITH crossing
+%   but does not DRIVE contestation.
+% \item Generalization: one corpus, one conflict; not a proof composition always beats layer.
+% \end{itemize}
 
 \subsection{Humanitarian framing as the permeable seam}
 \budget{250}
 
-\begin{itemize}
-\item The one frame that both diverges affectively across communities (\S5.1,
-  \S5.3) and cracks consensus within them (\S5.6).
-\item Proposed mechanism, offered as mechanism and not test: Security/Military
-  framing triggers rally-round-the-flag consensus inside an aligned community;
-  Humanitarian framing forces a moral judgment that co-partisans answer
-  differently.
-\item Name the competing explanation the data cannot rule out --- audience
-  heterogeneity in neutral venues (2.73 comments/author versus 4.64 india, 5.21
-  pakistan) --- and say what would distinguish them.
-\end{itemize}
+\jun{Prose draft (my part; old bullet spec commented below). Corrected the
+audience-heterogeneity point: we tested it (§5.6) rather than leaving it
+unresolved, and updated the comments-per-author figures to the verified values.}
+
+Humanitarian framing is the seam along which these communities come apart. It is
+the one frame that both diverges affectively across communities and, in the
+contestation analysis, cracks consensus within them: it is simultaneously the
+most contested category overall and the most likely to split an aligned community
+that would close ranks around a security-and-military frame. Offered as a
+mechanism and not a tested claim, the reading is that security-and-military
+framing invites a rally-round-the-flag response an aligned community can answer in
+unison, whereas humanitarian framing forces a moral judgment that co-partisans
+answer differently --- so the disagreement surfaces inside the community rather
+than only across the line.
+
+The obvious competing explanation is that general-audience communities look more
+contested simply because they draw a more transient crowd, whose one-off voters
+mechanically split the vote --- an audience-heterogeneity effect rather than a
+permeable echo chamber. Neutral communities do have the most transient audience
+(2.69 comments per author, against 4.50 in india-aligned and 5.04 in
+pakistan-aligned communities), so we tested the explanation rather than assert
+against it. It does not survive: controlling for author activity leaves the
+neutral effect essentially unchanged, and restricting to committed participants
+\emph{widens} rather than shrinks the gap (\S5.6). What the data cannot rule out
+is a subtler, voter-level version --- heterogeneity among the people who cast
+votes, which the corpus does not observe --- and we mark that as the open
+condition rather than claim to have closed it.
+
+% OLD SPEC (superseded by prose above):
+% \begin{itemize}
+% \item The one frame that both diverges affectively (S5.1, S5.3) and cracks
+%   consensus within communities (S5.6).
+% \item Mechanism (not test): Sec/Mil = rally-round-the-flag; Humanitarian =
+%   moral judgment co-partisans answer differently.
+% \item Competing explanation "data cannot rule out" -> CORRECTED: tested in S5.6
+%   and rejected (author transience); only voter-pool version remains open.
+%   Numbers 2.73/4.64/5.21 -> 2.69/4.50/5.04.
+% \end{itemize}
 
 \subsection{``Bridge user'' is the wrong abstraction}
 \budget{220}
@@ -100,11 +150,24 @@ Four, each traced to a specific finding, each with its own failure mode named.
 \subsection{Few clusters and the limits of crisis-response causal inference}
 \budget{150}
 
-\begin{itemize}
-\item Generalize C3: any study with roughly 6 events $\times$ 10 communities
-  sits in the regime where CRV1 lies and the wild cluster bootstrap is barely
-  valid.
-\item Two routes out --- many-cluster redesigns (thread-level opinion climates,
-  author panels) or explicit descriptive framing. This paper takes the second,
-  and says so.
-\end{itemize}
+\jun{Prose draft (my part, C3; old bullet spec commented below).}
+
+The methodological negative generalizes beyond this corpus. Any crisis-response
+study whose treatment varies across roughly six events and ten communities sits
+in the same few-clusters regime, where the cluster-robust variance estimator
+over-rejects and the wild cluster bootstrap is only barely valid --- so an
+uncorrected event-study on data of this shape will report effects that a proper
+correction erases, as ours did on both designs (\S5.7, Figure~\ref{fig:crv1-wcb}).
+The compounding problem is identification rather than power: when crises recur
+inside each other's recovery windows, each event's pre-period is the aftermath of
+the last, and parallel trends fail structurally. There are two ways out --- redesign
+toward many clusters (thread-level opinion climates, author panels) or frame the
+account as descriptive --- and this paper takes the second and says so plainly.
+
+% OLD SPEC (superseded by prose above):
+% \begin{itemize}
+% \item Generalize C3: ~6 events x 10 communities is the regime where CRV1 lies
+%   and WCB is barely valid.
+% \item Two routes out: many-cluster redesigns or explicit descriptive framing.
+%   This paper takes the second.
+% \end{itemize}
