@@ -415,8 +415,8 @@ on comment length is $-0.029$ log-points (CRV1 $p = 0.40$, WCB $p = 0.34$), in t
 silencing direction but far from significant, and the single CRV1-significant
 outcome (neutral sentiment) flips from $p = 0.023$ to a bootstrap $p = 0.15$. Not
 one of the 18 per-event effects survives. That two independent designs show the
-identical CRV1-to-bootstrap collapse is itself the finding: cluster-robust
-inference over-rejects on panels of this shape.
+identical CRV1-to-bootstrap collapse (Figure~\ref{fig:crv1-wcb}) is itself the
+finding: cluster-robust inference over-rejects on panels of this shape.
 
 The deeper problem is identification, not power. The parallel-trends assumption
 that both designs rest on is rejected --- for R4 on every military event except
@@ -448,6 +448,21 @@ A descriptive residue survives the null. In the acute phase, minority-alignment
 commenters are terser but \emph{less} neutral --- more pointedly opinionated, and
 asking more questions, not fewer --- which runs against the spiral-of-silence
 prediction rather than confirming a muted version of it.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.72\linewidth]{figures/r4r7_crv1_vs_wcb.png}
+  \caption{The CRV1-to-bootstrap collapse across both causal designs. Each point
+  is one difference-in-differences estimate from R4 (per-event $\beta_3$ and
+  crisis-type $\beta_7$) or R7 (per-event and pooled $\beta_3$); axes are its
+  cluster-robust (CRV1) and wild-cluster-bootstrap $p$-values. Of 45 estimates,
+  15 are CRV1-significant and \emph{none} survive the bootstrap: every point in
+  the shaded CRV1-significant column sits above the $0.05$ line, and no point
+  falls below the diagonal. The headline candidate --- military crises moving
+  stake-holding communities toward security-and-military framing by
+  $\beta_7\approx+25$pp --- moves from $p=0.002$ to $0.255$.}
+  \label{fig:crv1-wcb}
+\end{figure}
 
 % =========================================================================
 % OLD BULLET SPECIFICATION (commented out per Mohit: comment old, add new).
