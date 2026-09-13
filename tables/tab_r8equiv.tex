@@ -1,0 +1,46 @@
+% tab_r8equiv.tex -- R8 large-N robustness (effect sizes + within-frame equivalence)
+\begin{table}[H]
+\centering
+\caption{Large-sample robustness for the contestation result. Top: N-independent
+effect sizes (Cramer's V) for the three factors, with the descriptive max/min
+rate ratio for reference; all three associations are small in absolute terms and
+their rank is community $>$ frame $>$ offensiveness. Bottom: the within-frame
+offensive-versus-not contrast, with 95\% CI, effect size $\phi$, and a TOST
+equivalence test against a $\pm 2$pp margin. Numbers from
+\texttt{scripts/r8\_toxicity\_equivalence.py}.}
+\label{tab:r8equiv}
+\setlength{\tabcolsep}{5pt}
+\footnotesize
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}Xrrr@{}}
+\toprule
+\multicolumn{4}{@{}l}{\emph{Effect sizes (contestation $\sim$ factor)}} \\
+factor & rate ratio & Cramer's $V$ & interpretation \\
+\midrule
+community    & 2.47$\times$ & 0.114 & weak \\
+frame        & 1.77$\times$ & 0.040 & negligible \\
+offensiveness & 1.12$\times$ & 0.009 & negligible \\
+\bottomrule
+\end{tabularx}
+
+\vspace{4pt}
+
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}Xrrrr@{}}
+\toprule
+\multicolumn{5}{@{}l}{\emph{Within-frame offensive vs.\ not ($\Delta$ = offensive $-$ not)}} \\
+frame & $\Delta$ (pp) & 95\% CI (pp) & $\phi$ & TOST \\
+\midrule
+Humanitarian         & $-0.29$ & $[-1.80, +1.21]$ & 0.003 & equiv. \\
+Historical Grievance & $+0.74$ & $[-1.02, +2.50]$ & 0.007 & n.s.\ \\
+Political            & $+1.00$ & $[+0.51, +1.49]$ & 0.012 & equiv. \\
+Religious/Cultural   & $-0.52$ & $[-1.47, +0.43]$ & 0.007 & equiv. \\
+Security/Military    & $+0.60$ & $[+0.10, +1.11]$ & 0.007 & equiv. \\
+Economic             & $+1.85$ & $[+0.01, +3.69]$ & 0.019 & n.s.\ \\
+\bottomrule
+\end{tabularx}
+
+\vspace{2pt}
+{\footnotesize ``equiv.'' marks a frame where the $\pm 2$pp equivalence test
+rejects at $p < 0.05$. The two ``n.s.'' frames are under-powered for equivalence
+(small offensive $n$ widens the CI), not evidence of a large gap: both have
+$\phi < 0.02$.}
+\end{table}
