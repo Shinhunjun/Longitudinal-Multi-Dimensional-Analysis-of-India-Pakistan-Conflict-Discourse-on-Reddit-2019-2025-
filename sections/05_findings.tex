@@ -318,8 +318,6 @@ not of the genre composition of what they posted.
 \label{sec:results-reward}
 % -----------------------------------------------------------------------------
 
-% \input{tables/tab_reward}
-
 \candidate{S5.4.1}
 The production asymmetry of \S\ref{sec:results-affect} was compounded by a
 reception asymmetry. We regressed a sign-preserving log of comment score on
@@ -333,6 +331,8 @@ ones. Both contrasts excluded zero. The neutral-sentiment row reproduced the
 same ordering. Neither positive-sentiment contrast was distinguishable from
 zero, so the differential reward we can demonstrate falls on comments that are
 not positive.
+
+\input{tables/tab_reward}
 
 \candidate{S5.4.2}
 Three properties of this measure bound the claim. The outcome is a
@@ -352,70 +352,144 @@ tempers rather than removes its bearing on moral-emotional diffusion inside
 group boundaries~\cite{brady2017emotion}.
 
 
-\subsection{Crossing is incursion, and the price of it is general (R6)}
-\budget{515}
+% -----------------------------------------------------------------------------
+\subsection{Threads integrate, replies persist, and crossing carries hostility}
+\label{sec:results-threads}
+% -----------------------------------------------------------------------------
 
-\begin{description}
-\item[Honest negative first.] HDBSCAN~\cite{campello2013hdbscan} returns
-  \textbf{100\% noise} at every parameter setting; $k$-means silhouette
-  $\approx 0.1$--$0.2$. \textbf{Boundary-crossing behaviour is a continuum, not a
-  set of discrete types.} Forcing clusters through aggressive UMAP would
-  manufacture unstable artifacts, and the paper says so rather than doing it.
-  This refutes the ``typology'' the recipe was named for.
+\candidate{S5.5.1}
+We had expected conversation to fragment into frame-aligned pockets, and it did
+not. Within threads, every pair of frames co-occurred in every event, giving a
+co-occurrence density of 1.0 across all fifteen frame pairs in all six crises.
+Louvain community detection on the resulting graphs returned a modularity of
+0.000 at every seed, against a weight-preserving null whose mean was 0.045
+($p = 1.000$, one-sided, $N = 4{,}210$ threads). Frames were not merely
+unclustered. They were less separable than a randomly reweighted complete graph,
+so thread-level echo chambers in this corpus do not exist to be found.
 
-\item[What replaces it.] A bootstrap-stable Gaussian mixture, $K = 3$, bootstrap
-  ARI \textbf{0.87}, characterizing \emph{archetypal regions} rather than
-  discovered clusters: Pakistan-sympathetic (2{,}084), India-partisan hawkish
-  (2{,}061), India-leaning civil (1{,}779). Be explicit that $K$ was chosen on
-  bootstrap stability, \textbf{not} BIC --- BIC keeps falling through $K = 8$.
+\candidate{S5.5.2}
+Integration at the thread level coexisted with strong persistence at the reply
+level. Frame assortativity across reply dyads ran from 0.28 to 0.39 by event. We
+then fit one-versus-rest logistic models of whether a reply held its parent's
+frame, clustering standard errors on 24,059 authors over 95,301 dyads. Every
+frame persisted above its base rate, and minority frames persisted most.
+Economic framing reached an odds ratio of 26.0, historical grievance 20.2 and
+religious or cultural framing 18.3. Security and military framing reached 6.4,
+and political framing 5.3. All six survived
+Benjamini-Hochberg correction. Because the clustering is on authors rather than
+threads, this is not reducible to the same participants repeating themselves.
+We call it persistence rather than contagion, since the design controls topic
+coherence but not participant selection.
 
-\item[Concentration.] Archetype $\times$ is\_cross\_community:
-  \textbf{$\chi^2 = 301.9$, Cram\'er's $V = 0.226$,
-  $p = 2.72 \times 10^{-66}$}. Adjusted residuals: India-partisan hawkish
-  \textbf{$+17.1$} toward crossing; Pakistan-sympathetic $-11.6$. And the
-  continuous index refutes the naive equivalence directly:
-  \texttt{bridge\_index} is \textbf{$+0.051$ for single-community users versus
-  $-0.026$ for cross-community users}. Crossers are not higher-bridge.
+\candidate{S5.5.3}
+Replies that crossed a frame boundary carried more hostility and changed fewer
+minds. Pooled across events, cross-frame replies scored 0.0284 higher on
+toxicity than same-frame replies (95\% CI $[0.0251, 0.0317]$, rank-biserial
+$r = 0.102$, Mann-Whitney $p = 3.44 \times 10^{-155}$, $N = 93{,}368$). The gap
+held in all six events after correction. A second labeller reproduced it at
+$+0.0130$. The effect is small, and we report $r$ alongside it for that reason.
+What did not follow is persuasion. Cross-frame replies shifted sentiment less
+often than same-frame replies, not more, so frame-crossing in this corpus looks
+like friction rather than argument that lands.
 
-\item[Price of crossing.] Cluster-robust logit on out-group comments
-  ($n = 16{,}266$, punished rate 0.494; punished $=$ score below the subreddit
-  $\times$ crisis\_phase median), controlling length, phase, toxicity, frame,
-  top-level, time, venue alignment. Pakistan-sympathetic archetype
-  \textbf{OR $= 2.014$} [1.673, 2.425], $p < .001$; provocateur\_index
-  \textbf{OR $= 1.549$} [1.058, 2.266], $p = 0.024$; question\_rate
-  \textbf{OR $= 2.146$} [1.062, 4.334], $p = 0.033$. \textbf{bridge\_index
-  OR $= 1.464$ [0.997, 2.148], $p = 0.052$ --- report as not significant.}
-  Balanced, hostile, and merely inquisitive outsiders are all down-weighted: the
-  venue penalizes non-congruence itself.
+\candidate{S5.5.4}
+Two further patterns bound the section. Frames diversified as threads deepened,
+with entropy rising between 0.046 and 0.228 bits from top-level to deep
+comments, though clustered intervals excluded zero in only four of the six
+events. And the community difference in how strongly humanitarian framing
+persists is better read as a venue difference. Across the three alignment groups
+the spread in humanitarian self-transition was 0.088, while within the
+India-aligned group alone it reached 0.160, from 0.056 in one community to 0.216
+in another. That within-group spread rests on a community contributing only 36
+parent comments, so we report it as suggestive. The Pakistan-aligned group is a
+single community, which makes the equivalent check impossible on that side.
 
-\item[Raiding signature.] Within-author paired design, $n = 1{,}606$ authors
-  with $\ge$3 comments in both venue types. Anti-out-group stance $0.339
-  \rightarrow \textbf{0.376}$ ($+0.037$, paired Wilcoxon $p < 0.001$) while
-  targeted toxicity slightly \emph{drops} ($0.088 \rightarrow 0.079$,
-  $p < 0.001$) and negativity is unchanged ($p = 0.852$). Sophisticated
-  incursion: push the opposition harder, moderate the slurs.
+\candidate{S5.5.5}
+We tested both headline estimands across a 36-cell specification curve, varying
+whether Operation Sindoor was included, the machine-confidence threshold, the
+content-type restriction and which labeller supplied toxicity. The cross-frame
+hostility premium held a median of 0.0241 across 24 specifications
+(range $[0.0130, 0.0429]$), and the historical-grievance persistence multiplier
+a median of 9.25 across 12 (range $[8.17, 10.15]$). Every interval excluded the
+null in both families. The largest single source of variation was not any
+sampling choice. It was which model produced the label, which is the empirical
+form of the measurement concern \S\ref{sec:data-coders} raises.
 
-\item[Robustness.] Threshold sweep $\{5, 10, 20\}$ --- $V$ 0.181 / 0.226 /
-  0.228, provocateur OR 1.52 / 1.55 / 1.77. Sindoor-excluded: provocateur
-  \textbf{1.632} [1.059, 2.516], $p = 0.027$. Claude L6a versus Perspective
-  $\kappa = 0.852$. UMAP used for visualization only.
+% -----------------------------------------------------------------------------
+\subsection{Crossing is incursion, and the price of it is general}
+\label{sec:results-crossing}
+% -----------------------------------------------------------------------------
 
-\item[L1 arm.] The 16-dim fingerprint adding the L1 sub-simplex is
-  bootstrap-stable (ARI 0.84) and ARI 0.32 against the 13-dim --- content style
-  is a distinct behavioural axis. \textbf{Report 13-dim as primary}; the 16-dim
-  variant is exploratory given L1's reliability.
+\candidate{S5.6.1}
+We set out to find a bridge-user type and there is none. Density-based
+clustering of author fingerprints returned 100\% noise at every parameter
+setting we tried, and $k$-means silhouettes hovered near 0.1. Boundary-crossing
+behaviour in this corpus is a continuum, not a set of discrete kinds, and
+forcing clusters through more aggressive projection would have manufactured
+types rather than found them. We therefore describe archetypal regions instead.
+A Gaussian mixture at $K = 3$ was stable under bootstrap resampling
+(adjusted Rand index 0.875), and we chose $K$ on that stability rather than on
+information criteria, which kept falling through $K = 8$. The three regions hold
+2,084, 2,061 and 1,779 authors, and we label them Pakistan-sympathetic,
+India-partisan hawkish and India-leaning civil.
 
-\item[Vocabulary.] Use \textbf{``boundary-crossers''} throughout. Never ``bridge
-  users'' --- R6 refutes the bridge framing and the vocabulary should follow.
+\candidate{S5.6.2}
+Crossing concentrated in the hawkish region. Archetype and cross-community
+participation were associated at $\chi^2(2) = 301.9$, Cram\'er's $V = 0.226$,
+$p = 2.72 \times 10^{-66}$, with adjusted residuals of $+17.1$ for the
+India-partisan hawkish region and $-11.6$ for the Pakistan-sympathetic one. A
+continuous measure says the same thing more directly. Authors who stayed in one
+community scored $+0.051$ on a bridging index, while those who crossed scored
+$-0.026$. Crossing a community boundary and bridging between communities are not
+the same behaviour here, and the participants who do the former are drawn
+disproportionately from the more combative end of the distribution.
 
-\item[Figures.] \texttt{r6\_stability\_panel.png},
-  \texttt{r6\_crosscommunity\_mosaic.png}, \texttt{r6\_punishment\_forest.png}
-  and \texttt{r6\_raiding\_signature.png} (combine into one 2-panel).
-  \textbf{\texttt{r6\_trace\_timelines.png} cannot be published.}
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{figures/r6_raiding_signature}
+  \caption{The same authors, compared against themselves in their home
+  communities and in communities aligned against them.}
+  \Description{Grouped bar chart with three pairs of bars comparing in-group and
+  out-group comments by the same 1,606 authors. Anti-out-group stance rises from
+  0.339 to 0.376 when those authors post across the boundary, a significant
+  increase. Targeted toxicity falls slightly from 0.088 to 0.079, also
+  significant. Negative sentiment is unchanged at about 0.63.}
+  \label{fig:r6raiding}
+\end{figure}
 
-\item[Status.] Clustering exploratory; concentration, punishment, and raiding
-  tests confirmatory.
-\end{description}
+\candidate{S5.6.3}
+Communities penalised outsiders, and the penalty did not distinguish between
+kinds of outsider. Across 16,266 out-group comments, of which 49.4\% fell below
+the local median score, the Pakistan-sympathetic region was punished at an odds
+ratio of 2.014 ($95\%$ CI $[1.673, 2.425]$). A provocateur index predicted
+punishment at 1.549 $[1.058, 2.266]$, and so did a simple rate of asking
+questions, at 2.146 $[1.062, 4.334]$. The bridging index did not reach
+significance, at 1.464 $[0.997, 2.148]$, $p = .052$. Hostile, balanced and
+merely inquisitive outsiders were all down-weighted, which indicates that these
+communities penalised non-congruence itself rather than incivility.
+
+\candidate{S5.6.4}
+Following the same authors across the boundary shows that this is a change in
+conduct and not in composition. We paired 1,606 authors who commented at least
+three times in both home and opposed communities and compared each author
+against themselves. Figure~\ref{fig:r6raiding} reports the result. Anti-out-group
+stance rose from 0.339 at home to 0.376 across the line
+(paired Wilcoxon $p < .001$), while targeted toxicity fell slightly, from 0.088
+to 0.079 ($p < .001$), and negative sentiment did not move ($p = .852$). The
+same people pushed harder against the opposing position while moderating their
+slurs. We read this as antagonistic incursion rather than contact, and we use
+the term boundary-crossers rather than bridge users throughout, because the
+bridging reading is what these data refute.
+
+\candidate{S5.6.5}
+The pattern survived the choices available to us. Raising the minimum
+activity threshold from five to ten to twenty comments moved the concentration
+statistic across 0.181, 0.226 and 0.228, and the provocateur odds ratio across
+1.52, 1.55 and 1.77. Excluding Operation Sindoor left the provocateur effect at
+1.632 $[1.059, 2.516]$. Two independent toxicity labellers agreed on the
+underlying construct at $\kappa = 0.852$. We report the thirteen-dimensional
+fingerprint as primary and treat the variant that adds content type as
+exploratory, given what \S\ref{sec:data-coders} reports about that layer.
 
 \subsection{Contested discourse tracks frame and community, not toxicity (R8)}
 \budget{515}
