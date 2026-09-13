@@ -571,6 +571,24 @@ commenters are terser but \emph{less} neutral --- more pointedly opinionated, an
 asking more questions, not fewer --- which runs against the spiral-of-silence
 prediction rather than confirming a muted version of it.
 
+\jun{Added the participation-channel test (my part; \texttt{scripts/r7\_participation.py}).
+R7's main test is expression silencing; this covers the participation channel a
+reviewer will ask about.}
+The spiral-of-silence prediction can also surface as \emph{participation}
+silencing --- posting fewer comments --- rather than the \emph{expression}
+silencing (shorter, more neutral, more hedged comments) the main test measures.
+We tested this channel directly with an author-panel difference-in-differences on
+each author's baseline-to-acute change in comment count, with author lean fixed
+from the baseline phase. Here the descriptive signal is stronger and in the
+predicted direction: minority authors reduce their posting more than majority
+authors in all four events with a usable panel (pooled $\beta_3 = -0.143$ on log
+count). But it meets the same wall: the effect is CRV1-significant ($p = 0.005$)
+and does not survive the wild cluster bootstrap ($p = 0.18$), the identical
+collapse the other estimates show, and it inherits the same survivorship limit
+(authors already silent in the baseline are unobserved) and event-clustering
+confound. The participation channel is therefore no more identifiable than the
+expression channel; the negative result holds across both.
+
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.72\linewidth]{figures/r4r7_crv1_vs_wcb.png}
