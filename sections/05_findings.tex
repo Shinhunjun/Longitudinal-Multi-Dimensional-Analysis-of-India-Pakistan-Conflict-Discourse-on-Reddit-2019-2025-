@@ -1,220 +1,356 @@
 %% ===========================================================================
 \section{Findings}
-\budget{3,000}
+\label{sec:results}
 
-\subsection{Crisis type, not era, fixes the compositional signature (R1)}
-\budget{425}
+\yash{this section is WIP}
 
-\begin{description}
-\item[Claim.] The Frame $\times$ Sentiment signature is a property of crisis
-  \emph{type}; six years of platform change do not move it.
+\candidate{S5-lede}
+This section takes the three questions of \S\ref{sec:intro} in order, and
+the unit of analysis changes as it goes. The first subsection works at the level
+of the comment, asking what these communities contested. The next three work at
+the level of a community within an event, asking why their contests differed.
+The two after that follow participants to the reply dyad and then to the author,
+across the boundaries the earlier subsections establish. Most results run on the
+160,050 comments inside the six crisis windows that carry every layer they need,
+with the reply-level results on 95,301 dyads and the author-level results on the
+5,924 authors active enough to profile. Wherever a result rests on a machine
+label we report a robustness arm that varies the labeller, because the
+specification curve of \S\ref{sec:results-threads} shows that this choice moved
+estimates more than any sampling decision we made. The section closes with what
+these data cannot support, which is the causal reading we had intended to give
+them.
 
-\item[Primary evidence.] Pairwise cosine between 18-dim event signatures,
-  thread-clustered bootstrap. Pulwama $\leftrightarrow$ Sindoor \textbf{0.0074}
-  [0.0022, 0.0313]; Article 370 $\leftrightarrow$ Sindoor 0.2749 [0.2332,
-  0.3114]. \textbf{Separation is CI-based and contrast-specific}: across the 6
-  military--military pairs, max CI hi $=\textbf{0.0768}$; across the 4
-  military--constitutional pairs, min CI lo $=\textbf{0.1359}$; gap 0.0591.
-  State the contrast explicitly --- the diplomatic event (Ceasefire 2021) is
-  \emph{not} part of this separation and does not separate cleanly.
+% -----------------------------------------------------------------------------
+\subsection{Contestation tracks frame and community, not toxicity}
+\label{sec:results-contestation}
+% -----------------------------------------------------------------------------
 
-\item[What changed from v1.] The v1 permutation null \textbf{tested the opposite
-  of the claim} --- it permuted frame and sentiment independently, destroying the
-  association under test --- and its printed conclusion inverted the comparison.
-  The corrected event-label null says signatures differ for \emph{every} pair
-  including the military ones (all $p_\mathrm{perm} = 0.001$). The
-  military-cluster claim now rests on interval separation alone, at roughly half
-  the v1 margin. Say so.
+\candidate{S5.1.1}
+What a community argued over was set by the frame a comment advanced and the
+community it appeared in. How offensively it was worded hardly mattered. We
+measured contestation with Reddit's \texttt{controversiality} flag, which marks
+comments drawing substantial votes in both directions. Across the 300,908
+comments carrying every layer this analysis requires, 6.91\% were flagged. That
+rate rose to 17.43\% where a contested frame met a general-audience community,
+in humanitarian-framed comments in the three general-audience communities
+($N = 4{,}005$, Wilson 95\% CI [16.28, 18.63]). Inside the crisis windows it
+reached 18.54\%.
 
-\item[Divergence geometry.] Per-frame cross-community JSD, Miller--Madow
-  corrected, exact multivariate-hypergeometric null, BH-FDR over 36 cells:
-  \textbf{8/36 significant}. Top: Sindoor $\times$ Religious/Cultural 0.0266
-  (BH $p$ 0.006); Balakot $\times$ Economic 0.0128; Balakot $\times$
-  Security/Military 0.0082. \textbf{Plug-in versus MM changes point values by a
-  median 96.6\% but zero verdicts} --- this closes blocker B2.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{figures/s5_f1_contestation_grid.pdf}
+  \caption{Observed contestation rate by community alignment, narrative frame
+  and offensiveness. General-audience communities are labelled \emph{neutral}.}
+  \Description{Heatmap of controversiality rate across six narrative frames and
+  six columns, one per community alignment crossed with offensive and
+  not-offensive. Cells with fewer than one hundred comments are masked. Within
+  each alignment block the offensive and not-offensive columns are close in
+  shade, while the three blocks differ sharply from one another, so the
+  horizontal variation between communities dominates the variation between
+  offensive and not-offensive. The darkest cells are humanitarian framing in the
+  general-audience block at 17.4 and 17.7 percent.}
+  \label{fig:r8heatmap}
+\end{figure}
 
-\item[Trigger versus retaliation.] Trigger $\times$ Humanitarian JSD
-  \textbf{0.0413} ($p_\mathrm{adj}$ 0.018) versus retaliation $\times$
-  Humanitarian 0.0016 ($p_\mathrm{adj}$ 0.036) --- a \textbf{26$\times$}
-  difference, the sharpest trigger-specific effect.
+\candidate{S5.1.2}
+The contrast that carries this result is with toxicity. Offensive-targeted
+comments were flagged 7.67\% of the time and non-offensive comments 6.83\%, a
+separation of 1.12-fold. Community alignment separated the same outcome
+2.5-fold, from 11.74\% in general-audience communities through 8.24\% in the
+Pakistan-aligned community to 4.75\% in the India-aligned ones. Narrative frame
+separated it 1.8-fold, from 10.44\% under humanitarian framing down to 5.89\%
+under economic framing. The layer that content moderation acts on is the one
+that moved the outcome least.
 
-\item[Composition.] Frame $\times$ crisis\_type $\chi^2(10) = 17{,}743.3$,
-  $V = 0.235$, $N = 160{,}050$; adjusted residuals isolate Security/Military
-  $\times$ military\_kinetic $z = +129.2$ and Political $\times$
-  political\_constitutional $z = +101.2$. Nested LR test of the crisis\_type
-  $\times$ community interaction: \textbf{$\chi^2(20) = 834.4$,
-  $p = 6.92 \times 10^{-164}$}, McFadden $0.0523 \rightarrow 0.0544$, 37{,}762
-  author clusters, SE inflation 1.27$\times$.
+\candidate{S5.1.3}
+Holding the frame constant sharpens the point. Among humanitarian-framed
+comments, offensive ones were flagged 10.18\% of the time ($n = 1{,}778$) and
+non-offensive ones 10.47\% ($n = 12{,}155$). The difference runs in the opposite
+direction to the one a tone account predicts.
+Figure~\ref{fig:r8heatmap} shows this across the whole grid: the offensive and
+not-offensive columns within each alignment block are close, while the blocks
+differ from one another. A humanitarian frame divided an audience whether or not
+it arrived politely, which indicates that the toxicity axis collapses once the
+frame is known.
 
-\item[Temporal.] Volume and sentiment volatility inversely associated: Spearman
-  $\rho = -0.771$, $p = 0.072$, $n = 6$, stable across 3/5/7-day windows. Report
-  as an observation \textbf{with its $n$ in the sentence}, not the footnote.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth]{figures/s5_f2_community_rates.pdf}
+  \caption{Contestation rate per community, coloured by alignment group.
+  General-audience communities are labelled \emph{neutral}.}
+  \Description{Horizontal bar chart of controversiality rate for the ten
+  communities in the three alignment groups. The three general-audience
+  communities occupy the top three positions at 12.6, 11.7 and 8.6 percent,
+  followed by the Pakistan-aligned community at 8.2 percent, then the six
+  India-aligned communities from 7.2 percent down to 1.2 percent. No
+  India-aligned community except r/india exceeds any general-audience one.}
+  \label{fig:r8subreddits}
+\end{figure}
 
-\item[Change points.] \textbf{PELT~\cite{killick2012pelt} returned zero change
-  points for every event.} Binseg's change points were produced by a
-  \emph{forced} \texttt{n\_bkps} and are reported as such --- tried-and-failed,
-  not omitted~\cite{truong2020changepoint}.
+\candidate{S5.1.4}
+The community effect is not the property of a single venue.
+Figure~\ref{fig:r8subreddits} ranks the ten communities. All three
+general-audience communities led, at 12.57\% for \texttt{r/geopolitics}, 11.69\%
+for \texttt{r/worldnews} and 8.59\% for \texttt{r/lesscredibledefence}
+($n = 803$). The last of these alone exceeded every India-aligned community
+except \texttt{r/india} at 7.21\%. We refit the model with subreddit fixed
+effects, which estimates the frame gradient net of whichever community a comment
+sits in. It fit better than the alignment model (AIC 142,208.9 against
+144,180.0), and the frame gradient survived. The humanitarian-to-economic odds
+ratio compressed only from 1.67 to 1.57 once community composition was absorbed.
 
-\item[Counter-intuitive detail worth keeping.] Article 370, the most politically
-  contentious event, is the most affectively \emph{convergent} across
-  communities.
+\candidate{S5.1.5}
+Reading the flagged comments indicates what these communities were contesting.
+We drew all 698 flagged humanitarian comments in general-audience communities
+and read the 479 running between fifteen and one hundred and twenty words. Of
+the full cell, 86.7\% carried no offensive label at all. What recurred were
+disputed factual claims about civilian harm and rights: troop-to-population
+ratios, detention counts, communications blackouts, and comparisons drawn to
+other contested territories. Roughly one in nine carried a source link. The cell
+held both such claims and their refutations. One comment catalogued mass
+detentions of professors, lawyers and politicians alongside a communications
+shutdown. Another, in the same frame and the same community, rejected a parallel
+claim as unevidenced and fabricated. These communities divided over whether the
+claim was true, not over whether it was civil, which is the mechanism the
+tone-independence result implies.
 
-\item[Figures.] \texttt{r1r2\_cosine\_forest.png},
-  \texttt{r1r2\_jsd\_heatmap.png}, \texttt{r1r2\_residuals.png},
-  \texttt{r1r2\_temporal.png}.
+\candidate{S5.1.6}
+Three qualifications discipline these claims. First,
+\texttt{controversiality} tracks low net score mechanically. Some 23.8\% of
+comments at a net score of zero or below were flagged, against 0.02\% of those
+above one hundred. The flag therefore registers contested reception rather than
+observed deliberation, and we avoid deliberation language throughout. Second,
+general-audience communities draw a more transient audience, at 2.69 comments
+per author against 4.50 in India-aligned and 5.04 in Pakistan-aligned
+communities. That raises audience heterogeneity as an alternative to
+permeability, and we tested it rather than asserting against it. Adding an
+author-activity control left the general-audience odds ratio essentially
+unchanged, at 2.785 against 2.697. Restricting to committed participants widened
+rather than narrowed the gap, from a rate ratio of 2.47 across all authors to
+2.81 among those with at least twenty comments. A transient-voter artefact would
+have moved both the other way. Third, alignment and community are collinear, so
+the fixed-effects result establishes that these three particular communities are
+high, which is a descriptive rather than a construct-level claim. Dropping
+\texttt{r/worldnews} moves the single hottest cell from humanitarian to
+historical-grievance framing.
 
-\item[Status.] Exploratory-descriptive with bootstrap support.
-\end{description}
 
-\subsection{Threads integrate, replies persist, and crossing carries hostility (R2)}
-\budget{475}
+% -----------------------------------------------------------------------------
+\subsection{Crisis type, not era, fixes the compositional signature}
+\label{sec:results-signature}
+% -----------------------------------------------------------------------------
 
-\begin{description}
-\item[Claim 1.] Frame echo chambers do not exist at the thread level.
-  Co-occurrence density \textbf{1.0} (15/15 edges) in all six events; Louvain
-  $Q = 0.000$ (sd 0, 20 seeds) against a weight-preserving null of mean 0.045,
-  $p = 1.000$~\cite{traag2019leiden}. Frames are not merely unclustered --- they
-  are \textbf{less separable than a randomly reweighted complete graph}. This
-  contradicts the fragmentation hypothesis the study started with; say so.
+\candidate{S5.2.1}
+An event's signature, meaning the mix of frames used and the sentiment attached
+to them, tracked the kind of crisis more closely than the year it occurred. We
+represented each event in each community as a six-by-three frame-by-sentiment
+joint-proportion matrix and compared events by cosine distance, with intervals
+from a thread-clustered bootstrap. Pulwama and Operation Sindoor lie six years
+apart and both are military-kinetic events. Their signatures were almost
+indistinguishable, at a cosine distance of 0.0074 (95\% CI [0.0022, 0.0313]).
+Pulwama and the constitutional change six months later sat far apart, at 0.2058
+([0.1359, 0.2668]).
 
-\item[Claim 2.] Replies persist in-frame. Assortativity $r = 0.28$--$0.39$;
-  pooled parent-to-child $\chi^2 = 56{,}004.5$, $V = 0.343$ over
-  \textbf{95,301} dyads; within-thread permutation (1{,}000 reps/event) puts
-  observed $\chi^2$ at \textbf{3.18--4.92$\times$} the null mean at every event
-  including the smallest.
+\candidate{S5.2.2}
+The separation held across the comparison as a whole. Among the six
+military-to-military pairs the largest interval reached only 0.0768, while among
+the four military-to-constitutional pairs the smallest began at 0.1359, leaving
+a gap of 0.0591 between the two families. We report this as interval separation
+and not as a test. An event-label permutation null found that every pair of
+signatures differed, including the military ones, so the permutation machinery
+establishes that events are distinguishable rather than that military events
+cluster. The diplomatic event does not join the pattern. The 2021 ceasefire sat
+closer to the constitutional change (0.0377) than several military events sat to
+each other, so the regularity we report holds for the military-constitutional
+contrast alone.
 
-\item[Claim 3.] Minority frames persist most strongly relative to base rate.
-  Author-clustered one-versus-rest odds (24{,}059 clusters, BH over 6):
-  \textbf{Economic 26.0, Historical Grievance 20.2, Religious/Cultural 18.3,
-  Humanitarian 7.3, Security/Military 6.4, Political 5.3}, all $p < .001$.
-  Author clustering inflates SEs by only 1.007$\times$, which is what pushes
-  this past latent homophily.
+\candidate{S5.2.3}
+Frame composition itself divided sharply by crisis type
+($\chi^2(10) = 17{,}743.3$, Cram\'er's $V = 0.235$, $N = 160{,}050$). Adjusted
+residuals isolated where the division fell: security and military framing
+concentrated in military-kinetic events ($z = +129.19$) and political framing in
+the constitutional one ($z = +101.22$). Community alignment moderated that
+composition rather than merely shifting it. A nested likelihood-ratio test of
+the crisis-type by community interaction returned
+$\chi^2(20) = 834.4$, $p = 6.92 \times 10^{-164}$, with McFadden's pseudo-$R^2$
+moving from 0.0523 to 0.0544 under standard errors clustered on 37,762 authors.
 
-\item[Claim 4.] Frame-crossing brings hostility without persuasion. Cross-frame
-  replies more toxic in all six events: pooled \textbf{$+0.0284$} [0.0251,
-  0.0317], rank-biserial \textbf{$r = +0.102$}, Mann--Whitney
-  $p = 3.44 \times 10^{-155}$, $N = 93{,}368$ --- \textbf{the sign was inverted
-  in all seven v1 rows and is corrected here}. Replicated on the second labeller
-  (Claude L6a): offensive \textbf{$+1.30$ pp} ($z = 6.78$), targeted
-  \textbf{$+1.56$ pp} ($z = 8.59$) --- this answers V9. Sentiment-shift rate is
-  \emph{lower} for cross-frame replies ($-1.75$ pp, $z = -5.39$).
+\candidate{S5.2.4}
+Where communities diverged affectively, they diverged inside particular frames
+rather than across the board. We computed the Jensen-Shannon divergence of the
+sentiment distribution within each frame between the India-aligned and
+Pakistan-aligned communities, bias-corrected and tested against an exact
+hypergeometric null with Benjamini-Hochberg correction over all 36 cells. Eight
+survived. The largest was religious and cultural framing during Operation
+Sindoor (0.0266, adjusted $p = .006$), followed by economic framing during
+Balakot (0.0128) and security and military framing during Balakot (0.0082).
+Pooling by the role an event played sharpened this further. Humanitarian framing
+diverged twenty-six times more strongly during the attacks that triggered a
+crisis (0.0413, adjusted $p = .018$) than during the retaliations that followed
+them (0.0016, adjusted $p = .036$).
 
-\item[Claim 5.] Frames diversify with depth --- but in \textbf{4 of 6 events},
-  not 6/6. $\Delta H$ ranges $+0.046$ to $+0.228$; clustered CIs include zero for
-  Ceasefire and Pahalgam. Economic and Historical Grievance grow in 6/6;
-  Political shrinks in 5/6.
+\candidate{S5.2.5}
+Reading the largest divergent cell indicates what that divergence consisted of.
+Religious and cultural framing during Operation Sindoor covered 2,013 comments
+across the two aligned communities. The sentiment split differed markedly.
+Negative comments ran at 79.3\% on the India-aligned side against 63.6\% on the
+Pakistan-aligned one, and positive comments at 8.3\% against 21.6\%. The
+two sides were not doing the same thing under one label. India-aligned comments
+under this frame overwhelmingly characterised the other community's religiosity,
+attributing its positions to religious identity or to religious schooling.
+Pakistan-aligned comments carried a register with almost no counterpart on the
+other side, invoking scripture and offering prayers for the armed forces in
+Arabic and Urdu. The positive tail that the divergence statistic detects is
+largely devotional speech, which suggests a frame label can conceal two
+different speech acts rather than one contested topic.
 
-\item[Claim 6 (reframed).] The apparent community effect on Humanitarian
-  persistence is a \textbf{venue} effect. Across alignments the spread is 0.088;
-  \emph{within} india\_aligned alone it is \textbf{0.160} --- larger.
-  r/indianews 0.056 to r/india 0.216, with r/indiandefense militarizing 57.3\% of
-  Humanitarian parents. pakistan\_aligned is one subreddit, so no such
-  replication is possible on that side. This is vulnerability V3 handled in the
-  Findings rather than deferred.
+\candidate{S5.2.6}
+Two temporal results bound what this section claims. Higher-volume crises tended
+to produce less volatile daily sentiment, at Spearman's
+$\rho = -0.77$, $p = .072$, $n = 6$, stable across three-, five- and seven-day
+windows. With six events this is an observation rather than a test, and we
+report it as one. We also searched each event's daily sentiment series for
+change points and found none: the PELT procedure returned zero change points for
+every event. Our binary-segmentation results come from a forced number of
+breaks, so we report them as an unsuccessful search rather than a located one.
+One counter-intuitive detail survives all of this. The constitutional change,
+the most politically contentious event in the corpus, was the most affectively
+convergent across communities.
 
-\item[Robustness.] \textbf{36-cell specification curve} (Sindoor in/out $\times$
-  confidence none/0.6/0.7 $\times$ genre all-L1/Opinion-only $\times$ labeller
-  Perspective/L6a): hostility premium median 0.0241 [0.0130, 0.0429], Historical
-  Grievance multiplier median 9.25 [8.17, 10.15] --- \textbf{100\% of CIs exclude
-  the null in both}. The largest single source of variation is \textbf{which
-  model produced the label}, not any sampling choice. This is the empirical form
-  of V1 and it sets up \S6.4.
+% -----------------------------------------------------------------------------
+\subsection{In-group affective privileging}
+\label{sec:results-affect}
+% -----------------------------------------------------------------------------
 
-\item[Caveats to keep in-sentence.] ``Persistence'', never ``contagion''
-  \cite{versteeg2013influence} --- the permutation test controls topic coherence,
-  not user selection. Cross-frame toxicity is a \emph{small} effect
-  ($r \approx 0.10$); state $r$ in the sentence.
+\candidate{S5.3.1}
+A frame was not one object across communities. We had expected any asymmetry to
+appear in negativity, and it did not. It appeared in positivity: the community
+whose identity a frame engaged rendered that frame as heroic rather than
+grim. We modelled sentiment as a multinomial logit on narrative frame
+interacted with community, controlling crisis type and content type, with
+standard errors clustered on authors. The interaction was strongly supported
+($\chi^2(20) = 179.8$, $p = 1.05 \times 10^{-27}$, $N = 160{,}050$), with
+McFadden's pseudo-$R^2$ moving from 0.0513 to 0.0520.
 
-\item[Qualitative.] Six persistence mechanisms with $n$: adversarial in-frame
-  argument, argumentative loops, ideological escalation, collaborative
-  information exchange, collaborative history construction, self-contained
-  technical discourse. Humanitarian $\rightarrow$ Security/Military is the most
-  toxic transition sampled (0.961--0.975).
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\linewidth]{figures/r5_ame_plot}
+  \caption{Community gaps in adjusted sentiment by narrative frame, with 95\%
+  simulation intervals. General-audience communities are labelled
+  \emph{neutral}, and India-aligned communities are the reference.}
+  \Description{Two panels of point estimates with 95 percent simulation
+  intervals, one for probability of negative sentiment and one for probability of
+  positive sentiment, across six narrative frames sorted by the size of the
+  general-audience gap. Each frame carries two estimates, the Pakistan-aligned
+  minus India-aligned gap and the general-audience minus India-aligned gap. A
+  filled marker is an interval that excludes zero and an open marker one that
+  spans it. In the positive panel every general-audience estimate falls below
+  zero with a filled marker, the largest being humanitarian framing at about
+  minus nine percentage points. In the negative panel the general-audience
+  estimates for security and military framing and for humanitarian framing sit
+  above zero.}
+  \label{fig:r5ame}
+\end{figure*}
 
-\item[Figures.] \texttt{r1r2\_transition\_heatmaps.png},
-  \texttt{r1r2\_persistence\_ci.png}, \texttt{r1r2\_toxicity\_forest.png},
-  \texttt{r1r2\_depth\_deltaH.png}, \texttt{r1r2\_spec\_curve.png}.
+\candidate{S5.3.2}
+Figure~\ref{fig:r5ame} locates the asymmetry. Under security and military
+framing, the adjusted probability that a comment read as positive was 0.094 in
+India-aligned communities, 0.082 in the Pakistan-aligned community and 0.050 in
+general-audience ones. Under humanitarian framing the India-aligned figure rose
+to 0.143 against 0.051 in general-audience communities. The general-audience
+gap was negative and significant on all six frames, ranging from $-0.021$ to
+$-0.092$. Aligned communities produced a more positive reading of every frame we
+measured, and the effect was largest where the frame carried moral weight.
 
-\item[Status.] Descriptive and permutation-supported; persistence confirmatory
-  under author clustering.
-\end{description}
+\candidate{S5.3.3}
+The negativity side of the same model shows who supplies the contrast. Under
+security and military framing, general-audience communities were 5.2 percentage
+points more likely than India-aligned ones to read negatively. The
+Pakistan-aligned community was not distinguishable from the India-aligned one on
+that frame. The gap was therefore carried by general-audience detachment rather
+than by opposition between the two aligned communities. This suggests that what
+separates a partisan community here is engagement with the frame, not a position
+on the conflict.
 
-\subsection{In-group affective privileging (R5, the strongest confirmatory result)}
-\budget{565}
+\candidate{S5.3.4}
+That reading invites an obvious objection, namely that we had measured stance in
+disguise. We tested it by refitting the model with both stance axes as controls.
+The interaction strengthened rather than attenuated
+($\chi^2(20) = 287.6$, $p = 2.75 \times 10^{-49}$), and several contrasts that
+had been indistinguishable became significant. Affect and stance are separable
+in these data. Two cells did not survive the control, and we report them.
+The Pakistan-aligned gap in negativity under humanitarian framing reversed
+direction and lost significance, moving from $+0.038$ to $-0.018$. The
+equivalent gap under economic framing attenuated by 38\%.
 
-\begin{description}
-\item[Hypothesis.] Reframed after the naive directional guess failed. The
-  asymmetry is in \emph{positivity}, not negativity: the identity-congruent
-  community renders a frame as heroic-patriotic. \textbf{Report the reframing
-  openly} --- it is the honest version and reviewers reward it.
+\candidate{S5.3.5}
+Reading the cell where the asymmetry is largest indicates the mechanism. We
+counted in-group pride markers among the 5,208 positively-read
+security-and-military comments inside the crisis windows. Some marker appeared
+in 52.2\% of the India-aligned comments ($n = 3{,}698$) and 47.6\% of the
+Pakistan-aligned ones ($n = 517$), against 33.8\% of the general-audience
+comments ($n = 993$). First-person plural forms alone ran at 40.5\% against
+22.4\%. Reading the comments explains what the counts register. India-aligned
+comments in this cell claimed the armed forces in the first person plural and
+praised their capability in a heroic register. General-audience comments
+attached their positive sentiment to de-escalation instead, welcoming restraint
+between two nuclear powers and hoping the exchange would not widen. The two
+communities were not disagreeing about the military. They were performing
+different speech acts under one frame label, which is the qualitative form of
+the gap in Figure~\ref{fig:r5ame}. We offer these markers as corroboration
+rather than as an estimand, since the lexicon is a coarse high-precision
+heuristic.
 
-\item[Confirmatory test.] Multinomial logit, sentiment $\sim$ Frame $\times$
-  Community $+$ crisis\_type $+$ L1, author-clustered SEs, base $=$ Neutral.
-  \textbf{LR $\chi^2(20) = 179.8$, $p = 1.05 \times 10^{-27}$,
-  $N = 160{,}050$}; McFadden $0.0513 \rightarrow 0.0520$. Brant test rejects
-  proportional odds, justifying multinomial over ordinal.
+\candidate{S5.3.6}
+The result held under every arm we ran. Excluding Operation Sindoor, which
+supplies the largest single block of comments, strengthened it
+($\chi^2(20) = 231.0$, $N = 91{,}418$). So did restricting to high-confidence
+machine labels ($\chi^2(20) = 176.1$, $N = 88{,}534$) and extending to the full
+corpus with crisis phase controlled ($\chi^2(20) = 533.6$, $N = 305{,}165$).
+Content type bounds where the asymmetry lives. It was strong within opinion and
+commentary ($\chi^2(20) = 161.6$, $p = 3.8 \times 10^{-24}$, $n = 125{,}107$)
+and absent in satire ($p = .72$) and in factual claims ($p = .46$). The
+asymmetry is therefore a property of how these communities expressed a position,
+not of the genre composition of what they posted.
 
-\item[Key AMEs, $P$(Positive).] Security/Military: india 0.094, pakistan 0.082,
-  neutral 0.050. Humanitarian: india 0.143 versus neutral 0.051.
-  \textbf{neutral $-$ india is negative and significant on all six frames}
-  ($-0.021$ to $-0.092$).
+% -----------------------------------------------------------------------------
+\subsection{Communities reward the same affect differently}
+\label{sec:results-reward}
+% -----------------------------------------------------------------------------
 
-\item[Key AMEs, $P$(Negative).] Security/Military neutral $-$ india
-  \textbf{$+0.052$} (sig); Humanitarian pakistan $-$ india $+0.038$ and neutral
-  $-$ india $+0.070$; Religious/Cultural pakistan $-$ india \textbf{$-0.069$};
-  Economic pakistan $-$ india \textbf{$-0.063$}. The Security/Military negativity
-  gap is carried by \emph{neutral being detached-critical}, not by pakistan.
+% \input{tables/tab_reward}
 
-\item[Discriminant validity.] Adding both L4 stance axes \textbf{strengthens}
-  the interaction: $\chi^2(20) = 287.6$, $p = 2.75 \times 10^{-49}$. Several
-  contrasts go from n.s.\ to significant. Two attenuate --- Economic $+38\%$, and
-  \textbf{the Humanitarian pakistan$-$india gap flips sign and is reported as not
-  robust. Report the one that fails.}
+\candidate{S5.4.1}
+The production asymmetry of \S\ref{sec:results-affect} was compounded by a
+reception asymmetry. We regressed a sign-preserving log of comment score on
+sentiment interacted with frame and community, controlling crisis type, crisis
+phase, content type and whether a comment opened a thread, with standard errors
+clustered on authors. Table~\ref{tab:reward} reports the adjusted predictions
+within security and military framing. Negatively-read comments were rewarded
+least in the Pakistan-aligned community and most in general-audience ones, at
+1.239 against 1.418 in India-aligned communities and 1.566 in general-audience
+ones. Both contrasts excluded zero. The neutral-sentiment row reproduced the
+same ordering. Neither positive-sentiment contrast was distinguishable from
+zero, so the differential reward we can demonstrate falls on comments that are
+not positive.
 
-\item[Geometry.] Miller--Madow per-frame JSD with permutation BH-FDR: 8/36 cells
-  survive, concentrated in Security/Military and Political.
+\candidate{S5.4.2}
+Three properties of this measure bound the claim. The outcome is a
+sign-preserving log because 9.25\% of scores in the corpus are strictly
+negative, which rules out a count model. Score is a noisy proxy for
+endorsement, and it is the same platform vote signal that
+\S\ref{sec:results-contestation} draws on, so these findings are not
+independent tests of community reception but two readings of one instrument.
+Most importantly, the model does not control stance. Reading the
+least-rewarded comments in this cell indicates why that matters: in
+general-audience and India-aligned venues alike, the comments that fared worst
+carried a stance against India. Part of what separates these communities may
+therefore be the stance composition of what gets posted in them rather than a
+difference in how a fixed comment would be received. We read the result as a
+venue-level reception difference that our controls do not purge of stance, which
+tempers rather than removes its bearing on moral-emotional diffusion inside
+group boundaries~\cite{brady2017emotion}.
 
-\item[Mechanism (corroboration, not estimand).] In-group-pride lexical markers
-  in the Security/Military $\times$ Positive cell: any marker 0.522 india, 0.476
-  pakistan, 0.338 neutral; first-person plural 0.405, 0.368, 0.224;
-  nation-forces 0.225, 0.172, 0.123. Coarse high-precision heuristic --- flag it
-  as such.
-
-\item[Robustness.] Five arms, all strengthening or holding: Sindoor-excluded
-  $\chi^2 = \textbf{231.0}$; high-confidence-only 176.1; Opinion-only 161.6;
-  full corpus $+$ phase \textbf{533.6}.
-
-\item[Measurement defence.] Machine error is not associated with community
-  alignment (L5 $\chi^2$ $p = 0.492$; L2 $p = 0.820$) --- see \\S3.9. This is the
-  answer to the obvious differential-measurement-error attack and should be
-  cited here, not left in Methods.
-
-\item[Figures.] \texttt{r5\_predicted\_prob\_heatmap.png},
-  \texttt{r5\_ame\_plot.png} (\textbf{the single most important figure}),
-  \texttt{r5\_stance\_attenuation.png}, \texttt{r5\_perframe\_jsd.png}.
-
-\item[Status.] \textbf{Confirmatory.}
-\end{description}
-
-\subsection{Communities reward the same affect differently (R5.5)}
-\budget{240}
-
-\begin{itemize}
-\item Predicted \texttt{score\_log} for Security/Military $\times$ Negative:
-  india 1.418, pakistan 1.239 (\textbf{$-0.179$}, sig), neutral 1.566
-  (\textbf{$+0.148$}, sig). The Neutral-sentiment row shows the same ordering
-  ($-0.066$ / $+0.215$, both sig); the Positive row is not significant.
-\item Production asymmetry is compounded by \textbf{reception} asymmetry.
-\item Note the modelling choice and why: \texttt{score\_log} is a
-  sign-preserving log because 9\% of scores are negative, which rules out a count
-  model.
-\item Connect to Brady et al.~\cite{brady2017emotion} on moral-emotional
-  diffusion within group boundaries.
-\item \textit{Caveat:} \texttt{score} is a noisy endorsement proxy; triangulate
-  with controversiality and percentile. This is one of the three findings riding
-  the same platform vote signal (V2) --- acknowledge that here, not only in \S7.
-\item \textbf{Figure} \texttt{r5\_reward\_asymmetry.png}.
-\end{itemize}
 
 \subsection{Crossing is incursion, and the price of it is general (R6)}
 \budget{515}
@@ -347,42 +483,6 @@ specific neutral subreddits are high, a descriptive rather than a construct-leve
 claim. Finally, dropping r/worldnews moves the single hottest cell from
 humanitarian to historical-grievance framing: the block-level result is robust,
 but the identity of the top cell is not.
-
-% =========================================================================
-% OLD BULLET SPECIFICATION (commented out per Mohit: comment old, add new).
-% Superseded by the prose above. Kept for traceability of the source numbers.
-% =========================================================================
-% \begin{description}
-% \item[Headline.] Controversiality is driven by frame--community mismatch.
-%   Neutral $\times$ Humanitarian $= 17.4\%$ ($n = 4{,}110$, Wilson 95\%
-%   CI [16.4\%, 18.7\%]), rising to 18.5\% inside crisis windows, against
-%   a corpus rate of 6.91\% over 300{,}908 complete rows.
-% \item[The negative that carries the paper.] Offensive-Targeted 7.67\%
-%   versus Not Offensive 6.83\% --- OR $\approx 1.13$ (M3) / 1.17 (subreddit FE).
-%   Alignment separates rates 2.5$\times$ and frame 1.8$\times$; offensiveness 1.12$\times$.
-% \item[Alignment gradient.] neutral 11.74\% $>$ pakistan\_aligned 8.24\% $>$
-%   india\_aligned 4.75\% (regional 16.15\% and diaspora 11.03\% on small $n$).
-% \item[Frame gradient.] Humanitarian 10.44\% $>$ Historical Grievance 7.58\% $>$
-%   Political 7.35\% $>$ Religious/Cultural 6.98\% $>$ Security/Military 5.97\%
-%   $>$ Economic 5.89\%.
-% \item[Tone-independence.] Within Humanitarian: offensive 10.56\% versus
-%   non-offensive 10.47\%. [corrected to 10.18 vs 10.47 in prose]
-% \item[``Is it just r/worldnews?''] geopolitics 12.57\%, worldnews 11.69\%,
-%   lesscredibledefence 8.59\%; FE AIC 142,208.9 versus 144,180.0.
-% \item[Required honesty.] (a) score-bin gradient 23.9\% at $\le 0$, 0.02\% at 100+.
-%   (b) transient audience 2.73/4.64/5.21 comments/author [corrected to
-%   2.69/4.50/5.04]; audience-heterogeneity tested and rejected (B5).
-%   (c) alignment/subreddit collinear. (d) dropping r/worldnews shifts top cell.
-% \item[Qualitative.] Five paraphrased, anonymized vignettes.
-% \item[Figures.] r8\_heatmap\_observed.png, r8\_subreddit\_rates.png,
-%   r8\_crisis\_vs\_base.png.
-% \item[Qualitative.] Five paraphrased, anonymized vignettes: neutral +
-%   Humanitarian controversy is driven by contested civilian-harm and rights
-%   claims, not insults.
-% \item[Figures.] r8\_heatmap\_observed.png, r8\_subreddit\_rates.png,
-%   r8\_crisis\_vs\_base.png.
-% \item[Status.] Descriptive; regressions used for ranking and predicted surfaces only.
-% \end{description}
 
 
 \subsection{What this corpus cannot support (R4 and R7, the negative result)}

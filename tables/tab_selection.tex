@@ -1,47 +1,37 @@
-% tab_selection.tex 
-
-\begin{table}[t]
-\footnotesize
-\caption{Candidate communities examined during selection. We ranked candidates
-by keyword-matching submission volume and checked that ranking against
-subscriber count. The threshold for inclusion was
-\authorinput{state the volume threshold and how it was chosen}. Comment counts
-are the totals each included community contributes to the annotated corpus.
-Excluded candidates are shown with the volume that decided them, so the
-asymmetry between the alignment groups can be read off the same evidence we
-used.}
+\begin{table}[H]
+\centering
+\caption{Candidate communities ranked by crisis-period volume, with the fourteen collected marked.}
 \label{tab:selection}
-\newcolumntype{Z}[1]{>{\hsize=#1\hsize\raggedright\arraybackslash}X}
-\begin{tabularx}{\linewidth}{@{}Z{1.30}Z{1.05}Z{0.80}Z{0.95}Z{0.90}@{}}
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}Xrrcc@{}}
 \toprule
-\textbf{Community} & \textbf{Alignment} & \textbf{Subscribers} & \textbf{Matching submissions} & \textbf{Comments in corpus} \\
+community & subscribers & query matches & collected \\
 \midrule
-\multicolumn{5}{@{}l}{\emph{Included}} \\
-\texttt{r/india}                & India-aligned  & \authorinput{n} & \authorinput{n} & 78,615 \\
-\texttt{r/indiaspeaks}          & India-aligned  & \authorinput{n} & \authorinput{n} & 68,324 \\
-\texttt{r/indiandefense}        & India-aligned  & \authorinput{n} & \authorinput{n} & 21,311 \\
-\texttt{r/indiadiscussion}      & India-aligned  & \authorinput{n} & \authorinput{n} & 7,213 \\
-\texttt{r/indianews}            & India-aligned  & \authorinput{n} & \authorinput{n} & 5,862 \\
-\texttt{r/bakchodi}             & India-aligned  & \authorinput{n} & \authorinput{n} & 3,852 \\
-\texttt{r/worldnews}            & Neutral        & \authorinput{n} & \authorinput{n} & 59,078 \\
-\texttt{r/geopolitics}          & Neutral        & \authorinput{n} & \authorinput{n} & 6,844 \\
-\texttt{r/lesscredibledefence}  & Neutral        & \authorinput{n} & \authorinput{n} & 810 \\
-\texttt{r/pakistan}             & Pakistan-aligned & \authorinput{n} & \authorinput{n} & 53,308 \\
-\midrule
-\multicolumn{5}{@{}l}{\emph{Collected but not assigned to an alignment group}} \\
-\texttt{r/abcdesis}             & Unassigned     & \authorinput{n} & \authorinput{n} & 2,280 \\
-\texttt{r/askreddit}            & Unassigned     & \authorinput{n} & \authorinput{n} & 1,574 \\
-\texttt{r/kashmir}              & Unassigned     & \authorinput{n} & \authorinput{n} & 126 \\
-\texttt{r/southasia}            & Unassigned     & \authorinput{n} & \authorinput{n} & 7 \\
-\midrule
-\multicolumn{5}{@{}l}{\emph{Examined and excluded, below the volume threshold}} \\
-\texttt{r/pakistani}            & Pakistan-aligned & \authorinput{n} & \authorinput{n} & --- \\
-\texttt{r/karachi}              & Pakistan-aligned & \authorinput{n} & \authorinput{n} & --- \\
-\texttt{r/Lahore}               & Pakistan-aligned & \authorinput{n} & \authorinput{n} & --- \\
-\texttt{r/pkmigrate}            & Pakistan-aligned & \authorinput{n} & \authorinput{n} & --- \\
-\texttt{r/PakistaniMilitary}    & Pakistan-aligned & \authorinput{n} & \authorinput{n} & --- \\
-\texttt{r/PakistanDiscussions}  & Pakistan-aligned & \authorinput{n} & \authorinput{n} & --- \\
-\authorinput{add the India-side and general-audience candidates examined and excluded} & & & & \\
+\multicolumn{4}{@{}l}{\itshape India-aligned} \\
+\texttt{r/india} & 2,482,127 & 1,995 & \checkmark \\
+\texttt{r/indianews} & 211,511 & 591 & \checkmark \\
+\texttt{r/IndiaSpeaks} & 1,020,810 & 438 & \checkmark \\
+\texttt{r/bakchodi} & 105,209 & 224 & \checkmark \\
+\texttt{r/IndianDefense} & 24,893 & 204 & \checkmark \\
+\texttt{r/indiadiscussion} & 102,231 & 194 & \checkmark \\
+\texttt{r/indiasocial} & 1,314,076 & 87 & \\
+\multicolumn{4}{@{}l}{\itshape Pakistan-aligned} \\
+\texttt{r/pakistan} & 423,985 & 833 & \checkmark \\
+\texttt{r/karachi} & 96,480 & 11 & \\
+\texttt{r/PakistanDiscussions} & 112 & 7 & \\
+\texttt{r/IslamabadSocial} & 12,338 & 5 & \\
+\multicolumn{4}{@{}l}{\itshape General-audience} \\
+\texttt{r/worldnews} & 44,166,945 & 1,421 & \checkmark \\
+\texttt{r/geopolitics} & 687,192 & 128 & \checkmark \\
+\texttt{r/lesscredibledefence} & 28,885 & 101 & \checkmark \\
+\texttt{r/WorldNews\_Serious} & 14,131 & 3  & \\
+\multicolumn{4}{@{}l}{\itshape Collected, Regional and diaspora} \\
+\texttt{r/askreddit} & 51,551,345 & 135 & \checkmark \\
+\texttt{r/kashmir} & 5,668 & 37 & \checkmark \\
+\texttt{r/abcdesis} & 101,048 & 17 & \checkmark \\
+\texttt{r/southasia} & 18,494 & 7 & \checkmark \\
 \bottomrule
 \end{tabularx}
+\vspace{2pt}
+{\footnotesize Of 188 candidates discovered by sweeping the archive's subreddit index and filtering to this conflict's vocabulary, the table lists the fourteen collected and the highest-volume communities passed over in each group. Matches are submissions retrieved by that crisis's queries, summed over three crisis windows.}
 \end{table}
