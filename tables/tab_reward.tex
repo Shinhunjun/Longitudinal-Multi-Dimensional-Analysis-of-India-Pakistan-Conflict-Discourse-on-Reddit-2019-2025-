@@ -1,0 +1,23 @@
+\begin{table}[H]
+\centering
+\caption{Adjusted reception of security-and-military comments, by the sentiment
+they carry and the community they appear in. Values are predicted
+sign-preserving log score; contrasts are against India-aligned communities.}
+\label{tab:reward}
+\setlength{\tabcolsep}{5pt}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}Xrrrcc@{}}
+\toprule
+sentiment & India & Pakistan & general & Pak.\ $-$ India & gen.\ $-$ India \\
+\midrule
+negative & 1.418 & 1.239 & 1.566 & \textbf{$-$0.179} & \textbf{$+$0.148} \\
+neutral  & 1.350 & 1.284 & 1.565 & \textbf{$-$0.066} & \textbf{$+$0.215} \\
+positive & 1.572 & 1.503 & 1.688 & $-$0.069 & $+$0.116 \\
+\bottomrule
+\end{tabularx}
+% \vspace{2pt}
+% {\footnotesize Bold marks a contrast whose 95\% simulation interval excludes
+% zero. The negative-sentiment intervals are $[-0.246, -0.116]$ and
+% $[+0.081, +0.210]$; the neutral-sentiment intervals are $[-0.129, -0.003]$ and
+% $[+0.160, +0.272]$. Neither positive-sentiment contrast is distinguishable from
+% zero, at $[-0.182, +0.049]$ and $[-0.013, +0.246]$.\par}
+\end{table}
