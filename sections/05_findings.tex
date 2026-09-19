@@ -2,23 +2,24 @@
 \section{Findings}
 \label{sec:results}
 
-\yash{this section is WIP}
+\yash{this section is ready for review}
 
 \candidate{S5-lede}
-This section takes the three questions of \S\ref{sec:intro} in order, and
-the unit of analysis changes as it goes. The first subsection works at the level
-of the comment, asking what these communities contested. The next three work at
-the level of a community within an event, asking why their contests differed.
-The two after that follow participants to the reply dyad and then to the author,
-across the boundaries the earlier subsections establish. Most results run on the
-160,050 comments inside the six crisis windows that carry every layer they need,
-with the reply-level results on 95,301 dyads and the author-level results on the
-5,924 authors active enough to profile. Wherever a result rests on a machine
-label we report a robustness arm that varies the labeller, because the
-specification curve of \S\ref{sec:results-threads} shows that this choice moved
-estimates more than any sampling decision we made. The section closes with what
-these data cannot support, which is the causal reading we had intended to give
-them.
+We take the three questions of \S\ref{sec:intro} in order, and the unit of
+analysis changes with them. \S\ref{sec:results-contestation} works at the level of
+the comment and asks what these communities contested.
+\S\ref{sec:results-rq2} moves to the community within an event and asks why those
+contests differed: \S\ref{sec:results-signature} compares events by the mix of
+frames and sentiment they carry, \S\ref{sec:results-affect} asks how a community
+renders a frame its own identity engages, and \S\ref{sec:results-reward} asks what
+each community rewards with votes. \S\ref{sec:results-rq3} follows participants
+across the boundaries the first two subsections establish, to the reply dyad in
+\S\ref{sec:results-threads} and to the author in \S\ref{sec:results-crossing}.
+Most results run on the 160,050 comments inside the six crisis windows that carry
+every layer they need, with the reply-level results on 95,301 dyads and the
+author-level results on the 5,924 authors active enough to profile.
+\S\ref{sec:results-causal} closes with what these data cannot support, which is
+the causal reading we had intended to give them.
 
 % -----------------------------------------------------------------------------
 \subsection{RQ1: Contestation tracks frame and community, not toxicity}
@@ -131,26 +132,6 @@ insult, and both drew votes in both directions. These communities divided over w
 claim was true, not over whether it was civil, which is the mechanism the
 tone-independence result implies.
 
-\candidate{S5.1.6}
-Three qualifications discipline these claims. First,
-\texttt{controversiality} tracks low net score mechanically. Some 23.8\% of
-comments at a net score of zero or below were flagged, against 0.02\% of those
-above one hundred. The flag therefore registers contested reception rather than
-observed deliberation, and we avoid deliberation language throughout. Second,
-general-audience communities draw a more transient audience, at 2.69 comments
-per author against 4.50 in India-aligned and 5.04 in Pakistan-aligned
-communities. That raises audience heterogeneity as an alternative to
-permeability, and we tested it rather than asserting against it. Adding an
-author-activity control left the general-audience odds ratio essentially
-unchanged, at 2.785 against 2.697. Restricting to committed participants widened
-rather than narrowed the gap, from a rate ratio of 2.47 across all authors to
-2.81 among those with at least twenty comments. A transient-voter artefact would
-have moved both the other way. Third, alignment and community are collinear, so
-the fixed-effects result establishes that these three particular communities are
-high, which is a descriptive rather than a construct-level claim. Dropping
-\texttt{r/worldnews} moves the single hottest cell from humanitarian to
-historical-grievance framing.
-
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{figures/s5_f18_size_vs_contestation_by_frame}
@@ -178,6 +159,26 @@ historical-grievance framing.
   uncorrected.}
   \label{fig:r8sizeframe}
 \end{figure}
+
+\candidate{S5.1.6}
+Three qualifications discipline these claims. First,
+\texttt{controversiality} tracks low net score mechanically. Some 23.8\% of
+comments at a net score of zero or below were flagged, against 0.02\% of those
+above one hundred. The flag therefore registers contested reception rather than
+observed deliberation, and we avoid deliberation language throughout. Second,
+general-audience communities draw a more transient audience, at 2.69 comments
+per author against 4.50 in India-aligned and 5.04 in Pakistan-aligned
+communities. That raises audience heterogeneity as an alternative to
+permeability, and we tested it rather than asserting against it. Adding an
+author-activity control left the general-audience odds ratio essentially
+unchanged, at 2.785 against 2.697. Restricting to committed participants widened
+rather than narrowed the gap, from a rate ratio of 2.47 across all authors to
+2.81 among those with at least twenty comments. A transient-voter artefact would
+have moved both the other way. Third, alignment and community are collinear, so
+the fixed-effects result establishes that these three particular communities are
+high, which is a descriptive rather than a construct-level claim. Dropping
+\texttt{r/worldnews} moves the single hottest cell from humanitarian to
+historical-grievance framing.
 
 \candidate{S5.1.7}
 That separation survives frame by frame. Figure~\ref{fig:r8sizeframe} repeats
@@ -321,7 +322,7 @@ standard errors clustered on authors. The interaction was strongly supported
 ($\chi^2(20) = 179.8$, $p = 1.05 \times 10^{-27}$, $N = 160{,}050$), with
 McFadden's pseudo-$R^2$ moving from 0.0513 to 0.0520.
 
-\begin{figure*}[H]
+\begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{figures/s5_f3_sentiment_gaps.pdf}
   \caption{Community gaps in adjusted sentiment by narrative frame, with 95\%
@@ -339,7 +340,7 @@ McFadden's pseudo-$R^2$ moving from 0.0513 to 0.0520.
   estimates for security and military framing and for humanitarian framing sit
   above zero.}
   \label{fig:r5ame}
-\end{figure*}
+\end{figure}
 
 \candidate{S5.3.2}
 Figure~\ref{fig:r5ame} locates the asymmetry. Under security and military
@@ -460,6 +461,22 @@ group boundaries~\cite{brady2017emotion}.
 \end{figure}
 
 \yash{add summary for RQ2}
+\textbf{Summary.} Three results answer RQ2, and they compound. An event's
+frame-and-sentiment signature followed the kind of crisis rather than the year:
+Pulwama and Operation Sindoor lie six years apart at a cosine distance of
+0.0074, while Pulwama and the constitutional change six months later sat at
+0.2058, with no interval entering the 0.0591 band between the two families.
+Within events, the same frame was produced differently by community, and the
+asymmetry fell on positivity rather than negativity, strengthening rather than
+weakening when stance toward both states was controlled
+($\chi^2(20) = 287.6$, $p = 2.75 \times 10^{-49}$). Communities then rewarded
+that affect differently, so the divergence was produced once in what was written
+and again in what was upvoted. The reward result is the weakest of the three,
+because its model does not control stance and it reads the same vote signal that
+\S\ref{sec:results-contestation} uses.
+\yash{Wrote the RQ2 summary from the three subsubsections above, and said which
+of the three is weakest rather than presenting them as equally firm.}
+
 
 % -----------------------------------------------------------------------------
 \subsection{RQ3: What happens at the community boundary}
@@ -497,18 +514,31 @@ coherence but not participant selection.
 
 \candidate{S5.5.3}
 
-\yash{add more comment examples}
+
 Replies that crossed a frame boundary carried more hostility and changed fewer
 minds. Pooled across events, cross-frame replies scored 0.0284 higher on
 toxicity than same-frame replies (95\% CI $[0.0251, 0.0317]$, rank-biserial
 $r = 0.102$, Mann-Whitney $p = 3.44 \times 10^{-155}$, $N = 93{,}368$).  A second labeller reproduced it at
 $+0.0130$. The effect is small, and we report $r$ alongside it for that reason.
 What did not follow is persuasion. Cross-frame replies shifted sentiment less
-often than same-frame replies, not more. The most hostile transition we sampled
-answers a humanitarian parent with a security one, as in ``It is actually
-shameful that you guys are running terror camps in holy and pious places like
-mosques.'' The reply does not engage the harm claim; it reframes it. Frame-crossing
-in this corpus looks like friction rather than argument that lands.
+often than same-frame replies, not more.
+
+Reading the dyads indicates why. We screened the 71,798 cross-frame reply pairs
+to those where both comments run between ten and sixty words and neither carries
+a link, a handle or a slur, leaving 14,710, and read the most upvoted. What
+recurs is a reply that answers a different question from the one asked. One
+humanitarian parent objected that ``India bombed random places and mosques and
+called it bombing `terrorists' just to save face'', and the security-framed reply
+it drew, upvoted 180 times, answered a charge that had not been made: ``It is
+actually shameful that you guys are running terror camps in holy and pious places
+like mosques.'' Another parent asked a question about proportionality, ``Collective
+punishment/mass starvation of a population is how India deals with terrorism?'',
+and the reply substituted a ledger of grievances for an answer: ``Spare us the
+crap. Pakistan has gotten off scot free after 4 offensive wars and multiple
+devastating terror attacks\ldots It's time someone held their feet to the fire.''
+Neither reply engages the harm claim it is attached to, and both were rewarded
+for not doing so. Frame-crossing in this corpus looks like friction rather than
+argument that lands.
 
 \candidate{S5.5.4}
 Two further patterns bound the section. Frames diversified as threads deepened,
@@ -538,9 +568,23 @@ form of the measurement concern \S\ref{sec:data-coders} raises.
 \label{sec:results-crossing}
 % -----------------------------------------------------------------------------
 
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{figures/s5_f15_no_typology}
+  \caption{Why boundary-crossing is described as a continuum. Left: the share of
+  authors density-based clustering leaves unassigned. Right: $k$-means silhouette
+  against the number of components.}
+  \Description{Two panels. The left shows the share of authors density-based
+  clustering leaves unassigned at four minimum-cluster sizes, which is 100
+  percent at every setting. The right shows k-means silhouette against the number
+  of components, which stays near 0.1 throughout, with the chosen K of three
+  marked.}
+  \label{fig:r6typology}
+\end{figure}
+
+
 \candidate{S5.6.1}
-We set out to find a bridge-user type and there is none. Density-based
-clustering of author fingerprints returned 100\% noise at every parameter
+We set out to find a bridge-user type and there is none. Figure~\ref{fig:r6typology} shows both halves of that reasoning. Density-based clustering of author fingerprints returned 100\% noise at every parameter
 setting we tried, and $k$-means silhouettes hovered near 0.1. Boundary-crossing
 behaviour in this corpus is a continuum, not a set of discrete kinds, and
 forcing clusters through more aggressive projection would have manufactured
@@ -611,8 +655,8 @@ fingerprint as primary and treat the variant that adds content type as
 exploratory, given what \S\ref{sec:data-coders} reports about that layer.
 
 
-\subsection{What this corpus cannot support (R4 and R7, the negative result)}
-\budget{350}
+\subsection{What this corpus cannot support}
+\label{sec:results-causal}
 
 \jun{Prose draft below replaces the bullet specification (commented out at the
 end of this subsection). Numbers re-verified against the R4/R7 analysis logs and
