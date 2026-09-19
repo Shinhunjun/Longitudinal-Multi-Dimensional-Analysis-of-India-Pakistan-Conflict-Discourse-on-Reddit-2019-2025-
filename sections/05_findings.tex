@@ -234,6 +234,24 @@ closer to the constitutional change (0.0377) than several military events sat to
 each other, so the regularity we report holds for the military-constitutional
 contrast alone.
 
+\jun{[Jun review, for Yash] The signature claim rests on cosine distance as its
+single distance metric, which a reviewer will flag on two grounds. (1) Standard
+practice: text-analysis papers routinely re-run distance-based results under
+alternative metrics to show the ordering is not an artifact of the metric
+choice (e.g.\ Gerlach et al., Quantifying the Dissimilarity of Texts, Information
+2023); a short robustness arm reporting the same event ordering under a second
+metric would close this. (2) Theoretical fit --- and this is the stronger point:
+the signature is a $6x3$ joint-proportion matrix, i.e.\ a probability
+distribution, and cosine/Euclidean are not proper similarities between
+distributions, whereas Jensen--Shannon divergence is the appropriate choice (same
+literature). We already use JSD elsewhere
+in this same subsection for the within-frame community divergence, so re-deriving
+the event ordering with a JSD-based distance would both add the robustness arm
+and make the paper internally consistent in how it compares distributions.
+Suggest: keep cosine as the headline for readability, add a one-paragraph/one-row
+JSD (and optionally Euclidean) robustness check confirming the
+military-vs-constitutional ordering. Low effort, closes a likely reviewer point.}
+
 
 % \begin{figure}[t]
 %   \centering
