@@ -10,177 +10,178 @@
 
 \section{Data and Methods}
 
-\yash{this section is ready for review}
+
 
 \label{sec:data}
-
-\candidate{S3-lede}
-Labelled data carry a reporting standard in social computing: an account of how
-the dataset was built~\cite{gebru2021datasheets}, a codebook whose paradigm is
-declared rather than left implicit~\cite{rottger2022paradigms}, annotators
-described rather than assumed interchangeable~\cite{sap2022annotators}, and
-machine labels checked against human ones before they carry
-weight~\cite{pangakis2023validation}. We report against that standard and add
-two practices to it. First, we chose a labeller by measurement rather than by
-reputation. Four families of system, namely lexicon and encoder baselines,
-open-weight language models with and without fine-tuning, a deployed commercial
-classifier, and frontier commercial models, were scored against human gold
-standards before any was adopted, and Table~\ref{tab:benchmark} reports that
-comparison including the systems that failed outright. Second, every machine
-agreement figure appears beside the human figure for the same construct.
-Reporting agreement at all is uncommon in CSCW and HCI: a meta-analysis of
-papers published at these venues between 2016 and 2018 found inter-rater
-reliability reported in roughly one qualitative paper in
-nine~\cite{mcdonald2019reliability}. We report both figures because a machine
-agreement score cannot be interpreted without knowing the precision of the human
-standard it was scored against.
+\mohit{No need for this, Blinded it}
+% \candidate{S3-lede}
+% Labelled data carry a reporting standard in social computing: an account of how the dataset was built~\cite{gebru2021datasheets}, a codebook whose paradigm is declared rather than left implicit~\cite{rottger2022paradigms}, annotators described rather than assumed interchangeable~\cite{sap2022annotators}, and machine labels checked against human ones before they carry
+% weight~\cite{pangakis2023validation}. We report against that standard and add
+% two practices to it. First, we chose a labeller by measurement rather than by
+% reputation. Four families of system, namely lexicon and encoder baselines,
+% open-weight language models with and without fine-tuning, a deployed commercial
+% classifier, and frontier commercial models, were scored against human gold
+% standards before any was adopted, and Table~\ref{tab:benchmark} reports that
+% comparison including the systems that failed outright. Second, every machine
+% agreement figure appears beside the human figure for the same construct.
+% Reporting agreement at all is uncommon in CSCW and HCI: a meta-analysis of
+% papers published at these venues between 2016 and 2018 found inter-rater
+% reliability reported in roughly one qualitative paper in
+% nine~\cite{mcdonald2019reliability}. We report both figures because a machine
+% agreement score cannot be interpreted without knowing the precision of the human
+% standard it was scored against.
 
 % -----------------------------------------------------------------------------
-\subsection{Corpus and site}
+\subsection{Corpus}
 \label{sec:data-site}
 % -----------------------------------------------------------------------------
 
-\subsubsection{Reddit as a site for interstate conflict discourse}
+\mohit{You should simply state Reddit has been used in variety of studies for XXX you can cite those that are not in CSCW also, and say, hence for this study we choose Reddit. You can use the Second point that you have. The controversiability flag should come when we talk about what features we used for the analysis. }
 \label{sec:data-site-reddit}
 
-\candidate{S3.1.1}
-Reddit is an established site for CSCW and HCI research on online communities,
-and a systematic overview of the field counts several hundred studies across
-disciplines using it~\cite{proferes2021studyingreddit}. Four of its properties
-bear directly on the analyses that follow, and each has a research literature at
-these venues.
+\yash{Cut to one paragraph. It now opens on the range of studies, keeps the cross-community point as you suggested, and ends on the choice. The controversiality flag moved to later part}
 
-\candidate{S3.1.1b}
-First, communities on Reddit carry their own norms. CSCW work measuring
-moderator removals across a hundred of the site's largest communities found norm
-enforcement stratified into site-wide, cluster-level and single-community
-layers~\cite{chandrasekharan2018hiddenrules}, and further CSCW work has traced
-how those norms are enforced in
-practice~\cite{jhaver2019automoderator,jhaver2019removals} and how removal is
-experienced by the people subject to it~\cite{jhaver2019transparency}. A
-subreddit is therefore a boundary we can observe rather than one we impose.
-Second, that boundary makes cross-community participation a measurable event:
-CSCW has studied inter-community conflict on Reddit as mobilisation across
-exactly these boundaries~\cite{kumar2018conflict,datta2019interconflict}. Third,
-threading preserves who replied to whom, which is what lets us follow the same
-author into a community aligned against them. Fourth, votes give a reception
-measure the communities produce themselves, and Reddit's
-\texttt{controversiality} flag, which marks comments drawing roughly balanced
-approval and disapproval, is what turns that reception into a modelled quantity.
-The rule behind the flag is Reddit's own and is unpublished, so this outcome
-variable is a platform artefact as much as a record of
-contestation~\cite{crawford2016flag}, and \S\ref{sec:data-reliability} states
-what that costs us.
+% \candidate{S3.1.1}
+% Reddit is an established site for CSCW and HCI research on online communities, and a systematic overview of the field counts several hundred studies across disciplines using it~\cite{proferes2021studyingreddit}. Four of its properties bear directly on the analyses that follow.
+% % , and each has a research literature at these venues.
+% First, communities on Reddit carry their own norms~\cite{singhal2023sok}. CSCW work measuring moderator removals across a hundred of the site's largest communities found norm enforcement stratified into site-wide, cluster-level and single-community layers~\cite{chandrasekharan2018hiddenrules}, and further CSCW work has traced
+% how those norms are enforced in
+% practice~\cite{jhaver2019automoderator,jhaver2019removals} and how removal is
+% experienced by the people subject to it~\cite{jhaver2019transparency}. A
+% subreddit is therefore a boundary we can observe rather than one we impose.
+% Second, that boundary makes cross-community participation a measurable event:
+% CSCW has studied inter-community conflict on Reddit as mobilisation across
+% exactly these boundaries~\cite{kumar2018conflict,datta2019interconflict}. Third,
+% threading preserves who replied to whom, which is what lets us follow the same
+% author into a community aligned against them. Fourth, votes give a reception
+% measure the communities produce themselves, and Reddit's
+% \texttt{controversiality} flag, which marks comments drawing roughly balanced
+% approval and disapproval, is what turns that reception into a modelled quantity.
+% The rule behind the flag is Reddit's own and is unpublished, so this outcome
+% variable is a platform artefact as much as a record of
+% contestation~\cite{crawford2016flag}, and \S\ref{sec:data-reliability} states
+% what that costs us.
 
-\subsubsection{Communities, alignment, and coverage}
-\label{sec:data-communities}
+Reddit has been used to study political polarisation~\cite{waller2021quantifying}, echo chambers~\cite{cinelli2021echo}, the rules communities
+enforce~\cite{chandrasekharan2018hiddenrules} and the framing of international affairs~\cite{shin2026diplomacy}, and a systematic review counts several hundred studies of it across disciplines~\cite{proferes2021studyingreddit}. Two of its features matter here. Each subreddit has its own moderators and rules, so the boundaries between the communities we compare are recorded by the platform itself. Comments are threaded and carry their authors' names, so the same author can be followed from one community into another, which is how earlier work
+measured conflict between subreddits~\cite{kumar2018conflict,datta2019interconflict}. We therefore chose Reddit for this study. Figure~\ref{fig:pipeline} summarises how we built the corpus.
 
-\begin{figure}[t]
+\begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{figures/s3_f1a_corpus_composition}
-  \caption{Comments per community, coloured by alignment group.}
-  \Description{Dot plot of the fourteen collected communities on a logarithmic
-  axis, from r/india at 78,615 comments to r/southasia at 7, coloured by the
-  alignment group each was assigned. Six India-aligned communities hold 185,177
-  comments between them, three general-audience communities hold 66,732, one
-  Pakistan-aligned community holds 53,308, and four unassigned communities hold
-  3,987. The largest community exceeds the smallest by four orders of magnitude,
-  which is why the axis is logarithmic and position rather than bar length
-  carries the value.}
-  \label{fig:composition}
+  \includegraphics[width=\textwidth]{figures/s3_fig_a_corpus.drawio.pdf}
+  \caption{How we built the corpus. Left: the archive check of the communities
+  . Centre: retrieval and deduplication of
+  submissions and comments. Right: the relevance
+  gate, the resulting corpus and its split across the six crisis windows.}
+  \Description{A three-panel flow diagram read left to right. The first panel,
+  community selection, shows a sweep of the archive's subreddit index yielding
+  188 candidates, seven crisis queries each run only in the window of the events
+  it names (Pulwama, Balakot, surgical strike, Article 370, Kashmir, Pahalgam,
+  Sindoor), and ten communities meeting the threshold, drawn as a bar split into
+  185,177 comments in six India-aligned communities, 66,732 in three
+  general-audience communities and 53,308 in one Pakistan-aligned community. The
+  second panel, collection and preprocessing, shows the Arctic Shift archive
+  queried through BAScraper for 1 January 2019 to 29 June 2025, with submissions
+  reduced from 56,038 to 49,120 and comments from 965,274 to 852,697 by
+  deduplication. The third panel shows the relevance gate keeping 33,108 of 49,120
+  submissions (67.4 percent), a corpus of 309,204 comments that enter through
+  their parent submission, and a bar splitting the corpus into 161,446 comments
+  inside the six crisis windows and 147,758 outside.}
+  \label{fig:pipeline}
 \end{figure}
 
-\candidate{S3.1.2}
-Community selection was a search before it was a choice. We swept the archive's subreddit index for names and descriptions carrying this conflict's vocabulary,
-which returned 188 candidates above five thousand subscribers, and put seven
-crisis queries to every one of them. Each query ran only in the window of the
-events it names: ``\texttt{Pulwama}'', ``\texttt{Balakot}'' and
-``\texttt{surgical strike}'' over February and March 2019; ``\texttt{Article 370}'' and
-``\texttt{Kashmir}'' over August 2019; ``\texttt{Pahalgam}'' and ``\texttt{operation sindoor}''
-over April and May 2025. Table~\ref{tab:selection} ranks the candidates by what
-came back. Volume alone would
-reward size, so we recorded each candidate's subscriber count beside it: the two
-quantities together separate a small community that argues about this conflict
-from a large one that rarely mentions it. India-aligned, Pakistan-aligned and
-general-audience candidates met the same queries, the same windows and the same
-threshold, so a community's rank reflects what it discusses and not how hard we
-looked for it.
+To identify the most relevant communities, we used a data-driven selection process. We swept the subreddit index of the Arctic Shift
+archive~\cite{arcticshift2026software} for community names beginning with regional stems (e.g.,
+\texttt{india}, \texttt{pakistan}, \texttt{kashmir}, \texttt{desi}), which yielded 188 candidate communities with more than 5,000 subscribers. To measure how much each one engages with the conflict, we ran seven crisis queries against every candidate and restricted each query to the window of its event: ``\textit{Pulwama}'', ``\textit{Balakot}'' and ``\textit{surgical strike}'' in February and March 2019; ``\textit{Article 370}'' and ``\textit{Kashmir}'' in August 2019; and ``\textit{Pahalgam}'' and ``\textit{Operation Sindoor}'' in April and May 2025. We ranked the 188 candidates by the number of matching submissions (Table~\ref{tab:selection}). Raw volume favours large communities, so we read
+each candidate's matches against its subscriber count, which separates small communities focused on the conflict from very large ones that rarely mention it.
+
+\mohit{What archive?}
+\yash{added archive name}
+
+\mohit{Provide one or two names in bracket say e.g., XYZ}
+\yash{added stems}
+
 
 \input{tables/tab_selection}
 
-\candidate{S3.1.3}
-Fourteen communities met the threshold. Table~\ref{tab:selection} ranks the
-candidates by crisis-period volume and marks the fourteen, listing the
-highest-volume communities passed over in each group beside them. The six
-India-aligned communities we collected are the six highest-volume India-aligned
-candidates, and the ordering is decisive on the Pakistan-aligned side: the one
-community we collected returns 833 matching submissions and the next candidate
-returns eleven. Ten of the fourteen sit in one of the three alignment groups: six
-India-aligned communities holding 185,177 comments, three general-audience
-communities holding 66,732, and one Pakistan-aligned community,
-\texttt{r/pakistan}, holding 53,308. Figure~\ref{fig:composition} gives the
-per-community breakdown. The remaining four, \texttt{r/abcdesis},
-\texttt{r/askreddit}, \texttt{r/kashmir} and \texttt{r/southasia}, hold 3,987
-comments between them and carry no alignment, because a diaspora community, a
-general question forum and two low-volume regional communities do not sit on the
-axis this comparison runs along. Setting those four aside leaves the 305,217
-comments across ten communities that \S\ref{sec:intro} reports and that
-every alignment-group result in this paper uses. Assigning an alignment to a
-community is not assigning one to any person who posts there, and no
-community-level result here licenses a claim about an individual commenter.
+We analyse the ten communities ranked highest in each alignment group. They fall into three groups, defined by the country each community is organised around: six India-aligned communities, the six highest-volume candidates on the Indian side, which hold 185,177 comments; three general-audience communities of international news, geopolitics and defence, which hold 66,732; and one Pakistan-aligned community, \texttt{r/pakistan}, which holds 53,308. The ordering is decisive on the Pakistan side: \texttt{r/pakistan} returned 833 matching submissions, and none of the other Pakistan-focused candidates returned more than 11 (Table~\ref{tab:selection}). We draw every alignment-group result in this paper from the 305,217 comments in these ten communities. Figure~\ref{fig:composition} gives the comments in each community. When we assign an alignment to a community, we describe the space and not anyone who posts there, and we draw no conclusion about an individual commenter from a community-level result.
+
+Two of the seven queries, ``surgical strike'' and ``Operation Sindoor'', use India's names for its own operations, so we repeated
+the Pakistan-side check with the names Pakistan's government and press use for the same events, among them ``Operation Swift Retort'', ``Bunyan al-Marsoos'', ``Marka-e-Haq'', and ``IIOJK'' for Indian-administered Kashmir. We matched both sets of names against the title and body of every submission posted in the three windows to eight Pakistan-focused communities. Apart from \texttt{r/pakistan}, none reached 40 matching submissions even with both sets counted together; the largest were \texttt{r/karachi} with 35 and \texttt{r/islamabad} with 22, and other candidates posted nothing at all during the 2019 windows. On Reddit, discussion of these crises in Pakistan-focused communities is concentrated in \texttt{r/pakistan}, whichever names we search for. We therefore treat \texttt{r/pakistan} as a single case, which we compare with \texttt{r/india} and with the spread across the six India-aligned communities, and never as a group.
+
+\mohit{Okay so here mention that our data is skewed toward India alligned. You need to acknowledge the limiation here. Additionlly, i see an issue, for pakistan, we only have one, but there are other communites that had 11, 7, 5 query mactch that we did not take, but in the regional disapora, we too, abcdesis and southasia with the same number of query match. Why is that? You need to defend it, you cannot say ohh we looked at the subscribers, }
+\yash{Selection is now the data-driven sweep and ranking. Within each alignment group the communities we analyse are the top-ranked candidates. On the Pakistan side, Table~\ref{tab:selection} now lists other Pakistan-focused
+candidates, and none has more than 11 matches and added more justification for pakistan community search. I've removed regional/diaspora communities altogether since they are not part of our analysis}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.8\linewidth]{figures/s3_f1a_corpus_composition}
+  \caption{Comments in the final corpus. Left: each of the ten analysed
+  communities, coloured by alignment group. Right: monthly comments across the
+  corpus, with the six crisis windows shaded.}
+  \Description{Two panels. Left, a bar chart of the ten analysed communities on a
+  logarithmic axis, from r/india at 78,615 comments to r/lesscredibledefence at
+  810, coloured by alignment group: six India-aligned communities hold 185,177
+  comments between them, three general-audience communities hold 66,732 and one
+  Pakistan-aligned community holds 53,308. The largest community exceeds the
+  smallest by two orders of magnitude, which is why the axis is logarithmic.
+  Right, monthly comment volume from 2019 to 2025 on a logarithmic axis, peaking
+  at the 2019 crises and at Operation Sindoor in May 2025; 161,446 comments fall
+  inside the six windows and 147,758 outside them.}
+  \label{fig:composition}
+\end{figure}
+\mohit{Is figure 1 after our data collection? or is it just what the count of the communities were before data collection? If it is hjust what you saw on Reddit when you searched them remove the figure and comment it}
+\yash{It is after collection: these are comment counts in the final corpus for the
+ten analysed communities. This figure is now Figure 2; the new Figure 1 (fig:pipeline) is the
+corpus-construction diagram.}
+
+% -----------------------------------------------------------------------------
+\subsection{Data collection and preprocessing}
+\label{sec:data-collection}
+\label{sec:data-gate}
+\label{sec:data-windows}
+% -----------------------------------------------------------------------------
+
 
 \subsubsection{Collection and preprocessing}
 \label{sec:data-collection}
 
 \candidate{S3.1.4}
-We collected submissions and their comment trees by running the keyword queries \yash{should we list the keywords (around 20) here?}
-against the archive over a single window, January 2019 to June 2025, chosen to
-cover all six crisis events with margin on either side for the temporal
-analyses. We retrieved the records from the Arctic Shift
-archive~\cite{arcticshift2026software} through the BAScraper
-client~\cite{bascraper2026software}. Since the 2023 platform policy change
-closed Pushshift to general use, working from a third-party archive is a
-standing condition of Reddit research rather than a footnote about
-tooling~\cite{proferes2021studyingreddit}, and it means the completeness of what
-we retrieved is a property of that archive rather than of the platform. One
-consequence bounds the corpus: it contains what this keyword list found, so
-coverage is concentrated in the vocabulary those keywords match, and discourse
-about these crises conducted in terms none of them cover is absent by
-construction.
+We collected posts and their comment trees by running the keyword queries \yash{should we list the keywords (around 20) here?} \mohit{Better to list her} against using the Arctic Shift archive~\cite{arcticshift2026software} through the BAScraper client~\cite{bascraper2026software} over a single window, January 2019 to June 2025, chosen to cover all six crisis events with margin on either side for the temporal analyses. \mohit{Here say how much data we got in total that flows well into the next line}
+% We retrieved the records from the A. 
+% Since the 2023 platform policy change
+% closed Pushshift to general use, working from a third-party archive is a
+% standing condition of Reddit research rather than a footnote about
+% tooling~\cite{proferes2021studyingreddit}, and it means the completeness of what
+% we retrieved is a property of that archive rather than of the platform. 
+% One consequence bounds the corpus: it contains what this keyword list found, so
+% coverage is concentrated in the vocabulary those keywords match, and discourse
+% about these crises conducted in terms none of them cover is absent by
+% construction.
+Preprocessing ran separately over posts and their comments, and in both cases it removed duplicates and flagged everything else rather than discarding it. Of 56,038 retrieved posts, deduplication on identifier removed 6,918 (12.35\%), leaving 49,120. Of 965,274 retrieved comments, deduplication removed 112,577 (11.66\%), leaving 852,697 spanning 1 January 2019 to 29 June 2025. Furthermore, we also removed instances where the post and comment were either \texttt{[removed]} or \texttt{[deleted]}. Our preprocessing pipeline flagged 138,370 such comments and a further 161,154 with empty bodies \mohit{do you mean post? how many posts were deleted or removed? I understand about the comments but what is this 161K number? It cannot be for posts.} We, however, retained comments whose \emph{author} field reads \texttt{[deleted]}. \mohit{Did you find instances of Non-English posts? Did you keep them or remove them? }
 
-\candidate{S3.1.5}
-Preprocessing ran separately over submissions and their comments, and in both
-cases it removed duplicates and flagged everything else rather than discarding
-it. Of 56,038 retrieved submissions, deduplication on identifier removed 6,918
-(12.35\%), leaving 49,120. Of 965,274 retrieved comments, deduplication removed
-112,577 (11.66\%), leaving 852,697 spanning 1 January 2019 to 29 June 2025.
+% were neither flagged nor dropped; they remain analysable.
+% , and carried both forward as columns.
 
-\candidate{S3.1.6}
-Records whose text had been removed or deleted were marked rather than dropped
-at this stage. When a moderator removes a comment or its author deletes it,
-Reddit replaces the body with the literal string \texttt{[removed]} or
-\texttt{[deleted]} while the surrounding metadata survives, so the row still
-carries a timestamp, a score and a community but has no text to
-annotate~\cite{jhaver2019removals,chandrasekharan2018hiddenrules}. Preprocessing
-flagged 138,370 such comments and a further 161,154 with empty bodies, and
-carried both forward as columns. Deleting an account removes the handle and
-leaves the text, so comments whose \emph{author} field reads \texttt{[deleted]}
-were neither flagged nor dropped; they remain analysable.
+
+% Records whose text had been removed or deleted were marked rather than dropped
+% at this stage. When a moderator removes a comment or its author deletes it,
+% Reddit replaces the body with the literal string \texttt{[removed]} or
+% \texttt{[deleted]} while the surrounding metadata survives, so the row still
+% carries a timestamp, a score and a community but has no text to
+% annotate~\cite{jhaver2019removals,chandrasekharan2018hiddenrules}. Preprocessing
+ 
 
 \candidate{S3.1.7}
-A relevance gate then decided corpus membership, and it ran on submissions
-rather than on comments. A large language model judged whether each of the
-49,120 preprocessed submissions concerned this conflict, returning 33,108 as
-relevant (67.4\%) and 16,012 as irrelevant. Comments enter the corpus through
-their parent submission, and the corpus holds 309,204 comments drawn from those
-relevant submissions, each carrying the annotations this paper analyses.
+\textbf{Relevance gate: }To decide whether a post is relevant to the conflict, we prompted a large language model. \mohit{Say which one, and in brief give how it was prompted, additionally. You can say the prompt is in appendix}
+% judged whether each of the
+Out of the 49,120 preprocessed posts,  33,108 were labeled as relevant (67.4\%) and 16,012 as irrelevant. Comments enter the corpus through their parent posts, and the corpus holds 309,204 comments drawn from those relevant posts. \mohit{you need to say if the llm did a good job, say two author manually checked the answers or something like that.}
+% , each carrying the annotations this paper analyses.
 
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=\linewidth]{figures/s3_c2b_monthly_comments}
-  \caption{Monthly comment volume, with the six crisis windows shaded by crisis
-  type.}
-  \Description{Line chart of annotated comments per month from January 2019 on a
+  \includegraphics[width=.85\linewidth]{figures/s3_c2b_monthly_comments}
+  \caption{Line chart of annotated comments per month from January 2019 on a
   logarithmic axis, with the six crisis windows shaded and coloured by crisis
   type. The series spans more than three orders of magnitude, which a linear
   axis would flatten to a single spike, so volume between crises and volume
@@ -194,22 +195,11 @@ relevant submissions, each carrying the annotations this paper analyses.
 \candidate{S3.1.8}
 Figure~\ref{fig:timeline} places the six crisis windows in time. Comment volume
 rises by orders of magnitude inside them and falls back between them, which is
-the shape the analyses have to accommodate rather than a finding in itself, and
-it is why the axis is logarithmic: on a linear one the quiet years flatten into
-the baseline. Two pairs overlap in time and share a crisis type, Pulwama with
-Balakot and Pahalgam with Operation Sindoor, so each pair renders as a single
-band.
-
-\candidate{S3.1.9}
-The six windows differ in volume by more than an order of magnitude,
-from Operation Sindoor's 69,011 comments to the 2021 ceasefire's 3,923. Of the
-corpus, 161,446
-comments fall inside those windows and 147,758 outside; no result in this paper
-uses the outside portion. Because volume across events is uneven by more than an
-order of magnitude, every event-level comparison we report is proportional and
-made within a community, following the comparison rule established for
-cross-crisis work~\cite{olteanu2015crisis}, and every headline result is
-reported again with Operation Sindoor excluded.
+the shape the analyses have to accommodate rather than a finding in itself.
+% , and
+% it is why the axis is logarithmic: on a linear one the quiet years flatten into
+% the baseline. 
+Two pairs overlap in time and share a crisis type, Pulwama with Balakot and Pahalgam with Operation Sindoor, so each pair renders as a single band. The six windows differ in volume by more than an order of magnitude, from Operation Sindoor's 69,011 comments to the 2021 ceasefire's 3,923. Of the corpus, 161,446 comments fall inside those windows and 147,758 outside; no result in this paper uses the outside portion. Because volume across events is uneven by more than an order of magnitude, every event-level comparison we report is proportional and made within a community, following the comparison rule established for cross-crisis work~\cite{olteanu2015crisis}, and every headline result is reported again with Operation Sindoor excluded.
 
 % -----------------------------------------------------------------------------
 \subsection{The annotation scheme and the human standard}
@@ -219,62 +209,28 @@ reported again with Operation Sindoor excluded.
 \subsubsection{What we labelled}
 \label{sec:data-constructs}
 
-\candidate{S3.2.1}
-Seven layers describe each comment, and Table~\ref{tab:layers} gives each one's
-categories and how the corpus divides across them. Five describe what a comment
-says: its content type, its narrative frame, its sentiment, and its stance
-toward India and toward Pakistan as two separate axes. Two describe hostility:
-whether the comment is offensive, and, where it is, whether the offence is aimed
-at a target. Coverage differs between the two groups. Behind all of them
-sits a codebook written in the prescriptive paradigm, meaning it tells coders
-which reading to apply at a contested boundary rather than asking them to report
-their own~\cite{rottger2022paradigms}. Each layer has a decision tree and an
-explicit tie-break, so a disagreement between coders points at an
-underdetermined rule.
-
+Seven layers describe each comment, and Table~\ref{tab:layers} gives each one's categories and how the corpus divides across them. Five describe what a comment says: its content type, its narrative frame, its sentiment, and its stance toward India and toward Pakistan as two separate axes. Two describe hostility: whether the comment is offensive, and, where it is, whether the offense is aimed at a target. Coverage differs between the two groups. We build a codebook that describes each of these prescriptive paradigms, telling coders which reading to apply at a contested boundary rather than asking them to report their own~\cite{rottger2022paradigms}. Each layer has a decision tree and an explicit tie-break, so a disagreement between coders points to an underdetermined rule. \mohit{You need to provide the codebook in the appendix. Say the codebook is provided in the appendix.} To label posts for offensive-versus-not, we used Google Perspective API, which is a state-of-the-art toxicity detection tool~\cite{jigsaw2018perspective}. We chose a threshold of 0.5 because prior research has used it to distinguish whether a post is toxic~\cite {aleksandric2025power,saveski2021structure,lees2022perspective,kumarswamy2025causal}. Note that, in our case, \textit{Toxic} is labeled as \textit{Offensive}. 
+While we acknowledge that the Perspective API has weaknesses in detecting toxicity~\cite{hosseini2017deceiving}, prior works have found that it is successful in detecting forms of toxic language in the generated text~\cite{ovalle2023m}, and also multiple prior works have used the Perspective API for toxicity detection~\cite{aleksandric2025power,elsherief2018hate,saveski2021structure,hickey2023auditing}; hence, it is reasonable to use the API for our study. The targeted-versus-untargeted division on top of that boundary is ours, and a human sample checks it. \mohit{Provide where the results are, say in bracket (Table XX)}
 \input{tables/tab_layers}
 
-\candidate{S3.2.1b}
-\yash{include this paragraph?} We did not define one of these layers ourselves. The offensive-versus-not
-decision is a commercial toxicity score cut at
-0.5~\cite{lees2022perspective}, and on the 300,919 comments carrying both, the
-corpus label and that cut coincide exactly. \S\ref{sec:data-benchmark} reports
-what that classifier scores when we measure it. The targeted-versus-untargeted division on top of
-that boundary is ours, and a human sample checks it.
+% \candidate{S3.2.1b}
+% \yash{include this paragraph?} We did not define one of these layers ourselves. The 
+% decision is a commercial toxicity score cut at
+% 0.5~\cite{lees2022perspective}, and on the 300,919 comments carrying both, the
+% corpus label and that cut coincide exactly. \S\ref{sec:data-benchmark} reports
+% what that classifier scores when we measure it. 
 
-
-\candidate{S3.2.2}
-\yash{written actual problem we faced during content annotation, should we defend it or omit it?}
-
-Content type gates the rest: the other constructs are conditioned on it or
-stratified by it. We retain it only as an opinion-versus-rest contrast, because
-its four-class form reaches machine agreement of 0.368 and is the one construct
-whose label proportions the machine does not preserve.
-\S\ref{sec:data-production} states what that leaves each construct able to
-carry. Nearly four comments in five are opinion, so the contrast the corpus
-supports is a coarse one.
+Content type gates the rest: the other constructs are conditioned on it or stratified by it. We retain it only as an opinion-versus-rest contrast, because its four-class form reaches machine agreement of 0.368 \mohit{Provide the table in bracket} and is the one construct whose label proportions the machine does not preserve. \S\ref{sec:data-production} states what that leaves each construct able to carry. Nearly four comments in five are opinion, so the contrast the corpus supports is a coarse one. \mohit{I would defend it more here}
 
 
 \subsubsection{The human standard}
 \label{sec:data-coders}
 
-\candidate{S3.2.4}
-Four human annotation projects produced the references every agreement figure rests on. Three drew from the crisis-period corpus, 250 items each for content
-type with narrative frame and for sentiment with stance, and 500 for target
-type. The fourth drew from the Perspective-scored population rather than the
-corpus, to check the offensiveness boundary itself. Every
-coded item carries two independent codings. All four samples are balanced by
-design, which over-represents the rare categories coders find hardest, so every
-figure in Table~\ref{tab:reliability} is lower than corpus-average agreement
-would be.
+Four human annotation projects produced the references every agreement figure rests on. Three drew from the crisis-period corpus, 250 items each for content type with narrative frame and for sentiment with stance, and 500 for target type. The fourth drew from the Perspective-scored population rather than the corpus, to check the offensiveness boundary itself. Every coded item carries two independent codings. All four samples are balanced by design, which over-represents the rare categories coders find hardest.
+% , so every figure in Table~\ref{tab:reliability} is lower than corpus-average agreement would be.
 
-\candidate{S3.2.4b}
-All four projects used the same coding screen, built in Label
-Studio~\cite{tkachenko2020labelstudio}. Each screen showed one comment, the
-submission it replied to as context only, the metadata a coder needs to read it,
-and one panel per layer with that layer's decision rule printed above the
-options. 
-
+To label the posts, we used Label
+Studio~\cite{tkachenko2020labelstudio}. Each screen showed one comment, the submission it replied to as context only, the metadata a coder needs to read it, and one panel per layer with that layer's decision rule printed above the options. 
 % \begin{figure}[H]
 % \centering
 % \includegraphics[width=\linewidth]{figures/s3_f4_labelstudio}
@@ -288,44 +244,28 @@ options.
 % options and a keyboard shortcut beside each label.}
 % \label{fig:labelstudio}
 % \end{figure}
-
-\candidate{S3.2.5}
-The codebook required reading competence in English and in Hindi or Urdu, and
-familiarity with South Asian geopolitics. Three coders worked in two pairs. Two
-met the language criterion directly; the third read English and worked from
-translations~\cite{kunilovskaya2026annotators}. Target type went to the two
-coders with regional context, because those comments turn on local reference
-that translation does not carry. Who codes shapes what the labels mean, which is
-why we report it~\cite{sap2022annotators}. Disagreements were resolved two ways. A human reviewer adjudicated content type,
-narrative frame, target type and offensiveness. \yash{include following statement or not?} Sentiment and both stance axes
-went to a majority vote of the two coders and three commercial language models,
-a division of labour between people and models that HCI has studied as
-collaborative annotation \yash{add more papers} ~\cite{wang2024humanllm}.
+The codebook required reading competence in English and in Hindi or Urdu, and familiarity with South Asian geopolitics. Three coders worked in two pairs. Two coders met the language criterion directly; the third coder read English and worked from translations~\cite{kunilovskaya2026annotators}. Target type went to the two coders with regional context, because those comments turn on local reference that translation does not carry. 
+% Who codes shapes what the labels mean, which is why we report it~\cite{sap2022annotators}. 
+Disagreements were resolved in two ways. A human reviewer adjudicated content type, narrative frame, target type, and offensiveness. Sentiment and both stance axes used a majority vote between the two coders.
+% and three commercial language models,
+% a division of labor between people and models that HCI has studied as
+% collaborative annotation \yash{add more papers} ~\cite{wang2024humanllm}.
 
 
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=\linewidth]{figures/s3_f3_reliability.pdf}
-    \caption{Caption}
-    \Description{Description of the figure for accessibility.}
-    \label{s3_f3_reliability}
-\end{figure}
+% \begin{figure}[htbp]
+%     \centering
+%     \includegraphics[width=\linewidth]{figures/s3_f3_reliability.pdf}
+%     \caption{Caption}
+%     \Description{Description of the figure for accessibility.}
+%     \label{s3_f3_reliability}
+% \end{figure}
 
 \input{tables/tab_reliability}
 
-\yash{present figure or table? in the section or in the appendix?}
+% \yash{present figure or table? in the section or in the appendix?}
 
-\candidate{S3.2.7}
-Table~\ref{tab:reliability} reports agreement per layer, human beside machine.
-Human $\kappa$ runs from 0.477 on offensiveness to 0.788 on the relevance gate.
-On Landis and Koch's scale~\cite{landis1977measurement}, the relevance gate,
-content type, narrative frame and target type fall in the substantial band,
-0.61 to 0.80, and sentiment, both stance axes and offensiveness fall in the
-moderate band, 0.41 to 0.60. Machine agreement matches or
-exceeds the coder pair on every layer but content type, the ordering reported
-for commercial models on annotation tasks~\cite{gilardi2023chatgpt}, and machine
-labels preserve the prevalences of every layer that carries a claim to within
-four percentage points. \S\ref{sec:results} tests whether machine error tracks
+% \candidate{S3.2.7}
+Table~\ref{tab:reliability} reports agreement per layer, human beside machine \mohit{I do not see anywhere what this machine is? You need to talk about it before you describe this section. You should name the machine}. Human $\kappa$ runs from 0.477 on offensiveness to 0.788 on the relevance gate. On Landis and Koch's scale~\cite{landis1977measurement}, the relevance gate, content type, narrative frame, and target type fall in the substantial band, 0.61 to 0.80, and sentiment, both stance axes and offensiveness fall in the moderate band, 0.41 to 0.60. Machine agreement matches or exceeds the coder pair on every layer, but for content type, the ordering reported for commercial models on annotation tasks~\cite{gilardi2023chatgpt}, and machine labels preserve the prevalences of every layer that carries a claim to within four percentage points. \S\ref{sec:results} tests whether machine error tracks
 community alignment.
 
 % -----------------------------------------------------------------------------
@@ -336,24 +276,14 @@ community alignment.
 \subsubsection{A comparison run before adoption}
 \label{sec:data-benchmark}
 
-\candidate{S3.3.1}
-Most computational work adopts a labeller and then validates
-it~\cite{pangakis2023validation}. We compared families first, and report the
-comparison because its shape is more useful than its winner.
-Table~\ref{tab:benchmark} gives the best system per family per layer at the
-denominator each was measured on. We tested content type and narrative frame
-across three commercial model sizes, two prompting strategies and two API
-endpoints, twelve conditions per layer. We tested sentiment and
-stance across twenty-one open-weight systems and five prompting strategies at
-4-bit precision, eighty evaluations in all, over a lexicon baseline. We tested
-target type across thirteen zero-shot systems, six fine-tuned encoders under
-five-fold cross-validation, and two parameter-efficient fine-tunes.
+% Most computational work adopts a labeller and then validates it~\cite{pangakis2023validation}. We compared families first, and report the comparison because its shape is more useful than its winner.
+Table~\ref{tab:benchmark} gives the best system per family per layer at the denominator each was measured on. We tested content type and narrative frame across three commercial model sizes \mohit{Provide the names}, two prompting strategies \mohit{provide the names}, and two API endpoints \mohit{provide the name}, twelve conditions per layer. We tested sentiment and stance across twenty-one open-weight systems and five prompting strategies at 4-bit precision, eighty evaluations in all, over a lexicon baseline. We tested target type across thirteen zero-shot systems, six fine-tuned encoders under five-fold cross-validation, and two parameter-efficient fine-tunes. \mohit{Discuss the results of the table here only  }
 
-\yash{should we deep dive more on the different models finetuning/prompting etc?}
+\yash{should we deep dive more on the different models finetuning/prompting etc?} \mohit{Yes}
 
 \input{tables/tab_benchmark}
 
-\subsubsection{Production annotation and what each layer licenses}
+\subsubsection{Production annotation and what each layer licenses \mohit{We do not need this, The above one describe the results of the table as well as provide more details. Also, write in a way that does not read it was written by GPT, like say we did this, we did this, some of the sentences looks like it. }}
 \label{sec:data-production}
 
 \candidate{S3.3.4}
@@ -376,7 +306,7 @@ no result in this paper conditions on a four-class content-type value.
 \yash{add github link for the labelled dataset}
 
 % -----------------------------------------------------------------------------
-\subsection{Limitations}
+\subsection{Limitations \mohit{Put this at the end}}
 \label{sec:data-limits}
 % -----------------------------------------------------------------------------
 
@@ -417,35 +347,35 @@ disagreement~\cite{aroyo2015truth,plank2022problem,davani2022dealing}, and that
 bounds the resolution of every finding here.
 
 % -----------------------------------------------------------------------------
-\subsection{Ethics}
-\label{sec:data-ethics}
-% -----------------------------------------------------------------------------
+% \mohit{No Need fo rthis i am blinding it}\subsection{Ethics}
+% \label{sec:data-ethics}
+% % -----------------------------------------------------------------------------
 
-\candidate{S3.4.1}
-This corpus is politically sensitive in a way its public status does not soften.
-It is speech about a contested border by identifiable accounts on both sides of
-it, and it contains slurs, threats and religious hate speech. The material is
-public archival content with no private messages, we report no individual author
-trajectories, and where the Reddit ethics literature splits we take its cautious
-end~\cite{fiesler2024remember}. The study holds an exempt determination from our
-institutional review board, and Arctic Shift's redistribution terms are to be
-confirmed before any release. We quote verbatim where the wording carries the finding, and paraphrase where it
-does not, but every quotation appears stripped of the community, the event, the
-score and any handle. Those fields are what make a quotation re-identifying in
-combination, and a search-exposed corpus makes that a live risk rather than a
-formal one. We quote no comment that names a private individual.
+% \candidate{S3.4.1}
+% This corpus is politically sensitive in a way its public status does not soften.
+% It is speech about a contested border by identifiable accounts on both sides of
+% it, and it contains slurs, threats and religious hate speech. The material is
+% public archival content with no private messages, we report no individual author
+% trajectories, and where the Reddit ethics literature splits we take its cautious
+% end~\cite{fiesler2024remember}. The study holds an exempt determination from our
+% institutional review board, and Arctic Shift's redistribution terms are to be
+% confirmed before any release. We quote verbatim where the wording carries the finding, and paraphrase where it
+% does not, but every quotation appears stripped of the community, the event, the
+% score and any handle. Those fields are what make a quotation re-identifying in
+% combination, and a search-exposed corpus makes that a live risk rather than a
+% formal one. We quote no comment that names a private individual.
 
-\candidate{S3.4.2}
-Our obligations run to the research team as well.
-\S\ref{sec:data-coders} publishes the coders' regional context, language
-competence and task assignments, which is disclosure about identifiable people
-and needs their consent rather than only their
-pseudonymisation~\cite{prabhakaran2021annotatorlabels}. Three coders read
-samples drawn from the offensive end of this corpus, and moderation research is
-clear that such reading carries a cost pseudonymity does not
-address~\cite{roberts2019behind}. Dual use is not a formality in a paper about
-how a contested border gets talked about: composition-aware triage equally
-enables composition-aware targeting, and a method for finding which frames
-travel across a hostile boundary is a method for choosing where to push one. The
-same applies to our own use of machine labellers, which is annotation as method
-and not assistance with drafting.
+% \candidate{S3.4.2}
+% Our obligations run to the research team as well.
+% \S\ref{sec:data-coders} publishes the coders' regional context, language
+% competence and task assignments, which is disclosure about identifiable people
+% and needs their consent rather than only their
+% pseudonymisation~\cite{prabhakaran2021annotatorlabels}. Three coders read
+% samples drawn from the offensive end of this corpus, and moderation research is
+% clear that such reading carries a cost pseudonymity does not
+% address~\cite{roberts2019behind}. Dual use is not a formality in a paper about
+% how a contested border gets talked about: composition-aware triage equally
+% enables composition-aware targeting, and a method for finding which frames
+% travel across a hostile boundary is a method for choosing where to push one. The
+% same applies to our own use of machine labellers, which is annotation as method
+% and not assistance with drafting.
