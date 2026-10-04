@@ -350,9 +350,22 @@ interacted with community, controlling crisis type and content type, with
 standard errors clustered on authors. The interaction was strongly supported
 ($\chi^2(20) = 179.8$, $p = 1.05 \times 10^{-27}$, $N = 160{,}050$), with
 McFadden's pseudo-$R^2$ moving from 0.0513 to 0.0520.
-\jun{[Jun] One-line back-reference to the crossover in \S\ref{sec:results-contestation}
-(frame drives sentiment as community drives contestation). Yash: feel free to
-move or reword; I did not touch your interaction result.}
+\jun{[Jun -> Yash] Two things, both from \texttt{scripts/frame\_community\_crossover.py}
+(data re-verified; your $\chi^2(20)=179.8$ reproduces exactly).
+(1) Back-reference to the crossover in \S\ref{sec:results-contestation} added below
+(frame drives sentiment as community drives contestation) --- reword/move freely.
+(2) A robustness heads-up on the headline. The interaction you lead with (``a frame
+is not one object across communities'') is the frame$\times$community term, and its
+effect size is tiny: McFadden rises only 0.0513$\to$0.0520, a gain of 0.0007. With
+$N=160$k the $\chi^2$ is large but the gain is negligible --- exactly the
+``significant-but-small'' trap R8 handles with effect sizes and TOST (\S\ref{sec:results-contestation},
+Appendix~\ref{app:r8equiv}). What IS large is the frame \emph{main} effect:
+adding frame (ignoring community) moves McFadden 0.0397$\to$0.0513, a gain of
+0.0116 --- 16x the interaction. Suggestion: lead the subsection with ``frame
+strongly organises sentiment'' (the big main effect, which also powers the
+crossover), and present the cross-community interaction as a real-but-small
+mechanism, reporting its effect size beside the $\chi^2$ so a reviewer cannot say
+it rides on $N$. Happy to draft it if useful.}
 Narrative frame is the dominant organiser of sentiment here, the mirror image of
 \S\ref{sec:results-contestation}, where community rather than frame organised what
 a comment was contested over.
