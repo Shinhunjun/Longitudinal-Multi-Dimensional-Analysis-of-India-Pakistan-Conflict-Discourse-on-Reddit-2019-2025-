@@ -79,84 +79,41 @@ summit failed, while the shift away from threat-oriented framing did not.
 The three comments above are one frame in three audiences. Whether that difference is systematic is not a question this literature asks, and the reason
 is structural. Harm and stance are labelled one construct at a time because separate benchmarks are what annotation budgets and pretrained classifiers
 afford~\cite{zampieri2019olid,sap2020socialbias}, and the compositional work that exists composes inside the content layer~\cite{zhou2025harm,scheuerman2021severity}. Where context has been admitted, it has been the wrong context. \citet{pavlopoulos2020context} ask whether the surrounding conversation bears on a comment's toxicity label, leaving the community itself fixed. Yet norms on Reddit are stratified rather than
-platform-wide~\cite{chandrasekharan2018hiddenrules}, and communities differ
-systematically in the affect they express and
-reward~\cite{waller2021quantifying,rathje2021outgroup}. The same gap runs through work on boundary-crossing, reported as friction in some
-accounts~\cite{kumar2018conflict,garimella2018echo,bail2018exposure} and as workable under the right design in
-others~\cite{rajadesingan2021crosspartisan,xia2025integrated}. \mohit{Here say that the prior works on the Indo-Pak conflict}
-Computational work on India--Pakistan conflict discourse has concentrated on the
-weeks around one event, the February 2019 Pulwama attack and the Balakot strike
-that answered it. \citet{tyagi2020ipconflict} infer stance from hashtags on
-Indian and Pakistani Twitter across both. \citet{hussain2021pulwama} hand-codes
-tweets from the attack into four categories and splits them by national side.
-\citet{palakodety2020hope} classify hope speech in code-mixed YouTube comments
-over the same pair of events. Despite the scale at which this conflict is argued
-online, little research has gone to how one crisis is rendered differently by the
-communities receiving it: each of these studies covers a single crisis with one
-or two label layers, and none of them models the community a comment appeared
-in. The nearest Reddit study of an adjacent conflict annotates a single stance
-layer over a corpus roughly thirty times smaller than
-ours~\cite{ali2025stance}.
-\yash{Named the three prior Indo-Pak studies (Tyagi, Hussain, Palakodety) with
-platform, event and label depth. Rewrote the lead-in to name the dyad and the
-event explicitly instead of ``this dyad'' and ``it'', and moved the delta into an
-explicit gap sentence.}
+platform-wide~\cite{chandrasekharan2018hiddenrules}, and communities differ systematically in the affect they express and reward~\cite{waller2021quantifying,rathje2021outgroup}. The same gap runs through work on boundary-crossing, reported as friction in some accounts~\cite{kumar2018conflict,garimella2018echo,bail2018exposure} and as workable under the right design in others~\cite{rajadesingan2021crosspartisan,xia2025integrated}. 
+% \mohit{Here say that the prior works on the Indo-Pak conflict}
+Computational work on India--Pakistan conflict discourse has concentrated on the weeks around one event, the February 2019 Pulwama attack and the Balakot strike that answered it. \citet{tyagi2020ipconflict} infer stance from hashtags on Indian and Pakistani Twitter across both. \citet{hussain2021pulwama} hand-codes tweets from the attack into four categories and splits them by national side. \citet{palakodety2020hope} classify hope speech in code-mixed YouTube comments over the same pair of events. Despite the scale at which this conflict is argued online, little research has gone to how one crisis is rendered differently by the communities receiving it: each of these studies covers a single crisis with one or two label layers, and none of them models the community a comment appeared in. The nearest Reddit study of an adjacent conflict annotates a single stance layer over a corpus roughly thirty times smaller than ours~\cite{ali2025stance}.
+% \yash{Named the three prior Indo-Pak studies (Tyagi, Hussain, Palakodety) with % platform, event and label depth. Rewrote the lead-in to name the dyad and the % event explicitly instead of ``this dyad'' and ``it'', and moved the delta into an % explicit gap sentence.}
 
 
 
-\mohit{We should mention in small how we collected the data, say using Arcticshift API, we analyse ... }
-\mohit{Provide the names of them in bracket so after you finish six India alligned put the names}
+% \mohit{We should mention in small how we collected the data, say using Arcticshift API, we analyse ... }
+% \mohit{Provide the names of them in bracket so after you finish six India alligned put the names}
 % OLD:
 % To examine how narrative frame, community, and crisis type combine, we analyse 305,217 comments posted to ten subreddits across six India--Pakistan crises between January 2019 and January 2026: six India-aligned communities, a Pakistan-aligned community, and the three general-audience communities in which this conflict is argued at scale.
-To examine how narrative frame, community and crisis type combine, we retrieved
-Reddit discussion of six India--Pakistan crises from the Arctic Shift
-archive~\cite{arcticshift2026software} through the BAScraper
-client~\cite{bascraper2026software}, and we analyse the 305,217 comments posted
-to ten communities between January 2019 and June 2025. Six of those communities
-are India-aligned (\texttt{r/india}, \texttt{r/indianews},
-\texttt{r/IndiaSpeaks}, \texttt{r/bakchodi}, \texttt{r/IndianDefense} and
-\texttt{r/indiadiscussion}), one is Pakistan-aligned (\texttt{r/pakistan}), and
-three are the general-audience communities in which this conflict is argued at
-scale (\texttt{r/worldnews}, \texttt{r/geopolitics} and
-\texttt{r/lesscredibledefence}).
-\yash{Added the Arctic Shift + BAScraper retrieval route in one clause, and
-named all ten communities.}
-\mohit{Say which one and start with to investigate this multiyear something like that we used a...}
+To examine how narrative frame, community, and crisis type combine, we retrieved Reddit discussions of six India--Pakistan crises from the Arctic Shift archive~\cite{arcticshift2026software} through the BAScraper client~\cite{bascraper2026software}, and we analyze the 305,217 comments posted to ten communities between January 2019 and June 2025. Six of those communities are India-aligned (\texttt{r/india}, \texttt{r/indianews}, \texttt{r/IndiaSpeaks}, \texttt{r/bakchodi}, \texttt{r/IndianDefense} and \texttt{r/indiadiscussion}), one is Pakistan-aligned (\texttt{r/pakistan}), and three are the general-audience communities in which this conflict is argued at scale (\texttt{r/worldnews}, \texttt{r/geopolitics} and \texttt{r/lesscredibledefence}).
+% \yash{Added the Arctic Shift + BAScraper retrieval route in one clause, and
+% named all ten communities.}
+% \mohit{Say which one and start with to investigate this multiyear something like that we used a...}
 % OLD:
 % Four of the six events are kinetic military events forming two attack-and-retaliation pairs. The other two are the 2019 constitutional change in Kashmir and a 2021 ceasefire agreement, so the design separates the kind of crisis from the year it happened.
-To investigate a conflict that keeps returning, we built a panel that separates
-the kind of crisis from the year it occurred. Four of the six events are
-military, forming two attack-and-retaliation pairs six years apart: the Pulwama
-attack and the Balakot strike in February 2019, and the Pahalgam attack and
-Operation Sindoor in April and May 2025. The remaining two events are
-non-military, the revocation of Article 370 in August 2019 and the ceasefire
-agreement of February 2021.
-\yash{Opened on the multi-year design as asked, and named which events are
-military and which are not, with dates.}
+To investigate a conflict that keeps returning, we built a panel that separates the kind of crisis from the year it occurred. Four of the six events are military, forming two attack-and-retaliation pairs six years apart: the Pulwama attack and the Balakot strike in February 2019, and the Pahalgam attack and Operation Sindoor in April and May 2025. The remaining two events are non-military: the revocation of Article 370 in August 2019 and the ceasefire agreement of February 2021.
+% \yash{Opened on the multi-year design as asked, and named which events are
+% military and which are not, with dates.}
 % OLD:
 % A large language model labels each comment for sentiment, stance toward each
 % state and narrative frame, and a toxicity classifier supplies the offensiveness label, so a comment can be read as a composition instead of a single score.
-Each comment carries seven annotation layers. A commercial large language model
-labelled content type, narrative frame, sentiment and stance toward each state,
-and a toxicity classifier supplied the offensiveness label, so a comment can be
-read as a composition instead of a single score. We chose that labeller by
-measurement rather than by reputation, scoring four families of system against
-human gold standards before adopting any of them, and every machine agreement
-figure in \S\ref{sec:data} appears beside the human figure for the same
-construct. \mohit{You should give more details about the methods}
-\yash{Added the layer count, the labeller-selection design and the paired
-human/machine reporting standard, keeping the protocol itself in \S3.}
+Each comment carries seven annotation layers. A commercial large language model labelled content type, narrative frame, sentiment and stance toward each state, and a toxicity classifier supplied the offensiveness label, so a comment can be read as a composition instead of a single score. We chose that labeller by measurement rather than by reputation, scoring four families of system against human gold standards before adopting any of them, and every machine agreement figure in \S\ref{sec:data} appears beside the human figure for the same
+construct. 
+% \mohit{You should give more details about the methods}
+% \yash{Added the layer count, the labeller-selection design and the paired
+% human/machine reporting standard, keeping the protocol itself in \S3.}
 % Section~3 reports agreement against double-coded human gold standards for every layer.
-We measure contestation with Reddit's \texttt{controversiality} flag, which marks
-comments drawing substantial votes both ways. \mohit{You need some kind of bridge sentence here, not the one that you had. Also, there needs to be a sentence maybe earlier somewhere where we say, to the best of our knowledge this is the first longitudinal study .....}
-To the best of our knowledge, this is the first longitudinal study of
-India--Pakistan crisis discourse to span more than one crisis, and the first to
-model the narrative frame a comment advances together with the community that
-received it. We therefore treat a comment as a pairing of the frame it carries
-with the community it was posted to, and ask what that pairing explains.
-\yash{Added the primacy claim, scoped to two narrow versions that the design
-supports, and replaced the jump into the RQs with a bridge sentence that states
-the frame-community pairing the questions then test.}
+We measure contestation with Reddit's \texttt{controversiality} flag, which marks comments drawing substantial votes both ways. 
+% \mohit{You need some kind of bridge sentence here, not the one that you had. Also, there needs to be a sentence maybe earlier somewhere where we say, to the best of our knowledge this is the first longitudinal study .....}
+To the best of our knowledge, this is the first longitudinal study of India--Pakistan crisis discourse to span more than one crisis, and the first to model the narrative frame a comment advances together with the community that received it. We therefore treat a comment as a pairing of the frame it carries with the community it was posted to, and ask what that pairing explains.
+% \yash{Added the primacy claim, scoped to two narrow versions that the design
+% supports, and replaced the jump into the RQs with a bridge sentence that states
+% the frame-community pairing the questions then test.}
 % The analysis is primarily quantitative, with qualitative close
 % reading used to interpret the patterns it surfaces.
 In particular, we investigate the following research questions:
@@ -198,13 +155,13 @@ among the more hawkish participants ($\chi^2(2) = 301.9$, Cram\'er's $V = 0.226$
 $p = 2.7\times10^{-66}$), and tracking 1,606 authors against themselves shows the same people
 raising their anti-out-group stance from 0.339 at home to 0.376 across the line
 ($+0.037$, $p < .001$, paired Wilcoxon).
-\mohit{Provide more stastical answers here, use p values etc. This is a good start. Also dont use \sout{} no ned for it, just comment the old things and put new stuff and then your name comment}
-\yash{Added the statistics Jun flagged as mine: the R5 stance-controlled
-interaction with its $p$, the adjusted positivity probabilities, the R5 reward
-figures, the R2 cosine distances with the interval, the R6 hawkish
-concentration, and the R6 paired-Wilcoxon result with $n$ and $p$. All checked
-against \S\ref{sec:results}.}
-\jun{Added statistical detail to the R8 sentences (my part): the 2.5$\times$/1.8$\times$/1.12$\times$ separations and the subreddit-FE offensive OR $1.17$, $p=3.4\times10^{-11}$; also corrected the within-Humanitarian split to match \S5.6. The R5 interaction ($\chi^2(20)=287.6$, $p=2.7\times10^{-49}$) and the R6 paired-Wilcoxon result ($+0.037$, $p<0.001$) are the natural p-values to add to the affective-privileging and boundary-crossing sentences --- leaving those to Yash since they own R5/R6.}
+% \mohit{Provide more stastical answers here, use p values etc. This is a good start. Also dont use \sout{} no ned for it, just comment the old things and put new stuff and then your name comment}
+% \yash{Added the statistics Jun flagged as mine: the R5 stance-controlled
+% interaction with its $p$, the adjusted positivity probabilities, the R5 reward
+% figures, the R2 cosine distances with the interval, the R6 hawkish
+% concentration, and the R6 paired-Wilcoxon result with $n$ and $p$. All checked
+% against \S\ref{sec:results}.}
+% \jun{Added statistical detail to the R8 sentences (my part): the 2.5$\times$/1.8$\times$/1.12$\times$ separations and the subreddit-FE offensive OR $1.17$, $p=3.4\times10^{-11}$; also corrected the within-Humanitarian split to match \S5.6. The R5 interaction ($\chi^2(20)=287.6$, $p=2.7\times10^{-49}$) and the R6 paired-Wilcoxon result ($+0.037$, $p<0.001$) are the natural p-values to add to the affective-privileging and boundary-crossing sentences --- leaving those to Yash since they own R5/R6.}
 
 
 
@@ -218,7 +175,7 @@ another.
 (3) \textit{Crossing a community boundary is incursion rather than contact} (RQ3). No bridge-user type appears in the data. Those who cross skew
 hawkish, and the receiving community penalises civil and hostile outsiders alike. Because we follow the same authors across the boundary, this is a change in how
 people write and not in who shows up. These findings bear on how harm is measured in conflict discourse, and on any design that routes people across community lines.
-\mohit{Here you need a paragraph that closes it. Say in small what we did and in like 3 lines gives the results and then close with how this work is important in one line }
+% \mohit{Here you need a paragraph that closes it. Say in small what we did and in like 3 lines gives the results and then close with how this work is important in one line }
 
 
 
@@ -228,8 +185,8 @@ and the receiving community penalises civil and hostile outsiders alike. For
 CSCW, our results carry a practical consequence: conflict discourse has to be
 measured at the pairing of a comment with the community that received it,
 because neither term predicts contestation on its own.
-\yash{Added the closing paragraph: one sentence on what we did, three on the
-results, one on why it matters to CSCW.}
+% \yash{Added the closing paragraph: one sentence on what we did, three on the
+% results, one on why it matters to CSCW.}
 
 
 
