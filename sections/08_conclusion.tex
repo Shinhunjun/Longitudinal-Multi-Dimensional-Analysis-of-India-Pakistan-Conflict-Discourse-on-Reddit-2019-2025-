@@ -2,15 +2,47 @@
 \section{Conclusion}
 \budget{250}
 
-\begin{itemize}
-\item Restate the thesis with the two numbers that do the most work: neutral
-  $\times$ Humanitarian \textbf{17.4\%} against the Offensive-versus-not gap of
-  \textbf{7.67\% / 6.83\%}; and the Security/Military positivity asymmetry
-  (0.094 india versus 0.050 neutral).
-\item One sentence on what the negative results buy --- the event-clustering
-  confounder, the continuum finding, and the labeller comparison are all results
-  the paper only has because it reported failures.
-\item \textbf{No future-work laundry list.} One concrete next step: the L7
-  veracity layer over the gated Factual Claims, which requires first fixing an L1
-  gate that currently recovers 4.8\% of them.
-\end{itemize}
+\jun{Prose draft (my part; old bullet spec commented below). Follows the spec:
+thesis in the two strongest number-pairs, one paragraph on what the negatives
+buy, one concrete next step and no laundry list. Dropped the labeller-comparison
+item from the ``negatives buy'' sentence to stay consistent with the abstract,
+where that contribution is cut (Mohit). Numbers checked against \S\ref{sec:results}.
+Yash: two sentences characterise your results (R5 positivity 0.094 vs 0.050 in
+para 1; R6 bridge-user continuum in para 2) --- the figures match
+\S\ref{sec:results} but please confirm the wording.}
+
+Across six India--Pakistan crises, what a community contested turned on the frame
+a comment advanced and the community it reached, not on how offensively it was
+worded: humanitarian framing split a general-audience community 17.4\% of the
+time, where offensive and inoffensive comments diverged by only 7.67\% against
+6.83\%. The same frame was not the same object across communities ---
+security-and-military framing read as positive at 0.094 in India-aligned
+communities against 0.050 in general-audience ones --- so community governs
+\emph{what} a discourse contests and frame governs \emph{how} it is voiced, and
+neither axis is visible to a comment scored on a single layer.
+
+Two of these results exist only because the paper reported its failures. The
+difference-in-differences designs collapsed under a wild cluster bootstrap, which
+turned a null into a transferable caution: crisis-response causal inference on a
+handful of temporally clustered events is uninformative, not merely underpowered.
+And the search for a bridge-user type returned a continuum rather than a kind,
+which is why we describe boundary-crossing as a behaviour with a distribution
+rather than a class of person.
+
+One next step follows directly. The veracity of the disputed factual claims that
+drive the most contested cell is the layer we most want and do not yet have;
+adding it means first repairing a relevance gate that currently recovers only
+4.8\% of those claims.
+
+% OLD BULLET SPEC (superseded by prose above):
+% \begin{itemize}
+% \item Restate the thesis with the two numbers that do the most work: neutral
+%   x Humanitarian 17.4\% against the Offensive-versus-not gap of 7.67\% / 6.83\%;
+%   and the Security/Military positivity asymmetry (0.094 india versus 0.050 neutral).
+% \item One sentence on what the negative results buy --- the event-clustering
+%   confounder, the continuum finding, and the labeller comparison are all results
+%   the paper only has because it reported failures.
+% \item No future-work laundry list. One concrete next step: the L7 veracity layer
+%   over the gated Factual Claims, which requires first fixing an L1 gate that
+%   currently recovers 4.8\% of them.
+% \end{itemize}
