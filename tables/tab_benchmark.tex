@@ -1,42 +1,88 @@
-\begin{table}[H]
+% \begin{table}[H]
+% \centering
+% \caption{Labellers compared against each construct's gold standard before any
+% was adopted.}
+% \label{tab:benchmark}
+% \begin{tabular}{llrr}
+% \toprule
+% Construct & Labeller & $\kappa$ & $n$ \\
+% \midrule
+% \multirow{2}{*}{content type}
+%   & trained coder pair                         & 0.612 & 250 \\
+%   & commercial LLM, zero-shot                  & 0.599 & 250 \\
+% \midrule
+% \multirow{2}{*}{narrative frame}
+%   & trained coder pair                         & 0.665 & 250 \\
+%   & commercial LLM, zero-shot                  & 0.688 & 250 \\
+% \midrule
+% \multirow{5}{*}{sentiment}
+%   & trained coder pair                         & 0.549 & 250 \\
+%   & lexicon and rules                          & 0.157 & 250 \\
+%   & encoder, pre-trained                       & 0.374 & 250 \\
+%   & open-weight LLM, self-consistency          & 0.526 & 250 \\
+%   & open-weight LLM, parameter-efficient tuning & 0.566 & 250 \\
+% \midrule
+% \multirow{2}{*}{stance toward India}
+%   & trained coder pair                         & 0.521 & 250 \\
+%   & open-weight LLM, self-consistency          & 0.407 & 250 \\
+% \midrule
+% \multirow{2}{*}{stance toward Pakistan}
+%   & trained coder pair                         & 0.557 & 250 \\
+%   & open-weight LLM, zero-shot                 & 0.455 & 250 \\
+% \midrule
+% \multirow{6}{*}{target type}
+%   & trained coder pair                         & 0.682 & 500 \\
+%   & deployed commercial classifier             & 0.228 & 500 \\
+%   & encoder, pre-trained                       & 0.377 & 500 \\
+%   & open-weight LLM, zero-shot                 & 0.416 & 500 \\
+%   & open-weight LLM, parameter-efficient tuning & 0.480 & 500 \\
+%   & encoder, fine-tuned                        & 0.487 & 500 \\
+% \bottomrule
+% \end{tabular}
+% \end{table}
+
+
+\begin{table}[htbp]
 \centering
-\caption{Labellers compared against each construct's gold standard before any
-was adopted.}
+\caption{Agreement of each labeller we tested with the adjudicated human reference
+for each layer, beside the agreement between our two coders.}
 \label{tab:benchmark}
-\begin{tabular}{llrr}
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{1.55cm}l>{\raggedright\arraybackslash}Xrr@{}}
 \toprule
-Construct & Labeller & $\kappa$ & $n$ \\
+layer & system & approach & $\kappa$ & $n$ \\
 \midrule
-\multirow{2}{*}{content type}
-  & trained coder pair                         & 0.612 & 250 \\
-  & commercial LLM, zero-shot                  & 0.599 & 250 \\
+content type & two coders &  & 0.612 & 250 \\
+ & gpt-5.2 & zero-shot & 0.599 & 250 \\
 \midrule
-\multirow{2}{*}{narrative frame}
-  & trained coder pair                         & 0.665 & 250 \\
-  & commercial LLM, zero-shot                  & 0.688 & 250 \\
+narrative frame & two coders &  & 0.665 & 250 \\
+ & gpt-5.2 & zero-shot & 0.688 & 250 \\
 \midrule
-\multirow{5}{*}{sentiment}
-  & trained coder pair                         & 0.549 & 250 \\
-  & lexicon and rules                          & 0.157 & 250 \\
-  & encoder, pre-trained                       & 0.374 & 250 \\
-  & open-weight LLM, self-consistency          & 0.526 & 250 \\
-  & open-weight LLM, parameter-efficient tuning & 0.566 & 250 \\
+sentiment & two coders &  & 0.549 & 250 \\
+ & VADER & lexicon & 0.157 & 250 \\
+ & XLM-T & pre-trained & 0.374 & 250 \\
+ & Mistral-7B-v0.3 & self-consistency & 0.526 & 250 \\
+ & Mistral-7B-v0.3 & QLoRA\textsuperscript{a} & 0.566 & 250 \\
+ & gpt-5.2 & zero-shot & 0.721 & 250 \\
 \midrule
-\multirow{2}{*}{stance toward India}
-  & trained coder pair                         & 0.521 & 250 \\
-  & open-weight LLM, self-consistency          & 0.407 & 250 \\
+stance toward India & two coders &  & 0.521 & 250 \\
+ & Llama-3.1-8B & self-consistency & 0.407 & 250 \\
+ & gpt-5.2 & zero-shot & 0.664 & 250 \\
 \midrule
-\multirow{2}{*}{stance toward Pakistan}
-  & trained coder pair                         & 0.557 & 250 \\
-  & open-weight LLM, zero-shot                 & 0.455 & 250 \\
+stance toward Pakistan & two coders &  & 0.557 & 250 \\
+ & Llama-3.1-8B & zero-shot & 0.455 & 250 \\
+ & gpt-5.2 & zero-shot & 0.775 & 250 \\
 \midrule
-\multirow{6}{*}{target type}
-  & trained coder pair                         & 0.682 & 500 \\
-  & deployed commercial classifier             & 0.228 & 500 \\
-  & encoder, pre-trained                       & 0.377 & 500 \\
-  & open-weight LLM, zero-shot                 & 0.416 & 500 \\
-  & open-weight LLM, parameter-efficient tuning & 0.480 & 500 \\
-  & encoder, fine-tuned                        & 0.487 & 500 \\
+target type & two coders &  & 0.682 & 500 \\
+ & Perspective & rule on scores & 0.228 & 500 \\
+ & DeBERTa-v3 & NLI zero-shot & 0.377 & 500 \\
+ & Gemma-3-12B & zero-shot & 0.416 & 500 \\
+ & Gemma-3-12B & QLoRA\textsuperscript{b} & 0.480 & 100 \\
+ & RoBERTa-large & fine-tuned\textsuperscript{a} & 0.487 & 500 \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
+\vspace{2pt}
+{\footnotesize \textsuperscript{a}Five-fold cross-validation.
+\textsuperscript{b}A single 80/20 split, scored on the 100 held-out items.\par}
 \end{table}

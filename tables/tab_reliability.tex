@@ -1,20 +1,49 @@
+% \begin{table}[H]
+% \centering
+% \caption{Inter-rater agreement per construct, human beside machine. \mohit{What is this machine? You mean a GPT model? I do not understand it}}
+% \label{tab:reliability}
+% \setlength{\tabcolsep}{5pt}
+% \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}Xrrrcr@{}}
+% \toprule
+% Construct & $n$ & Raw & $\kappa$ & 95\% CI & Machine \\
+% \midrule
+% relevance gate & 200 & 0.895 & \textbf{0.789} & [0.699, 0.869] & --- \\
+% content type & 250 & 0.876 & \textbf{0.612} & [0.484, 0.727] & 0.381 \\
+% narrative frame & 250 & 0.764 & \textbf{0.665} & [0.590, 0.738] & \textbf{0.676} \\
+% sentiment & 250 & 0.740 & 0.551 & [0.459, 0.640] & 0.803 \\
+% stance toward India & 250 & 0.712 & 0.517 & [0.427, 0.602] & 0.824 \\
+% stance toward Pakistan & 250 & 0.788 & 0.557 & [0.453, 0.655] & 0.821 \\
+% target type & 500 & 0.894 & \textbf{0.682} & [0.599, 0.758] & --- \\
+% offensiveness (binary) & 200 & 0.745 & 0.477 & --- & 0.670 \\
+% \bottomrule
+% \end{tabularx}
+% \end{table}
+
 \begin{table}[H]
 \centering
-\caption{Inter-rater agreement per construct, human beside machine. \mohit{What is this machine? You mean a GPT model? I do not understand it}}
+\caption{Agreement between our two coders, and between each layer's deployed
+labeller and the coders' labels.}
 \label{tab:reliability}
-\setlength{\tabcolsep}{5pt}
-\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}Xrrrcr@{}}
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}Xrrrcl r@{}}
 \toprule
-Construct & $n$ & Raw & $\kappa$ & 95\% CI & Machine \\
+ & \multicolumn{4}{c}{two coders} & \multicolumn{2}{c}{deployed labeller} \\
+\cmidrule(lr){2-5}\cmidrule(l){6-7}
+layer & $n$ & raw & $\kappa$ & 95\% CI & system & $\kappa$ \\
 \midrule
-relevance gate & 200 & 0.895 & \textbf{0.789} & [0.699, 0.869] & --- \\
-content type & 250 & 0.876 & \textbf{0.612} & [0.484, 0.727] & 0.381 \\
-narrative frame & 250 & 0.764 & \textbf{0.665} & [0.590, 0.738] & \textbf{0.676} \\
-sentiment & 250 & 0.740 & 0.551 & [0.459, 0.640] & 0.803 \\
-stance toward India & 250 & 0.712 & 0.517 & [0.427, 0.602] & 0.824 \\
-stance toward Pakistan & 250 & 0.788 & 0.557 & [0.453, 0.655] & 0.821 \\
-target type & 500 & 0.894 & \textbf{0.682} & [0.599, 0.758] & --- \\
-offensiveness (binary) & 200 & 0.745 & 0.477 & --- & 0.670 \\
+relevance & 200 & 0.913 & 0.818 & [0.711, 0.914] & gpt-5.2 & 0.893 \\
+content type & 250 & 0.872 & \textbf{0.619} & [0.471, 0.748] & gpt-5.2 & 0.432 \\
+narrative frame & 250 & 0.797 & \textbf{0.700} & [0.615, 0.778] & gpt-5.2 & 0.775 \\
+sentiment & 250 & 0.733 & 0.541 & [0.426, 0.643] & gpt-5.2 & 0.799 \\
+stance toward India & 250 & 0.717 & 0.535 & [0.429, 0.632] & gpt-5.2 & 0.825  \\
+stance toward Pakistan & 250 & 0.783 & 0.579 & [0.466, 0.685] & gpt-5.2 & 0.830 \\
+target type & 500 & 0.893 & \textbf{0.671} & [0.589, 0.753] & RoBERTa & 0.487\textsuperscript{b} \\
+toxicity at 0.5 & 200 & 0.745 & 0.477 & [0.360, 0.588] & Perspective & 0.670\textsuperscript{a} \\
 \bottomrule
 \end{tabularx}
+\vspace{2pt}
+{\footnotesize \textsuperscript{a}The 0.5 threshold against the reviewer-resolved labels of all
+200 items. \textsuperscript{b}Five-fold cross-validation on all 500 sampled
+items; the deployed classifier was then trained on all of them.\par}
 \end{table}
