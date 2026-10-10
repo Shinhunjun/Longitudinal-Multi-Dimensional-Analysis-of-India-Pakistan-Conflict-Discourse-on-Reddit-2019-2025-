@@ -10,14 +10,13 @@ the measurement, inference, and R7/R8 items and kept every fact. The Findings
 mentions of these caveats are now compressed to a clause plus a pointer here.}
 
 Several limitations bound these results, in roughly descending order of how much
-they constrain the claims. The most pervasive is measurement. No annotation layer
-reaches a Krippendorff $\alpha$ of 0.800, and only offensiveness-target (L6b, at
-0.682) clears 0.667; the four-class content-type layer (L1) is too unreliable to
-carry claims (machine $\kappa$ 0.368, a Factual-Claim recall of 4.8\%). Every
-finding inherits this measurement error, and \S\ref{sec:data-production} states
-what each layer's reliability licenses. Reliability is worst on the diaspora communities ($\kappa$ 0.273 for L1
-and 0.404 for L5), which is one reason the diaspora ($N = 2{,}280$) is reported as
-exploratory, in a single sentence with no modelled results.
+they constrain the claims. The most pervasive is measurement. No comment
+annotation layer reaches a Cohen's $\kappa$ of 0.800 between our two coders, and
+the four-class content-type layer is too unreliable to carry claims
+(deployed-labeller $\kappa$ 0.432, recovering only one of the fourteen factual
+claims in the adjudicated reference), so we use it only as an opinion-versus-rest
+split. Every finding inherits this measurement error, and
+\S\ref{sec:data-coders} reports agreement layer by layer.
 
 Two structural features of the design limit what community comparisons can mean.
 \texttt{community\_alignment} is a property of the venue read as a property of the
@@ -60,7 +59,7 @@ Finally, two scope limits. Roughly 3.1\% of the corpus is code-mixed Hindi/Urdu 
 transliterated, but the gold samples contain only 8, 8, and 13 such items, so a
 separate $\kappa$ cannot be estimated and the Perspective scores were computed
 English-only. And the qualitative arm is single-analyst until the two-coder pass
-is complete, which is why \S\ref{sec:approach-qualitative} describes it as analyst close reading.
+is complete, which is why we describe it as analyst close reading throughout.
 
 % =========================================================================
 % OLD BULLET SPECIFICATION (commented out; prose above gathers all limitations
