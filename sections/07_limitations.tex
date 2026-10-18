@@ -1,7 +1,6 @@
 %% ===========================================================================
 \section{Limitations}
 \label{sec:limitations}
-\budget{550}
 
 \jun{Prose draft of the limitations, gathered here per the Sept.\ meeting
 (all limitations in one dedicated section rather than scattered through Findings).
@@ -9,79 +8,109 @@ Content unchanged from the bullet list, which is commented out below; I prose-if
 the measurement, inference, and R7/R8 items and kept every fact. The Findings
 mentions of these caveats are now compressed to a clause plus a pointer here.}
 
-Several limitations bound these results, in roughly descending order of how much
-they constrain the claims. The most pervasive is measurement. No comment
-annotation layer reaches a Cohen's $\kappa$ of 0.800 between our two coders, and
-the four-class content-type layer is too unreliable to carry claims
-(deployed-labeller $\kappa$ 0.432, recovering only one of the fourteen factual
-claims in the adjudicated reference), so we use it only as an opinion-versus-rest
-split. Every finding inherits this measurement error, and
-\S\ref{sec:data-coders} reports agreement layer by layer.
+\yash{Every limitation already stated beside its result is left there; this section holds only the ones that cut across results. The header
+comment of this file maps each of Jun's items and each Section 3 fragment item to where it now lives. Two items moved out: the Sindoor exclusion for contestation is now a Findings sentence (it holds), and the withdrawal design's lean rule is now in the causal appendix.}
 
-Two structural features of the design limit what community comparisons can mean.
-\texttt{community\_alignment} is a property of the venue read as a property of the
-person: \S\ref{sec:results-threads}'s own within-alignment test shows the spread inside the
-India-aligned communities (0.160) exceeds the gap across alignments (0.088), and
-R1, R2, R5, and R8 all make this move while only R6 handles it at the author
-level. Alignment is also perfectly collinear with subreddit --- ``general
-audience'' is r/worldnews, r/geopolitics and r/lesscredibledefence together, and
-the Pakistan-aligned group is the single community r/pakistan, so every
-Pakistan-aligned claim is really a claim about that one community.
+\paragraph{Machine labels.} Almost every result rests on labels that a model or
+classifier assigned. We chose each labeler, and checked its revised production
+prompts, on the same gold samples on which we report its agreement, so
+Table~\ref{tab:reliability} probably overstates how well each labeler does on
+comments it was not tuned on. Our coders, the relevance gate, and the
+content-type and frame prompts all saw each item's community, which is the
+contrast most of our results turn on. A label may therefore carry an expectation
+about a community along with a reading of the comment, and some of the difference
+in how much of each community the gate kept may come from the prompt rather than
+from what the communities discuss. Relabeling a sample with the community removed
+from the prompt would measure this, and we have not done it. We also analyze the
+labels as if they were correct. Methods exist that use a human-labeled sample to
+correct downstream estimates for a labeler's
+errors~\cite{angelopoulos2023ppi,egami2023surrogates}, and we did not apply them.
+Raising the confidence threshold, as our robustness checks do, removes
+uncertain labels but not confident errors. Since our coders agreed only moderately on sentiment,
+stance, and toxicity, a small difference between groups on those layers could
+come from labeling error alone.
 
-The outcome measures carry their own caveats, which matter most for the
-contestation result (R8). Three of the headline findings ride the same platform
-vote signal --- \texttt{score\_log}, a median split of \texttt{score}, and
-\texttt{controversiality} --- so they are less independent than they look. And
-\texttt{controversiality} itself conflates contested with merely downvoted:
-23.8\% of comments at a net score of zero or below are flagged against 0.02\% of
-those above one hundred, and the flag is platform metadata rather than observed
-deliberation, which is why we speak of contested \emph{reception} throughout
-rather than debate. Collection is also asymmetric: Operation Sindoor is 43\% of
-the crisis corpus and twelve times the size of Pulwama, so genuine engagement
-growth cannot be cleanly separated from retrieval completeness; our robustness is
-by exclusion rather than correction, and R8 does not yet carry that exclusion arm.
-Thread depth is lost non-randomly with respect to frame (15.8\% of comments
-unresolved, 73.9\% for Historical Grievance against 87.3\% for
-Security/Military), and Historical Grievance also carries the largest
-depth-growth claim.
+\paragraph{Toxicity and contestation.} We scored every comment with Perspective set
+to English. Toxicity classifiers can rate some varieties of English as more toxic
+than others~\cite{sap2019racialbias}, and comments containing Hindi or Urdu are
+most common in the India-aligned communities, so errors of this kind would fall
+unevenly across our comparison. When we drop the 10,331 scored comments that
+contain Hindi or Urdu, the toxic share in India-aligned communities falls from
+10.8\% to 10.4\%, the shares in the other groups move by less than a tenth of a
+point, and the India-aligned excess over \texttt{r/pakistan} narrows from 2.1 to 1.7 points without changing direction. Our gold samples hold too few such
+comments to estimate agreement on them separately. The \texttt{controversiality}
+flag separates divided reception from every other kind. A comment
+that nearly every voter rejected and one that drew too few votes to reach
+Reddit's minimum both count as uncontested, so a low rate of contestation does
+not show that a community agreed. Last, gpt-5.2 and Perspective are hosted
+services whose models can change or be withdrawn, so a rerun of our pipeline may not reproduce our labels~\cite{tornberg2024standards}. We release the labels for that reason.
 
-The causal analyses (R4, R7) are the sharpest limitation, and Appendix~\ref{app:causal} documents it
-in full: no causal identification survives the wild cluster bootstrap, so the
-paper is associational throughout. Two design-specific caveats attach to R7. Its
-lean rule discards 50.6\% of aligned-community comments and treats anti-Pakistan
-as pro-India without separate validation. And both of R7's silencing channels
-inherit limits the design cannot beat: the expression channel is a null, while the
-participation channel (comment counts) shows a spiral-direction descriptive signal
-that does not survive the bootstrap and rests on a survivorship-limited panel,
-since authors already silent in the baseline are unobservable.
+\paragraph{Corpus coverage.} Our corpus covers ten communities, not all of Reddit's
+discussion of these crises. Other communities also discuss them, on the India
+side in particular, and none of the ten is organized around Kashmir. Kashmiris
+therefore appear in our data only as participants in communities organized around
+India, Pakistan, or international affairs, although four of our six events took
+place in or concerned Kashmir. Our queries also name the events as Indian and
+English-language sources do. In the two 2019 windows, 86 \texttt{r/pakistan}
+submissions named the events in Pakistani terms without using any of our query
+terms, and our collection holds 8 of them. Set against the 1,278
+\texttt{r/pakistan} submissions we collected in those windows the gap is small,
+but our \texttt{r/pakistan} comments under-represent discussion in Pakistani
+terms, and we could measure the gap only for 2019.
+Operation Sindoor supplies 43\% of our analytic sample, nearly thirteen times as many comments as Pulwama. That share reflects how much discussion each crisis drew, how much these communities grew between 2019 and 2025, and how completely the archive captured each period, and our data cannot separate the three. Excluding Operation Sindoor, as our robustness checks do, shows whether a result depends on that one event, but it does not correct for uneven capture across the others.
 
-Finally, two scope limits. Roughly 3.1\% of the corpus is code-mixed Hindi/Urdu or
-transliterated, but the gold samples contain only 8, 8, and 13 such items, so a
-separate $\kappa$ cannot be estimated and the Perspective scores were computed
-English-only. And the qualitative arm is single-analyst until the two-coder pass
-is complete, which is why we describe it as analyst close reading throughout.
+\paragraph{Threads and authors.} We placed each comment in its thread by following the chain of comments it replied to, and the chain breaks wherever a parent comment is missing from our collection. We could not place 15.8\% of the analytic sample, and the loss is uneven by frame: we placed 87.3\% of security and military comments but only 73.8\% of historical-grievance comments. Historical grievance is the frame that persisted most strongly from parent to reply, so our estimate for it comes from the least complete threads. Our archetypes and our comparison of the same authors at home and across the boundary rest on the 5,924 authors active enough to profile, fewer than one in ten of the 68,517 named authors in our corpus. Participants who crossed a boundary only once or twice fall outside them, and their crossings may differ from the ones we describe.
 
-% =========================================================================
-% OLD BULLET SPECIFICATION (commented out; prose above gathers all limitations
-% here per the Sept. meeting. Every fact preserved.)
-% =========================================================================
-% \begin{enumerate}
-% \item No layer reaches Krippendorff alpha >= 0.800; only L6b (0.682) clears 0.667.
-%   L1 unusable (kappa 0.368, Factual Claim recall 4.8%). S3.9 budget per recipe.
-% \item Associational throughout; no causal identification survives; S5.7 why.
-% \item community_alignment is venue read as person (V3). S5.2 within-alignment
-%   spread 0.160 > across-alignment 0.088. R1,R2,R5,R8 do this; only R6 handles it.
-% \item Alignment collinear with subreddit (V7). Neutral = worldnews+geopolitics+
-%   lesscredibledefence; pakistan_aligned = single subreddit r/pakistan.
-% \item Three headline findings ride the same vote signal (score_log, score,
-%   controversiality) (V2).
-% \item controversiality conflates contested with downvoted (23.8% at score<=0 vs
-%   0.02% at 100+); platform metadata, not deliberation.
-% \item Collection asymmetry: Sindoor 43% of crisis corpus, 12x Pulwama;
-%   robustness by exclusion; R8 has no exclusion arm (B9).
-% \item Depth loss systematic on frame (15.8% unresolved; HG 73.9% vs SM 87.3%).
-% \item Language coverage: 3.1% code-mixed; gold has only 8/8/13; Perspective English-only.
-% \item Qualitative arm single-analyst until two-coder pass (B8); S4.4 says so.
-% \item R7 lean rule discards 50.6% of aligned comments; conflates anti-Pak with pro-India.
-% \item Diaspora (N=2,280) exploratory only; reliability worst (L1 0.273, L5 0.404).
-% \end{enumerate}
+
+% Several limitations bound these results, in roughly descending order of how much
+% they constrain the claims. The most pervasive is measurement. No annotation layer
+% reaches a Krippendorff $\alpha$ of 0.800, and only offensiveness-target (L6b, at
+% 0.682) clears 0.667; the four-class content-type layer (L1) is too unreliable to
+% carry claims (machine $\kappa$ 0.368, a Factual-Claim recall of 4.8\%). Every
+% finding inherits this measurement error, and \S\ref{sec:data-production} states
+% what each layer's reliability licenses. Reliability is worst on the diaspora communities ($\kappa$ 0.273 for L1
+% and 0.404 for L5), which is one reason the diaspora ($N = 2{,}280$) is reported as
+% exploratory, in a single sentence with no modelled results.
+
+% Two structural features of the design limit what community comparisons can mean.
+% \texttt{community\_alignment} is a property of the venue read as a property of the
+% person: \S\ref{sec:results-threads}'s own within-alignment test shows the spread inside the
+% India-aligned communities (0.160) exceeds the gap across alignments (0.088), and
+% R1, R2, R5, and R8 all make this move while only R6 handles it at the author
+% level. Alignment is also perfectly collinear with subreddit --- ``general
+% audience'' is r/worldnews, r/geopolitics and r/lesscredibledefence together, and
+% the Pakistan-aligned group is the single community r/pakistan, so every
+% Pakistan-aligned claim is really a claim about that one community.
+
+% The outcome measures carry their own caveats, which matter most for the
+% contestation result (R8). Three of the headline findings ride the same platform
+% vote signal --- \texttt{score\_log}, a median split of \texttt{score}, and
+% \texttt{controversiality} --- so they are less independent than they look. And
+% \texttt{controversiality} itself conflates contested with merely downvoted:
+% 23.8\% of comments at a net score of zero or below are flagged against 0.02\% of
+% those above one hundred, and the flag is platform metadata rather than observed
+% deliberation, which is why we speak of contested \emph{reception} throughout
+% rather than debate. Collection is also asymmetric: Operation Sindoor is 43\% of
+% the crisis corpus and twelve times the size of Pulwama, so genuine engagement
+% growth cannot be cleanly separated from retrieval completeness; our robustness is
+% by exclusion rather than correction, and R8 does not yet carry that exclusion arm.
+% Thread depth is lost non-randomly with respect to frame (15.8\% of comments
+% unresolved, 73.9\% for Historical Grievance against 87.3\% for
+% Security/Military), and Historical Grievance also carries the largest
+% depth-growth claim.
+
+% The causal analyses (R4, R7) are the sharpest limitation, and Appendix~\ref{app:causal} documents it
+% in full: no causal identification survives the wild cluster bootstrap, so the
+% paper is associational throughout. Two design-specific caveats attach to R7. Its
+% lean rule discards 50.6\% of aligned-community comments and treats anti-Pakistan
+% as pro-India without separate validation. And both of R7's silencing channels
+% inherit limits the design cannot beat: the expression channel is a null, while the
+% participation channel (comment counts) shows a spiral-direction descriptive signal
+% that does not survive the bootstrap and rests on a survivorship-limited panel,
+% since authors already silent in the baseline are unobservable.
+
+% Finally, two scope limits. Roughly 3.1\% of the corpus is code-mixed Hindi/Urdu or
+% transliterated, but the gold samples contain only 8, 8, and 13 such items, so a
+% separate $\kappa$ cannot be estimated and the Perspective scores were computed
+% English-only. And the qualitative arm is single-analyst until the two-coder pass
+% is complete, which is why \S\ref{sec:approach-qualitative} describes it as analyst close reading.

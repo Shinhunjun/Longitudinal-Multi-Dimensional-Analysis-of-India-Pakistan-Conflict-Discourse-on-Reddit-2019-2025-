@@ -9,6 +9,7 @@
 % \providecommand{\authorinput}[1]{\textbf{\textless author input: #1\textgreater}}
 
 \section{Data and Methods}
+\mohit{My pointer}
 \label{sec:data}
 % \mohit{No need for this, Blinded it}
 % \candidate{S3-lede}
@@ -99,8 +100,8 @@ To rank them, we ran seven crisis queries against every candidate, each restrict
 \input{tables/tab_selection}
 
 We analyze ten communities, those ranked highest in each alignment group. They fall into three groups, defined by the country each community is organized around: six India-aligned communities, the six highest-volume candidates on the Indian side, which hold 185,177 comments; three general-audience communities of international news, geopolitics and defense, which hold 66,732; and one Pakistan-aligned community, \texttt{r/pakistan}, which holds 53,308. Two authors assigned each community to a group independently, from its name, description, and rules. They agreed on 161 of the 188 communities (Cohen's $\kappa = 0.73$) and settled the rest by discussion. The ordering is decisive on the Pakistan side: \texttt{r/pakistan} returned 833 matching submissions, and none of the other nineteen Pakistan-focused candidates returned more than 11 (Table~\ref{tab:selection}).
-\mohit{Okay so we should say, two authors assigned it and then the kappa of that. I removed Fig 2.}
-\yash{added n and kappa score}
+% \mohit{Okay so we should say, two authors assigned it and then the kappa of that. I removed Fig 2.}
+% \yash{added n and kappa score}
 
 % Figure~\ref{fig:composition} shows how many of our comments come from each community.
 
@@ -149,8 +150,8 @@ We collected submissions and their comments from the Arctic Shift archive~\cite{
 
 Broad queries also match submissions that are not about relations between India
 and Pakistan: ``ceasefire'' and ``nuclear'', for instance, also match threads
-about other countries. Narrower queries would have cut these matches only by also missing relevant submissions that use the same words, and a submission the queries miss never reaches our corpus. We therefore kept the queries broad and screened every match with a relevance gate. We prompted gpt-5.2~\cite{openai2025gpt52} with each submission's title, the first 100 words of its body, its subreddit, the crisis type and phase it falls in (Figure~\ref{fig:timeline}), and its score and comment count, which the prompt lets decide only borderline cases. We asked the model, in a zero-shot prompt that states our criteria for relevance, whether the submission engages with relations between the two countries. Writing the criteria into the prompt makes the rule explicit and needs no labeled training data. Appendix~\ref{app:codebook} states these criteria, and Appendix~\ref{app:prompts} shows the full system and user prompts. \mohit{I would say Appendix x and Y shows the prompts given etc}
-\yash{rephrased sentence}
+about other countries. Narrower queries would have cut these matches only by also missing relevant submissions that use the same words, and a submission the queries miss never reaches our corpus. We therefore kept the queries broad and screened every match with a relevance gate. We prompted gpt-5.2~\cite{openai2025gpt52} with each submission's title, the first 100 words of its body, its subreddit, the crisis type and phase it falls in (Figure~\ref{fig:timeline}), and its score and comment count, which the prompt lets decide only borderline cases. We asked the model, in a zero-shot prompt that states our criteria for relevance, whether the submission engages with relations between the two countries. Writing the criteria into the prompt makes the rule explicit and needs no labeled training data. Appendix~\ref{app:codebook} states these criteria, and Appendix~\ref{app:prompts} shows the full system and user prompts. 
+% \mohit{I would say Appendix x and Y shows the prompts given etc}\yash{rephrased sentence}
 We labeled every submission through OpenAI's Batch API~\cite{openai2026batchapi}. The gate kept 31,979 submissions (73.2\%) and removed 11,734 (26.8\%). The share it kept was lowest in the three general-audience communities (29\% in \texttt{r/lesscredibledefence}, 44\% in \texttt{r/geopolitics}, and 67\% in \texttt{r/worldnews}) and highest in \texttt{r/IndianDefense} (86\%).
 
 To check the gate, two coders independently labeled 200 submissions stratified into five tiers of expected difficulty, from clear cases to ambiguous ones, which we assigned by how strongly each submission matched our keyword queries. The coders agreed on 183 (91.5\%, Cohen's $\kappa = 0.818$), and a reviewer who was not one of them resolved the rest. We scored the gate's production labels against these resolved labels. The gate agrees at $\kappa = 0.855$ (95\% CI 0.753 to 0.937); on the relevant class its precision is 0.971, its recall 0.904 and its $F_1$ 0.936. Seven of its nine errors turned away a relevant submission and two let an irrelevant one through, so its mistakes cost us coverage more than they add noise. The sample over-represents hard cases, so these figures describe the sample rather than the whole collection. It also holds only 11 submissions from \texttt{r/pakistan}, two of which the gate wrongly excluded, which is too few for a separate estimate. In a benchmark on all 200 submissions, gemini-3-pro-preview and claude-opus-4.6 agreed slightly more often with the reference than gpt-5.2 did ($\kappa = 0.895$ for both, against 0.874). The difference is two correct labels out of 200, too few for an exact McNemar test on the paired labels to detect, whatever the pattern of disagreement ($p \geq 0.5$). The benchmark therefore gave us no reason to replace gpt-5.2, and keeping it means that one model, with one set of errors to characterize, labels both the gate and four of our comment layers.
@@ -249,13 +250,14 @@ never use content type as an outcome. We use it only as a control and as a strat
 
 
 We measure toxicity with the TOXICITY attribute of Google's Perspective API~\cite{jigsaw2018perspective,lees2022perspective} and call a comment toxic if it scores 0.5 or higher, a threshold used in earlier work~\cite{rajadesingan2020norms,trujillo2022reddit,saveski2021structure,aleksandric2025power,kumarswamy2025causal}. To check the threshold on our data, two coders labeled 200 comments sampled from both sides of it, and a reviewer resolved their disagreements. The two coders agree with each other at only $\kappa = 0.477$. Toxicity is a judgment on which
-annotators often disagree, partly because it depends on their beliefs and identities~\cite{sap2022annotators,davani2022dealing}. The 0.5 cut agrees with the reviewer-resolved labels at $\kappa = 0.670$ (Table~\ref{tab:reliability}).\mohit{I dont get what you mean with two different kappa values, is the first one between the coders?} \yash{Yes, 0.477 is between the two coders, and 0.670 is between the 0.5 cut and the labels after the reviewer resolved disagreements.}
+annotators often disagree, partly because it depends on their beliefs and identities~\cite{sap2022annotators,davani2022dealing}. The 0.5 cut agrees with the reviewer-resolved labels at $\kappa = 0.670$ (Table~\ref{tab:reliability}).
+% \mohit{I dont get what you mean with two different kappa values, is the first one between the coders?} \yash{Yes, 0.477 is between the two coders, and 0.670 is between the 0.5 cut and the labels after the reviewer resolved disagreements.}
 These two figures answer different questions: the first measures how far two people agree, and the second how closely the cut matches the resolved labels. On top of this boundary, we separate targeted from untargeted toxicity, following
 the offensive-language taxonomy of \citet{zampieri2019olid}: a toxic comment is targeted if it attacks an identifiable person, group, nation, or religion. We fine-tuned RoBERTa-large~\cite{liu2019roberta} on 500 toxic comments that our
 coders labeled for target type (Table~\ref{tab:reliability}) and used it to make this second decision for all 30,044 comments Perspective scored as toxic. In five-fold cross-validation on those comments, it agrees with the reviewed labels
 at $\kappa = 0.487$ ($\pm 0.117$ across folds). The cross-validated agreement is moderate and well below the coders' 0.682 on the same 500 comments, so the classifier often places a toxic comment on the wrong side of the line between targeted and untargeted. A small difference in targeted toxicity between groups or periods may therefore reflect classifier error rather than a real difference.
-\mohit{We need to acknowledge here the kappa is low.}
-\yash{added more justification for the low kappa}
+% \mohit{We need to acknowledge here the kappa is low.}
+% \yash{added more justification for the low kappa}
 
 % \mohit{Provide where the results are, say in bracket (Table XX)}
 % \yash{Table pointer added in the next paragraph and in tab:reliability. The
