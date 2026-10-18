@@ -1,36 +1,17 @@
 %% ===========================================================================
 \section{Discussion}
-\budget{1,300}
 
 \subsection{Composition is the unit of analysis}
-\budget{250}
 
-\jun{Prose draft (my part; old bullet spec commented below). Covers the R8-vs-R2
-reconciliation the spec flagged.}
+% \jun{Prose draft (my part; old bullet spec commented below). Covers the R8-vs-R2
+% reconciliation the spec flagged.}
 
-The findings converge on a single methodological point: none of them is visible
-in one annotation layer. The affective-privileging result needs sentiment,
-frame, stance, and community together; the boundary-crossing result needs a
-thirteen-dimensional author fingerprint; and the contestation result \emph{is},
-in effect, the failure of the single-layer account, since the offensiveness layer
-that a content score would read barely moves the outcome. The object that carries
-the signal is the composition of layers with community context, not any layer on
+The findings converge on a single methodological point: none of them is visible in one annotation layer. The affective-privileging result needs sentiment, frame, stance, and community together; the boundary-crossing result needs a thirteen-dimensional author fingerprint; and the contestation result \emph{is}, in effect, the failure of the single-layer account, since the offensiveness layer that a content score would read barely moves the outcome. The object that carries the signal is the composition of layers with community context, not any layer on
 its own.
 
-\jun{[Jun] Added a paragraph that ties R8 (RQ1) and R5 (RQ2) into one picture via
-the crossover, so the two findings read as one mechanism rather than two separate
-results. Kept in Discussion so the Findings sections stay organised by RQ.}
-Two of these findings are the same mechanism seen from two sides. Community and
-frame do not compete to explain one outcome; they divide the labour across two.
-What a community \emph{contests} is organised chiefly by the community a comment
-is received in, and only weakly by its frame; the affect a comment \emph{carries}
-is organised chiefly by its frame, and only weakly by its community (on a common
-pseudo-$R^2$ metric, the two factors swap ranks between the contestation and
-sentiment outcomes, \S\ref{sec:results-contestation}). Read alone, either result
-invites a one-factor story --- that community is what matters, or that frame is.
-Read together, they are a single compositional claim: community fixes \emph{what}
-is argued over and frame fixes \emph{how} it is voiced, and a method that collapses
-discourse to one text-intrinsic score sees neither axis.
+% \jun{[Jun] Added a paragraph that ties R8 (RQ1) and R5 (RQ2) into one picture viathe crossover, so the two findings read as one mechanism rather than two separateresults. Kept in Discussion so the Findings sections stay organised by RQ.}
+Two of these findings are the same mechanism seen from two sides. Community and frame do not compete to explain one outcome; they divide the labour across two.
+What a community \emph{contests} is organised chiefly by the community a comment is received in, and only weakly by its frame; the affect a comment \emph{carries} is organised chiefly by its frame, and only weakly by its community (on a common pseudo-$R^2$ metric, the two factors swap ranks between the contestation and sentiment outcomes, \S\ref{sec:results-contestation}). Read alone, either result invites a one-factor story --- that community is what matters, or that frame is. Read together, they are a single compositional claim: community fixes \emph{what} is argued over and frame fixes \emph{how} it is voiced, and a method that collapses discourse to one text-intrinsic score sees neither axis.
 
 This raises an apparent tension worth resolving directly, because a reader will
 otherwise find it. Our contestation result says toxicity scarcely drives what a
@@ -57,7 +38,6 @@ composition remains to be tested on other conflicts and platforms.
 % \end{itemize}
 
 \subsection{Humanitarian framing as the permeable seam}
-\budget{250}
 
 \jun{Prose draft (my part; old bullet spec commented below). Corrected the
 audience-heterogeneity point: we tested it (§5.6) rather than leaving it
@@ -99,71 +79,27 @@ condition rather than claim to have closed it.
 % \end{itemize}
 
 \subsection{``Bridge user'' is the wrong abstraction}
-\budget{220}
 
-\begin{itemize}
-\item The clustering failure and the raiding signature together argue that
-  crossing is a behaviour with a distribution, not a user type, and that its
-  modal form is antagonistic.
-\item Any system that treats cross-community participation as a proxy for
-  constructive participation will systematically boost incursions.
-\item Extends Garimella et al.~\cite{garimella2018echo} beyond network position;
-  instantiates Kumar et al.~\cite{kumar2018conflict} at the individual level;
-  sits against Xia et al.~\cite{xia2025integrated}, who find at best conditional
-  depolarization from cross-party contact.
-\end{itemize}
+We set out to find bridge users and found none. In our corpus, crossing is a behavior with a distribution, much as activity across communities runs from
+generalists to specialists along one continuum~\cite{waller2019generalists}, and the crossers came disproportionately from its combative end. They scored lower on our bridging index than authors who stayed in one community, and the same authors raised their anti-out-group stance when they posted across the boundary. They also lowered their targeted toxicity slightly, though that change rests on a classifier that separates targeted from untargeted toxicity only moderately well. These results bear on two questions that earlier work on crossing left open. The first is what a receiving community penalizes. \citet{datta2019interconflict} inferred conflict from authors rewarded in one subreddit and penalized in another, but could not trace a penalty to what was said. In our data the penalty did not single out hostility, since outsiders who provoked and outsiders who merely asked questions were both scored down. On \texttt{r/politics}, cross-cutting replies that expressed warmth tended to draw positive responses~\cite{marchal2022benice}; in a community aligned against the poster during a shooting war, even a question was penalized. The second question is whether crossing changes how people write
+or only who crosses, and we see both. Hawkish authors crossed more often, as a spiral of silence predicts if only a committed core keeps speaking in a hostile climate~\cite{noelleneumann1974spiral}, and the same authors wrote more oppositionally once across, which fits accounts of antisocial behavior as partly situational~\cite{cheng2017troll}.
 
-\subsection{Measurement as a first-class finding}
-\budget{150}
+Contact theory expects contact to reduce prejudice most under equal status, common goals, and institutional support~\cite{pettigrew2006contact}. Posting into a community aligned against one's own side during a shooting war meets none of these conditions, and what we observe resembles negative contact, which weighs more than positive contact~\cite{paolini2010negative,barlow2012contact}. Twitter users who bridged echo chambers paid a price in network centrality and in how their content was received~\cite{garimella2018echo}; in our data the price fell on outsiders whether or not they bridged. Whether cross-party contact on Reddit integrates or segregates users depends on its conditions~\cite{xia2025integrated}, and ours are conditions under which it went badly. We argue that a system that ranks, recommends, or badges cross-community participation as a proxy for constructive participation would therefore promote incursions, and for this reason we call these participants boundary-crossers rather than bridge users. Following boundary-crossers beyond the crisis windows, to see whether incursion ever gives way to contact once the fighting stops, we leave to future work.
 
 
-\begin{itemize}
-\item The specification curve's largest variance source is \textbf{the
-  labeller}, not any sampling or modelling choice.
-\item Perspective --- the classifier platforms actually deploy --- is the
-  \textbf{weakest instrument measured} ($\kappa$ 0.228--0.249) against a human
-  ceiling of 0.682 on the same construct, and was run English-only on a 3.1\%
-  code-mixed corpus.
-\item No automated labeller reached the human ceiling on any layer, and that
-  ceiling is itself only 0.45--0.68.
-\item Consequence for CSCW practice: LLM-annotated corpora need a
-  \textbf{labeller-comparison arm}, not a single validation number --- and
-  reliability reporting has to acknowledge that the human ruler is noisy too.
-\end{itemize}
 
+% -----------------------------------------------------------------------------
 \subsection{Design implications}
-\budget{280}
+\label{sec:disc-design}
+% -----------------------------------------------------------------------------
 
-Four, each traced to a specific finding, each with its own failure mode named.
+Our findings suggest several considerations for the people who design and moderate these communities. First, a moderation queue ranked by toxicity score
+ranks by the layer that moved contestation least in our data. A queue keyed to frame and community would instead surface the places where reception divides, such as humanitarian framing in general-audience communities or religious framing in \texttt{r/pakistan} during a crisis, and because contestation behaved as a property of the alignment group, such a model could supply the middle level missing from Crossmod, which has classifiers for single subreddits and for the whole site but none for groups of subreddits~\cite{chandrasekharan2019crossmod}. However, a contested comment is not necessarily a harmful one. Most flagged humanitarian comments in general-audience communities carried no toxicity label and disputed factual claims, so a queue that fed removal would suppress legitimate argument, and its cells would need re-estimating for any other conflict. Second, an interface could show beside a thread how its frames are voiced in other communities, so that readers who take a strike as a source of pride see that general-audience readers attached their positive sentiment to de-escalation. Making that asymmetry visible may harden identity rather than soften it, as exposure to opposing views did for Republican participants in a field experiment on Twitter~\cite{bail2018exposure}, so such a design would need testing before
+anyone deployed it. Third, because receiving communities penalized outsiders who asked questions along with those who provoked, a guaranteed period of visibility for out-group comments would protect questions that early down-votes would otherwise bury. The same floor would also protect provocateurs, who are over-represented among crossers. Conditioning it on the register signals our author fingerprint already measures might separate the two. Finally, an event's mix of frames and affect tracked the kind of crisis more closely than the year, so a community could prepare its settings by crisis type, expecting security framing to dominate a military exchange and political framing a constitutional change. Our
+data cannot identify causal effects of crisis type (Appendix~\ref{app:causal}), the regularity held only for the contrast between military and constitutional events, and two of our three crisis types rest on one event each, so we offer this as a hypothesis for a platform-side experiment rather than as a recommendation.
 
-\begin{description}
-\item[Composition-aware moderation triage.] Surface high-harm cells
-  (Humanitarian $\rightarrow$ Security/Military transitions; Religious/Cultural
-  $\times$ Offensive-Targeted in acute phases) rather than ranking by toxicity
-  score. \emph{Failure mode:} composition cells are community-specific and will
-  not transfer across conflicts without re-estimation.
-
-\item[Narrative-transparency affordance.] Show per-community frame--affect
-  composition on a thread. \emph{Failure mode:} making affective asymmetry
-  legible may harden identity rather than soften it
-  (cf.~\cite{bail2018exposure}).
-
-\item[Crossing-aware visibility floors.] A minimum-visibility guarantee for
-  out-group comments, since the penalty falls on inquisitive and balanced voices
-  alike (question\_rate OR 2.15). \emph{Failure mode:} the same floor protects
-  provocateurs, who are most of the crossers.
-
-\item[Crisis-phase-adaptive policy.] Moderation thresholds as a function of
-  \texttt{crisis\_phase} $\times$ \texttt{crisis\_type}, justified by
-  \S\ref{sec:results-signature}'s finding that crisis type --- not era ---
-  determines the discourse regime.
-  \emph{Failure mode:} Appendix~\ref{app:causal} shows the corpus cannot causally identify phase
-  effects, so this is a hypothesis for a platform-side experiment, not a
-  validated recommendation.
-\end{description}
 
 \subsection{Few clusters and the limits of crisis-response causal inference}
-\budget{150}
 
 \jun{Prose draft (my part, C3; old bullet spec commented below).}
 
@@ -179,10 +115,3 @@ the last, and parallel trends fail structurally. There are two ways out --- rede
 toward many clusters (thread-level opinion climates, author panels) or frame the
 account as descriptive --- and this paper takes the second and says so plainly.
 
-% OLD SPEC (superseded by prose above):
-% \begin{itemize}
-% \item Generalize C3: ~6 events x 10 communities is the regime where CRV1 lies
-%   and WCB is barely valid.
-% \item Two routes out: many-cluster redesigns or explicit descriptive framing.
-%   This paper takes the second.
-% \end{itemize}
