@@ -1,50 +1,8 @@
 %% ===========================================================================
 \section{Conclusion}
-\budget{250}
 
-\yash{need to rephrase}
-
-\jun{Prose draft (my part; old bullet spec commented below). Follows the spec:
-thesis in the two strongest number-pairs, one paragraph on what the negatives
-buy, one concrete next step and no laundry list. Dropped the labeller-comparison
-item from the ``negatives buy'' sentence to stay consistent with the abstract,
-where that contribution is cut (Mohit). Numbers checked against \S\ref{sec:results}.
-Yash: two sentences characterise your results (R5 positivity 0.094 vs 0.050 in
-para 1; R6 bridge-user continuum in para 2) --- the figures match
-\S\ref{sec:results} but please confirm the wording.}
-
-Across six India--Pakistan crises, what a community contested turned on the frame
-a comment advanced and the community it reached, not on how offensively it was
-worded: humanitarian framing split a general-audience community 17.4\% of the
-time, where offensive and inoffensive comments diverged by only 7.67\% against
-6.83\%. The same frame was not the same object across communities ---
-security-and-military framing read as positive at 0.094 in India-aligned
-communities against 0.050 in general-audience ones --- so community governs
-\emph{what} a discourse contests and frame governs \emph{how} it is voiced, and
-neither axis is visible to a comment scored on a single layer.
-
-Two of these results exist only because the paper reported its failures. The
-difference-in-differences designs collapsed under a wild cluster bootstrap, which
-turned a null into a transferable caution: crisis-response causal inference on a
-handful of temporally clustered events is uninformative, not merely underpowered.
-And the search for a bridge-user type returned a continuum rather than a kind,
-which is why we describe boundary-crossing as a behaviour with a distribution
-rather than a class of person.
-
-One next step follows directly. The veracity of the disputed factual claims that
-drive the most contested cell is the layer we most want and do not yet have;
-adding it means first repairing the content-type gate, which currently recovers
-only one of the fourteen factual claims in our adjudicated reference.
-
-% OLD BULLET SPEC (superseded by prose above):
-% \begin{itemize}
-% \item Restate the thesis with the two numbers that do the most work: neutral
-%   x Humanitarian 17.4\% against the Offensive-versus-not gap of 7.67\% / 6.83\%;
-%   and the Security/Military positivity asymmetry (0.094 india versus 0.050 neutral).
-% \item One sentence on what the negative results buy --- the event-clustering
-%   confounder, the continuum finding, and the labeller comparison are all results
-%   the paper only has because it reported failures.
-% \item No future-work laundry list. One concrete next step: the L7 veracity layer
-%   over the gated Factual Claims, which requires first fixing an L1 gate that
-%   currently recovers 4.8\% of them.
-% \end{itemize}
+We follow ten Reddit communities through six India--Pakistan crises between 2019 and 2025 and ask which comments are contested, that is, which draw many votes in both directions. Whether a comment is contested varies mostly with its community and far less with its frame or its toxicity label, while the sentiment it carries varies mostly with its frame. Community still shapes that sentiment: under security and military framing, our model predicts that India-aligned comments read as positive nearly twice as often as general-audience ones. Crossing does not bring authors closer to the out-group. The 1,560 authors we observe both inside and outside their home group oppose the out-group more often outside it, even as their targeted toxicity falls slightly. 
+% Our two causal designs cannot separate the effect of one crisis from that of the crisis before it, so we claim nothing about what the crises caused. 
+For moderators, even within one subreddit, a comment's frame says more about whether it is contested than its toxicity label does, and a contested comment need not be a toxic one: the flagged humanitarian comments of general-audience communities mostly lack a toxicity label and argue over disputed facts. 
+% Those disputes set our next step. 
+% Our gpt-5.2 labeler finds only one of the 14 factual claims in our resolved reference, so we must first build a labeler that does. A veracity layer built on it could then show, wherever records exist, whether communities divide over claims that are false or merely unwelcome.

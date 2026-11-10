@@ -1,90 +1,25 @@
 %% ===========================================================================
 \section{Discussion}
+% \yash{added how others can utilize our work for the future work at the end of each subsection }
 
 \subsection{Composition is the unit of analysis}
 
-% \jun{Prose draft (my part; old bullet spec commented below). Covers the R8-vs-R2
-% reconciliation the spec flagged.}
+In our ten communities, contestation tracks where a comment is posted and what it claims far more than whether it carries a toxicity label. Community alignment separates the contestation rate 2.47-fold and narrative frame 1.77-fold, versus 1.12-fold for toxic over non-toxic comments; for sentiment, the first two trade places (Figure~\ref{fig:crossover}). This gives a measured form to the argument that harm is a property of a comment in its community, which a score computed from the text discards by construction~\cite{berezin2025contextualharm,hartmann2026byebye}. It also adds the community to compositions of harm, which have so far combined attributes of the text and of the person judging it~\cite{scheuerman2021severity,zhou2025harm}. None of our headline results is visible in one layer. The sentiment result needs frame, sentiment, stance, and community together; the crossing result needs a thirteen-dimensional author fingerprint; and the contestation result is the failure of the one-layer content score to read (Cram\'er's $V$ is 0.009 for toxicity, against 0.114 for community). In this composition, community organizes what is contested, and frame organizes the affect a comment carries, and a method that reduces discourse to one text score misses both.
 
-The findings converge on a single methodological point: none of them is visible in one annotation layer. The affective-privileging result needs sentiment, frame, stance, and community together; the boundary-crossing result needs a thirteen-dimensional author fingerprint; and the contestation result \emph{is}, in effect, the failure of the single-layer account, since the offensiveness layer that a content score would read barely moves the outcome. The object that carries the signal is the composition of layers with community context, not any layer on
-its own.
-
-% \jun{[Jun] Added a paragraph that ties R8 (RQ1) and R5 (RQ2) into one picture viathe crossover, so the two findings read as one mechanism rather than two separateresults. Kept in Discussion so the Findings sections stay organised by RQ.}
-Two of these findings are the same mechanism seen from two sides. Community and frame do not compete to explain one outcome; they divide the labour across two.
-What a community \emph{contests} is organised chiefly by the community a comment is received in, and only weakly by its frame; the affect a comment \emph{carries} is organised chiefly by its frame, and only weakly by its community (on a common pseudo-$R^2$ metric, the two factors swap ranks between the contestation and sentiment outcomes, \S\ref{sec:results-contestation}). Read alone, either result invites a one-factor story --- that community is what matters, or that frame is. Read together, they are a single compositional claim: community fixes \emph{what} is argued over and frame fixes \emph{how} it is voiced, and a method that collapses discourse to one text-intrinsic score sees neither axis.
-
-This raises an apparent tension worth resolving directly, because a reader will
-otherwise find it. Our contestation result says toxicity scarcely drives what a
-community argues over, while the reply-tree analysis says frame-crossing
-\emph{carries} more toxicity. Both hold, and they are not in conflict: toxicity
-travels \emph{with} the act of crossing a frame boundary without \emph{driving}
-whether a community contests a comment. The variable that predicts contestation
-is the frame--community pairing; toxicity is a correlate of one particular move
-within the discourse, not the quantity that decides its reception.
-
-We state the scope of the claim carefully. This is a demonstration on one corpus
-and one conflict that compositional structure recovers what a single layer hides;
-it is not a proof that composition always dominates, and the mechanism behind each
-composition remains to be tested on other conflicts and platforms.
-
-% OLD SPEC (superseded by prose above):
-% \begin{itemize}
-% \item No headline finding is visible in one layer. R5 needs L2xL5xL4xcommunity;
-%   R6 needs a 13-dim fingerprint; R8's result IS the single-layer failure.
-% \item Reconcile: R8 says toxicity barely moves contestation; R2 says
-%   frame-crossing carries toxicity. Both hold: toxicity travels WITH crossing
-%   but does not DRIVE contestation.
-% \item Generalization: one corpus, one conflict; not a proof composition always beats layer.
-% \end{itemize}
+However, one pair of results looks contradictory. The toxicity label barely moves contestation, yet replies that answer their parent in another frame score 0.0284 higher on Perspective's toxicity score than replies that keep the parent's frame. Both hold, because they describe different things: toxicity accompanies one move inside a conversation, the answering of one frame with another, while contestation is associated with the pairing of frame and community, which describes how a comment is received. What we expect to carry over to other conflicts is the ordering of these factors, not the particular combinations at the top of it. Without Operation Sindoor, our largest event, the three alignment groups keep their order (13.79\%, 8.23\%, and 4.96\% of comments flagged), and humanitarian framing stays well above economic framing (11.22\% against 6.21\%). Even within this conflict, the most contested frame differs between alignment groups. A study of another conflict should therefore expect to re-estimate which combinations are contested, and can test whether community and frame again outrank toxicity.
 
 \subsection{Humanitarian framing as the permeable seam}
 
-\jun{Prose draft (my part; old bullet spec commented below). Corrected the
-audience-heterogeneity point: we tested it (§5.6) rather than leaving it
-unresolved, and updated the comments-per-author figures to the verified values.}
+Humanitarian framing is the frame along which these communities come apart. It is the most contested frame overall (10.45\%), and under it 14.3\% of India-aligned comments read as positive against 5.1\% in general-audience communities, the widest India-aligned gap of any frame. Within communities, it splits two alignment groups and not the third. India-aligned communities contest humanitarian comments at 7.2\%, against 3.9\% for security and military comments, and general-audience communities at 17.4\% against 9.7\%, while \texttt{r/pakistan} contests the two frames at nearly the same rate (8.6\% and 8.5\%) and religious and cultural framing the most (9.3\%). We speculate that security and military framing invites a rally-round-the-flag response that an aligned community can give in unison, while humanitarian framing asks for the moral evaluation that \citet{entman1993framing} counts among a frame's functions, which members of one side can answer differently. The order could also run the other way, with members who already dissent from their community choosing humanitarian framing to say so, as when a flagged India-aligned comment accused India's army of crimes against Kashmiris. Either reading places humanitarian framing where an India-aligned community's agreement breaks, and the \texttt{r/pakistan} exception is consistent with the expectation that a frame's effect depends on what its audience already believes~\cite{chongdruckman2007framing}.
 
-Humanitarian framing is the seam along which these communities come apart. It is
-the one frame that both diverges affectively across communities and, in the
-contestation analysis, cracks consensus within them: it is simultaneously the
-most contested category overall and the most likely to split an aligned community
-that would close ranks around a security-and-military frame. Offered as a
-mechanism and not a tested claim, the reading is that security-and-military
-framing invites a rally-round-the-flag response an aligned community can answer in
-unison, whereas humanitarian framing forces a moral judgment that co-partisans
-answer differently --- so the disagreement surfaces inside the community rather
-than only across the line.
+The competing reading is that general-audience communities look contested because their audience is transient, at 2.69 comments per author against 4.51 in India-aligned communities and 5.04 in \texttt{r/pakistan}, so that occasional participants split the vote mechanically. The reading fails for the commenters we observe: controlling for each author's comment count moves the general-audience odds ratio only from 2.785 to 2.697, and among authors with at least twenty comments the rate ratio against India-aligned communities widens from 2.47 to 2.81. The archive does not record voters. Anyone who reads a comment can vote on it, members or not, including mobilized outsiders~\cite {kumar2018conflict}, while many readers never vote~\cite{gilbert2013underprovision}, so a general-audience vote split may still reflect a mixed crowd of readers rather than disagreement among the community's members. Separating a mixed crowd from a divided membership needs votes broken down by whether each voter belongs to the community, a record that only Reddit holds and could share with researchers in aggregate.
 
-The obvious competing explanation is that general-audience communities look more
-contested simply because they draw a more transient crowd, whose one-off voters
-mechanically split the vote --- an audience-heterogeneity effect rather than a
-permeable echo chamber. Neutral communities do have the most transient audience
-(2.69 comments per author, against 4.50 in india-aligned and 5.04 in
-pakistan-aligned communities), so we tested the explanation rather than assert
-against it. It does not survive: controlling for author activity leaves the
-neutral effect essentially unchanged, and restricting to committed participants
-\emph{widens} rather than shrinks the gap (\S\ref{sec:results-contestation}). What the data cannot rule out
-is a subtler, voter-level version --- heterogeneity among the people who cast
-votes, which the corpus does not observe --- and we mark that as the open
-condition rather than claim to have closed it.
 
-% OLD SPEC (superseded by prose above):
-% \begin{itemize}
-% \item The one frame that both diverges affectively (S5.1, S5.3) and cracks
-%   consensus within communities (S5.6).
-% \item Mechanism (not test): Sec/Mil = rally-round-the-flag; Humanitarian =
-%   moral judgment co-partisans answer differently.
-% \item Competing explanation "data cannot rule out" -> CORRECTED: tested in S5.6
-%   and rejected (author transience); only voter-pool version remains open.
-%   Numbers 2.73/4.64/5.21 -> 2.69/4.50/5.04.
-% \end{itemize}
+\subsection{Who crosses, and what it costs}
 
-\subsection{``Bridge user'' is the wrong abstraction}
+We set out to find bridge users and found none. In our corpus, crossing is a distributed behavior, much as activity across communities runs from generalists to specialists along one continuum~\cite{waller2019generalists}, and the crossers came disproportionately from its combative end. They scored lower on our bridging index than authors who stayed in one community, and the same authors raised their anti-out-group stance when they posted across the boundary. They also lowered their targeted toxicity slightly, though that change rests on a classifier that separates targeted from untargeted toxicity only moderately well. These results bear on two questions that earlier work on crossing left open. The first is what a receiving community penalizes. \citet{datta2019interconflict} inferred conflict from authors rewarded in one subreddit and penalized in another, but could not trace a penalty to what was said. In our data, the penalty did not single out hostility, since outsiders who provoked and outsiders who merely asked questions were both scored down. On \texttt{r/politics}, cross-cutting replies that expressed warmth tended to draw positive responses~\cite{marchal2022benice}; in a community aligned against the poster during a shooting war, even a question was penalized. The second question is whether crossing changes how people write or only who crosses, and we see both. Hawkish authors crossed more often, as a spiral of silence predicts if only a committed core keeps speaking in a hostile climate~\cite{noelleneumann1974spiral}, and the same authors wrote more oppositionally once across, which fits accounts of antisocial behavior as partly situational~\cite{cheng2017troll}.
 
-We set out to find bridge users and found none. In our corpus, crossing is a behavior with a distribution, much as activity across communities runs from
-generalists to specialists along one continuum~\cite{waller2019generalists}, and the crossers came disproportionately from its combative end. They scored lower on our bridging index than authors who stayed in one community, and the same authors raised their anti-out-group stance when they posted across the boundary. They also lowered their targeted toxicity slightly, though that change rests on a classifier that separates targeted from untargeted toxicity only moderately well. These results bear on two questions that earlier work on crossing left open. The first is what a receiving community penalizes. \citet{datta2019interconflict} inferred conflict from authors rewarded in one subreddit and penalized in another, but could not trace a penalty to what was said. In our data the penalty did not single out hostility, since outsiders who provoked and outsiders who merely asked questions were both scored down. On \texttt{r/politics}, cross-cutting replies that expressed warmth tended to draw positive responses~\cite{marchal2022benice}; in a community aligned against the poster during a shooting war, even a question was penalized. The second question is whether crossing changes how people write
-or only who crosses, and we see both. Hawkish authors crossed more often, as a spiral of silence predicts if only a committed core keeps speaking in a hostile climate~\cite{noelleneumann1974spiral}, and the same authors wrote more oppositionally once across, which fits accounts of antisocial behavior as partly situational~\cite{cheng2017troll}.
-
-Contact theory expects contact to reduce prejudice most under equal status, common goals, and institutional support~\cite{pettigrew2006contact}. Posting into a community aligned against one's own side during a shooting war meets none of these conditions, and what we observe resembles negative contact, which weighs more than positive contact~\cite{paolini2010negative,barlow2012contact}. Twitter users who bridged echo chambers paid a price in network centrality and in how their content was received~\cite{garimella2018echo}; in our data the price fell on outsiders whether or not they bridged. Whether cross-party contact on Reddit integrates or segregates users depends on its conditions~\cite{xia2025integrated}, and ours are conditions under which it went badly. We argue that a system that ranks, recommends, or badges cross-community participation as a proxy for constructive participation would therefore promote incursions, and for this reason we call these participants boundary-crossers rather than bridge users. Following boundary-crossers beyond the crisis windows, to see whether incursion ever gives way to contact once the fighting stops, we leave to future work.
+Contact theory expects contact to reduce prejudice most under equal status, common goals, and institutional support~\cite{pettigrew2006contact}. Posting into a community aligned against one's own side during a shooting war meets none of these conditions, and what we observe resembles negative contact, which weighs more than positive contact~\cite{paolini2010negative,barlow2012contact}. Twitter users who bridged echo chambers paid a price in network centrality and in how their content was received~\cite{garimella2018echo}; in our data the price fell on outsiders whether or not they bridged. Whether cross-party contact on Reddit integrates or segregates users depends on its conditions~\cite{xia2025integrated}, and ours are conditions under which it went badly. We argue that a system that ranks, recommends, or badges cross-community participation as a proxy for constructive participation would therefore promote incursions, and for this reason we call these participants boundary-crossers rather than bridge users. Whether boundary-crossers give way to contact once the fighting stops can be tested on these authors, because our corpus also holds the comments they post outside the six crisis windows. 
 
 
 
@@ -93,25 +28,11 @@ Contact theory expects contact to reduce prejudice most under equal status, comm
 \label{sec:disc-design}
 % -----------------------------------------------------------------------------
 
-Our findings suggest several considerations for the people who design and moderate these communities. First, a moderation queue ranked by toxicity score
-ranks by the layer that moved contestation least in our data. A queue keyed to frame and community would instead surface the places where reception divides, such as humanitarian framing in general-audience communities or religious framing in \texttt{r/pakistan} during a crisis, and because contestation behaved as a property of the alignment group, such a model could supply the middle level missing from Crossmod, which has classifiers for single subreddits and for the whole site but none for groups of subreddits~\cite{chandrasekharan2019crossmod}. However, a contested comment is not necessarily a harmful one. Most flagged humanitarian comments in general-audience communities carried no toxicity label and disputed factual claims, so a queue that fed removal would suppress legitimate argument, and its cells would need re-estimating for any other conflict. Second, an interface could show beside a thread how its frames are voiced in other communities, so that readers who take a strike as a source of pride see that general-audience readers attached their positive sentiment to de-escalation. Making that asymmetry visible may harden identity rather than soften it, as exposure to opposing views did for Republican participants in a field experiment on Twitter~\cite{bail2018exposure}, so such a design would need testing before
-anyone deployed it. Third, because receiving communities penalized outsiders who asked questions along with those who provoked, a guaranteed period of visibility for out-group comments would protect questions that early down-votes would otherwise bury. The same floor would also protect provocateurs, who are over-represented among crossers. Conditioning it on the register signals our author fingerprint already measures might separate the two. Finally, an event's mix of frames and affect tracked the kind of crisis more closely than the year, so a community could prepare its settings by crisis type, expecting security framing to dominate a military exchange and political framing a constitutional change. Our
-data cannot identify causal effects of crisis type (Appendix~\ref{app:causal}), the regularity held only for the contrast between military and constitutional events, and two of our three crisis types rest on one event each, so we offer this as a hypothesis for a platform-side experiment rather than as a recommendation.
+Our findings suggest several considerations for the people who design and moderate these communities. First, a moderation queue ranked by toxicity score ranks by the layer that moved contestation least in our data. A queue keyed to frame and community would instead surface the places where reception divides, such as humanitarian framing in general-audience communities or religious framing in \texttt{r/pakistan} during a crisis, and because contestation behaved as a property of the alignment group, such a model could supply the middle level missing from Crossmod, which has classifiers for single subreddits and for the whole site but none for groups of subreddits~\cite{chandrasekharan2019crossmod}. However, a contested comment is not necessarily a harmful one. Most flagged humanitarian comments in general-audience communities carried no toxicity label and disputed factual claims, so a queue that fed removal would suppress legitimate argument, and its cells would need re-estimating for any other conflict. Second, an interface could show, beside a thread, how its frames are voiced in other communities, so readers who take a strike as a source of pride see that general-audience readers attached their positive sentiment to de-escalation. Making that asymmetry visible may harden identity rather than soften it, as exposure to opposing views did for Republican participants in a field experiment on Twitter~\cite{bail2018exposure}, so such a design would need testing before anyone deployed it. Third, because receiving communities penalized outsiders who asked questions as well as those who provoked, a guaranteed period of visibility for out-group comments would protect questions that early downvotes would otherwise bury. The same floor would also protect provocateurs, who are over-represented among crossers. Conditioning it on the register signals our author-fingerprint measures might separate the two. Finally, an event's mix of frames and affect tracked the kind of crisis more closely than the year, so a community could prepare its settings by crisis type, expecting security framing to dominate a military exchange and political framing a constitutional change. Our data cannot identify causal effects of crisis type (Appendix~\ref{app:causal}), the regularity held only for the contrast between military and constitutional events, and two of our three crisis types rest on one event each, so we offer this as a hypothesis for a platform-side experiment rather than as a recommendation.
 
 
 \subsection{Few clusters and the limits of crisis-response causal inference}
 
-\jun{Prose draft (my part, C3; old bullet spec commented below).}
+Our two difference-in-differences designs failed in a way that other studies of crisis response are likely to repeat. Of their 45 estimates, 15 are significant under cluster-robust (CRV1) inference and none survives a wild cluster bootstrap (Figure~\ref{fig:crv1-wcb}). Because treatment varies by community, these designs have seven to nine clusters, a regime in which cluster-robust standard errors over-reject~\cite{cameron2008bootstrap} and the wild cluster bootstrap itself can be unreliable when few clusters are treated~\cite{mackinnon2017wildbootstrap}. Identification fails as well. Balakot came twelve days after Pulwama, and Operation Sindoor about two weeks after Pahalgam, so each retaliation's baseline is an attack's aftermath and the parallel-trends tests reject. This event clustering is a confounder distinct from the staggered timing that recent difference-in-differences methods address~\cite{goodmanbacon2021did}, and a conflict that escalates in attack-and-retaliation pairs produces it whenever the retaliation falls inside the attack's window.
 
-The methodological negative generalizes beyond this corpus. Any crisis-response
-study whose treatment varies across roughly six events and ten communities sits
-in the same few-clusters regime, where the cluster-robust variance estimator
-over-rejects and the wild cluster bootstrap is only barely valid --- so an
-uncorrected event-study on data of this shape will report effects that a proper
-correction erases, as ours did on both designs (Appendix~\ref{app:causal}, Figure~\ref{fig:crv1-wcb}).
-The compounding problem is identification rather than power: when crises recur
-inside each other's recovery windows, each event's pre-period is the aftermath of
-the last, and parallel trends fail structurally. There are two ways out --- redesign
-toward many clusters (thread-level opinion climates, author panels) or frame the
-account as descriptive --- and this paper takes the second and says so plainly.
-
+The spiral of silence, which fits who crosses, is the theory our withdrawal design was built to test, and it stays open in both directions. In each of the four events with a usable author panel, minority-alignment authors cut their posting in the acute phase more than majority authors do, as the theory predicts, but those who keep posting write less neutral comments and ask more questions, which runs against it. Neither pattern survives the bootstrap. We argue that researchers who study crisis response on platforms should report a wild cluster bootstrap beside CRV1 when treatment varies across as few communities as ours, and should check whether their events fall inside one another's windows before trusting a parallel-trends test. We could test whether a hostile opinion climate silences minority commenters by defining treatment at the thread level, where our co-occurrence analysis alone spans 4,210 threads. Our released labels carry each comment's parent and post, so such a design can be built on these six crises without new annotation.
